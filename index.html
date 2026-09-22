@@ -113,14 +113,6 @@
                 <button type="button" data-field="l.aRows" data-delta="1" aria-label="เพิ่มความกว้าง A">+</button>
               </div>
             </div>
-            <div class="dim-row">
-              <label data-i18n="size.railCount">จำนวนราวจับ (ช่วง 1.2 ม.)</label>
-              <div class="stepper">
-                <button type="button" data-field="l.railA" data-delta="-1" aria-label="ลดราว A">−</button>
-                <div class="value-display"><span id="val-l-railA">12</span><span class="unit" data-i18n="unit.spans">ช่วง</span></div>
-                <button type="button" data-field="l.railA" data-delta="1" aria-label="เพิ่มราว A">+</button>
-              </div>
-            </div>
           </div>
         </div>
         <div class="section-block">
@@ -140,14 +132,6 @@
                 <button type="button" data-field="l.bRows" data-delta="-1" aria-label="ลดความกว้าง B">−</button>
                 <div class="value-display"><span id="val-l-bRows">2</span><span class="unit" data-i18n="unit.floats">ทุ่น</span></div>
                 <button type="button" data-field="l.bRows" data-delta="1" aria-label="เพิ่มความกว้าง B">+</button>
-              </div>
-            </div>
-            <div class="dim-row">
-              <label data-i18n="size.railCount">จำนวนราวจับ (ช่วง 1.2 ม.)</label>
-              <div class="stepper">
-                <button type="button" data-field="l.railB" data-delta="-1" aria-label="ลดราว B">−</button>
-                <div class="value-display"><span id="val-l-railB">8</span><span class="unit" data-i18n="unit.spans">ช่วง</span></div>
-                <button type="button" data-field="l.railB" data-delta="1" aria-label="เพิ่มราว B">+</button>
               </div>
             </div>
           </div>
@@ -180,14 +164,6 @@
                 <button type="button" data-field="t.barRows" data-delta="1" aria-label="เพิ่มความกว้างเซกชัน A">+</button>
               </div>
             </div>
-            <div class="dim-row">
-              <label data-i18n="size.railCount">จำนวนราวจับ (ช่วง 1.2 ม.)</label>
-              <div class="stepper">
-                <button type="button" data-field="t.railBar" data-delta="-1" aria-label="ลดราวเซกชัน A">−</button>
-                <div class="value-display"><span id="val-t-railBar">16</span><span class="unit" data-i18n="unit.spans">ช่วง</span></div>
-                <button type="button" data-field="t.railBar" data-delta="1" aria-label="เพิ่มราวเซกชัน A">+</button>
-              </div>
-            </div>
           </div>
         </div>
         <div class="section-block">
@@ -207,14 +183,6 @@
                 <button type="button" data-field="t.stemRows" data-delta="-1" aria-label="ลดความยาวเซกชัน B">−</button>
                 <div class="value-display"><span id="val-t-stemRows">4</span><span class="unit" data-i18n="unit.floats">ทุ่น</span></div>
                 <button type="button" data-field="t.stemRows" data-delta="1" aria-label="เพิ่มความยาวเซกชัน B">+</button>
-              </div>
-            </div>
-            <div class="dim-row">
-              <label data-i18n="size.railCount">จำนวนราวจับ (ช่วง 1.2 ม.)</label>
-              <div class="stepper">
-                <button type="button" data-field="t.railStem" data-delta="-1" aria-label="ลดราวเซกชัน B">−</button>
-                <div class="value-display"><span id="val-t-railStem">8</span><span class="unit" data-i18n="unit.spans">ช่วง</span></div>
-                <button type="button" data-field="t.railStem" data-delta="1" aria-label="เพิ่มราวเซกชัน B">+</button>
               </div>
             </div>
           </div>
@@ -303,6 +271,7 @@
         <div class="rail-helpers" role="group" data-i18n-aria="rail.helpersAria" aria-label="ทางลัดราวจับ">
           <button type="button" class="rail-helper" id="rail-all-perimeter" data-i18n="rail.allPerimeter">ขอบนอกทั้งหมด</button>
           <button type="button" class="rail-helper" id="rail-ns-only" data-i18n="rail.nsOnly">เฉพาะขอบนอกบน-ล่าง</button>
+          <button type="button" class="rail-helper" id="rail-ew-only" data-i18n="rail.ewOnly">เฉพาะขอบนอกซ้าย-ขวา</button>
           <button type="button" class="rail-helper rail-helper-clear" id="rail-clear" data-i18n="rail.clear">ล้างราว</button>
         </div>
       </div>
