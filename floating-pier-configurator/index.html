@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="ระบบกำหนดค่าท่าเทียบเรือลอยน้ำ — โฟลทิลลา เทคโนโลยี" />
+  <title>ออกแบบท่าเทียบเรือลอยน้ำของคุณ | โฟลทิลลา</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header no-print">
+    <div class="brand">
+      <img class="logo-mark" src="assets/flotilla-logo.png" alt="Flotilla" width="300" height="68" />
+      <div class="brand-text">
+        <h1 data-i18n="header.title">ออกแบบท่าเทียบเรือลอยน้ำของคุณ</h1>
+        <p class="subtitle" data-i18n="header.subtitle">โฟลทิลลา เทคโนโลยี · ทุ่น 1.20×1.20×0.30 ม.</p>
+      </div>
+      <div class="lang-switch" role="group" aria-label="Language / ภาษา" id="lang-switch">
+        <button type="button" class="lang-btn" data-lang="th" aria-pressed="true" title="ไทย">ไทย / TH</button>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false" title="English">English / EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container no-print">
+    <!-- Shape selection -->
+    <section class="card full-width">
+      <h2><span class="icon">🔷</span> <span data-i18n="shape.heading">เลือกรูปทรงท่าเทียบเรือ</span></h2>
+      <div class="shape-selector" id="shape-selector" role="radiogroup" data-i18n-aria="shape.aria" aria-label="รูปทรง">
+        <button type="button" class="shape-card" data-shape="straight" aria-pressed="true">
+          <span class="shape-icon" aria-hidden="true">▬</span>
+          <span class="shape-title" data-i18n="shape.straight.title">รูปตัวไอ</span>
+          <small data-i18n="shape.straight.sub">รูปตัวไอ (I)</small>
+        </button>
+        <button type="button" class="shape-card" data-shape="L" aria-pressed="false">
+          <span class="shape-icon" aria-hidden="true">⌞</span>
+          <span class="shape-title" data-i18n="shape.L.title">รูปตัวแอล</span>
+          <small data-i18n="shape.L.sub">สองแขนเชื่อมมุม</small>
+        </button>
+        <button type="button" class="shape-card" data-shape="T" aria-pressed="false">
+          <span class="shape-icon" aria-hidden="true">⊥</span>
+          <span class="shape-title" data-i18n="shape.T.title">รูปตัวที</span>
+          <small data-i18n="shape.T.sub">เซกชัน A + B</small>
+        </button>
+      </div>
+    </section>
+
+    <!-- Size / section controls -->
+    <section class="card">
+      <h2><span class="icon">📐</span> <span id="size-card-title" data-i18n="size.title.straight">เลือกขนาดตัวอยาก</span></h2>
+
+      <!-- Straight-only: presets + sliders -->
+      <div id="controls-straight" class="shape-panel" data-shape-panel="straight">
+        <p class="section-heading" style="margin:0 0 0.5rem" data-i18n="size.straight.section">เซกชันหลัก</p>
+        <div class="presets" id="presets" role="group" data-i18n-aria="size.presetsAria" aria-label="ขนาดยอดนิยม"></div>
+        <p class="size-hint" style="font-size:0.85rem;color:var(--gray-500);margin:0.5rem 0 0.85rem" data-i18n-html="size.straight.hint2">
+          ทุ่นแต่ละลูกเป็นสี่เหลี่ยมจัตุรัส <strong>1.2×1.2 ม.</strong>
+          ขนาดจริง = (จำนวนตามยาว)×1.2 × (จำนวนแถว)×1.2
+          เช่น 6×2 ทุ่น = <strong>7.2×2.4 ม.</strong>
+        </p>
+
+        <div class="dim-controls">
+          <div class="dim-row">
+            <label for="slider-L" data-i18n="size.lengthM">ความยาว (ม.)</label>
+            <div class="stepper">
+              <button type="button" id="dec-L" aria-label="ลดความยาว">−</button>
+              <div class="value-display"><span id="val-L">7.2</span><span class="unit" data-i18n="unit.m">ม.</span></div>
+              <button type="button" id="inc-L" aria-label="เพิ่มความยาว">+</button>
+            </div>
+            <input type="range" id="slider-L" min="1.2" max="30" step="1.2" value="7.2" />
+          </div>
+          <div class="dim-row">
+            <label for="slider-W" data-i18n="size.widthM">ความกว้าง (ม.)</label>
+            <div class="stepper">
+              <button type="button" id="dec-W" aria-label="ลดความกว้าง">−</button>
+              <div class="value-display"><span id="val-W">2.4</span><span class="unit" data-i18n="unit.m">ม.</span></div>
+              <button type="button" id="inc-W" aria-label="เพิ่มความกว้าง">+</button>
+            </div>
+            <input type="range" id="slider-W" min="2.4" max="15" step="1.2" value="2.4" />
+          </div>
+        </div>
+
+        <div class="size-summary">
+          <div class="rounded" id="size-rounded">ขนาดจริง: —</div>
+          <div class="requested" id="size-requested">ขนาดที่ขอ: —</div>
+        </div>
+      </div>
+
+      <!-- L-shape section controls -->
+      <div id="controls-L" class="section-controls shape-panel" data-shape-panel="L" hidden>
+        <p class="size-hint" style="font-size:0.85rem;color:var(--gray-500);margin:0 0 0.85rem" data-i18n="size.L.hint">
+          เฉพาะรูปตัวแอล — เซกชัน A และ B ของรูปนี้เท่านั้น (ไม่เกี่ยวกับตัวไอ/ตัวที) · ความกว้างอย่างน้อย 2 ทุ่น
+        </p>
+        <div class="section-block">
+          <h3 class="section-heading" data-i18n="size.L.secA">เซกชัน A · รูปตัวแอล</h3>
+          <div class="module-grid">
+            <div class="dim-row">
+              <label data-i18n="size.lengthFloats">ความยาว (ทุ่น)</label>
+              <div class="stepper">
+                <button type="button" data-field="l.aCols" data-delta="-1" aria-label="ลดความยาว A">−</button>
+                <div class="value-display"><span id="val-l-aCols">6</span><span class="unit" data-i18n="unit.floats">ทุ่น</span></div>
+                <button type="button" data-field="l.aCols" data-delta="1" aria-label="เพิ่มความยาว A">+</button>
+              </div>
+            </div>
+            <div class="dim-row">
+              <label data-i18n="size.widthFloats">ความกว้าง (ทุ่น)</label>
+              <div class="stepper">
+                <button type="button" data-field="l.aRows" data-delta="-1" aria-label="ลดความกว้าง A">−</button>
+                <div class="value-display"><span id="val-l-aRows">2</span><span class="unit" data-i18n="unit.floats">ทุ่น</span></div>
+                <button type="button" data-field="l.aRows" data-delta="1" aria-label="เพิ่มความกว้าง A">+</button>
+              </div>
+            </div>
+            <div class="dim-row" hidden>
+              <label data-i18n="size.railCount">จำนวนราวจับ (ช่วง 1.2 ม.)</label>
+              <div class="stepper">
+                <button type="button" data-field="l.railA" data-delta="-1" aria-label="ลดราว A">−</button>
+                <div class="value-display"><span id="val-l-railA">12</span><span class="unit" data-i18n="unit.spans">ช่วง</span></div>
+                <button type="button" data-field="l.railA" data-delta="1" aria-label="เพิ่มราว A">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-block">
+          <h3 class="section-heading" data-i18n="size.L.secB">เซกชัน B · รูปตัวแอล</h3>
+          <div class="module-grid">
+            <div class="dim-row">
+              <label data-i18n="size.lengthFloats">ความยาว (ทุ่น)</label>
+              <div class="stepper">
+                <button type="button" data-field="l.bCols" data-delta="-1" aria-label="ลดความยาว B">−</button>
+                <div class="value-display"><span id="val-l-bCols">4</span><span class="unit" data-i18n="unit.floats">ทุ่น</span></div>
+                <button type="button" data-field="l.bCols" data-delta="1" aria-label="เพิ่มความยาว B">+</button>
+              </div>
+            </div>
+            <div class="dim-row">
+              <label data-i18n="size.widthFloats">ความกว้าง (ทุ่น)</label>
+              <div class="stepper">
+                <button type="button" data-field="l.bRows" data-delta="-1" aria-label="ลดความกว้าง B">−</button>
+                <div class="value-display"><span id="val-l-bRows">2</span><span class="unit" data-i18n="unit.floats">ทุ่น</span></div>
+                <button type="button" data-field="l.bRows" data-delta="1" aria-label="เพิ่มความกว้าง B">+</button>
+              </div>
+            </div>
+            <div class="dim-row" hidden>
+              <label data-i18n="size.railCount">จำนวนราวจับ (ช่วง 1.2 ม.)</label>
+              <div class="stepper">
+                <button type="button" data-field="l.railB" data-delta="-1" aria-label="ลดราว B">−</button>
+                <div class="value-display"><span id="val-l-railB">8</span><span class="unit" data-i18n="unit.spans">ช่วง</span></div>
+                <button type="button" data-field="l.railB" data-delta="1" aria-label="เพิ่มราว B">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="size-summary">
+          <div class="rounded" id="size-rounded-L">ขนาด: —</div>
+          <div class="requested" id="size-detail-L">—</div>
+        </div>
+      </div>
+
+      <!-- T-shape section controls -->
+      <div id="controls-T" class="section-controls shape-panel" data-shape-panel="T" hidden>
+        <p class="size-hint" style="font-size:0.85rem;color:var(--gray-500);margin:0 0 0.85rem" data-i18n="size.T.hint">เฉพาะรูปตัวที — เซกชัน A และ B ของรูปนี้เท่านั้น (ไม่เกี่ยวกับตัวไอ/ตัวแอล)</p>
+        <div class="section-block">
+          <h3 class="section-heading" data-i18n="size.T.secA">เซกชัน A · รูปตัวที</h3>
+          <div class="module-grid">
+            <div class="dim-row">
+              <label data-i18n="size.lengthFloats">ความยาว (ทุ่น)</label>
+              <div class="stepper">
+                <button type="button" data-field="t.barCols" data-delta="-1" aria-label="ลดความยาวเซกชัน A">−</button>
+                <div class="value-display"><span id="val-t-barCols">8</span><span class="unit" data-i18n="unit.floats">ทุ่น</span></div>
+                <button type="button" data-field="t.barCols" data-delta="1" aria-label="เพิ่มความยาวเซกชัน A">+</button>
+              </div>
+            </div>
+            <div class="dim-row">
+              <label data-i18n="size.widthFloats">ความกว้าง (ทุ่น)</label>
+              <div class="stepper">
+                <button type="button" data-field="t.barRows" data-delta="-1" aria-label="ลดความกว้างเซกชัน A">−</button>
+                <div class="value-display"><span id="val-t-barRows">2</span><span class="unit" data-i18n="unit.floats">ทุ่น</span></div>
+                <button type="button" data-field="t.barRows" data-delta="1" aria-label="เพิ่มความกว้างเซกชัน A">+</button>
+              </div>
+            </div>
+            <div class="dim-row" hidden>
+              <label data-i18n="size.railCount">จำนวนราวจับ (ช่วง 1.2 ม.)</label>
+              <div class="stepper">
+                <button type="button" data-field="t.railBar" data-delta="-1" aria-label="ลดราวเซกชัน A">−</button>
+                <div class="value-display"><span id="val-t-railBar">16</span><span class="unit" data-i18n="unit.spans">ช่วง</span></div>
+                <button type="button" data-field="t.railBar" data-delta="1" aria-label="เพิ่มราวเซกชัน A">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-block">
+          <h3 class="section-heading" data-i18n="size.T.secB">เซกชัน B · รูปตัวที</h3>
+          <div class="module-grid">
+            <div class="dim-row">
+              <label data-i18n="size.T.stemWidth">ความกว้างตามเซกชัน A (ทุ่น)</label>
+              <div class="stepper">
+                <button type="button" data-field="t.stemCols" data-delta="-1" aria-label="ลดความกว้างเซกชัน B">−</button>
+                <div class="value-display"><span id="val-t-stemCols">2</span><span class="unit" data-i18n="unit.floats">ทุ่น</span></div>
+                <button type="button" data-field="t.stemCols" data-delta="1" aria-label="เพิ่มความกว้างเซกชัน B">+</button>
+              </div>
+            </div>
+            <div class="dim-row">
+              <label data-i18n="size.T.stemLen">ความยาวเซกชัน B (ทุ่น)</label>
+              <div class="stepper">
+                <button type="button" data-field="t.stemRows" data-delta="-1" aria-label="ลดความยาวเซกชัน B">−</button>
+                <div class="value-display"><span id="val-t-stemRows">4</span><span class="unit" data-i18n="unit.floats">ทุ่น</span></div>
+                <button type="button" data-field="t.stemRows" data-delta="1" aria-label="เพิ่มความยาวเซกชัน B">+</button>
+              </div>
+            </div>
+            <div class="dim-row" hidden>
+              <label data-i18n="size.railCount">จำนวนราวจับ (ช่วง 1.2 ม.)</label>
+              <div class="stepper">
+                <button type="button" data-field="t.railStem" data-delta="-1" aria-label="ลดราวเซกชัน B">−</button>
+                <div class="value-display"><span id="val-t-railStem">8</span><span class="unit" data-i18n="unit.spans">ช่วง</span></div>
+                <button type="button" data-field="t.railStem" data-delta="1" aria-label="เพิ่มราวเซกชัน B">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="size-summary">
+          <div class="rounded" id="size-rounded-T">ขนาด: —</div>
+          <div class="requested" id="size-detail-T">—</div>
+        </div>
+      </div>
+
+      <div class="layer-block" style="margin-top:1rem">
+        <h3 style="font-size:1rem;margin:0 0 0.5rem" data-i18n="layers.heading">จำนวนชั้นทุ่น</h3>
+        <p style="font-size:0.8rem;color:var(--gray-500);margin:0 0 0.65rem" data-i18n-html="layers.hint">
+          ชั้นละ <strong>0.3 ม.</strong> สูง — ซ้อนชั้นเพิ่มแรงพยุงและจำนวนทุ่นในใบเสนอราคา
+        </p>
+        <div class="layer-toggles" id="layer-toggles" role="radiogroup" data-i18n-aria="layers.aria" aria-label="จำนวนชั้นทุ่น">
+          <button type="button" class="layer-btn" data-layers="1" aria-pressed="false" data-i18n-html="layers.1">ทุ่นหนึ่งชั้น<br /><small>สูง 0.3 ม.</small></button>
+          <button type="button" class="layer-btn" data-layers="2" aria-pressed="false" data-i18n-html="layers.2">ทุ่นสองชั้น<br /><small>สูง 0.6 ม.</small></button>
+          <button type="button" class="layer-btn" data-layers="3" aria-pressed="false" data-i18n-html="layers.3">ทุ่นสามชั้น<br /><small>สูง 0.9 ม.</small></button>
+        </div>
+        <p class="layer-hint" id="layer-hint" style="font-size:0.8rem;margin-top:0.5rem;color:var(--gray-500)">—</p>
+      </div>
+    </section>
+
+    <!-- Diagram + capacity -->
+    <section class="card">
+      <h2><span class="icon">🗺️</span> <span data-i18n="diagram.heading">แผนผังมุมสูง</span></h2>
+      <div id="rail-prompts-straight">
+        <p class="rail-prompt" style="font-size:1.05rem;font-weight:700;color:var(--teal-800, #00695c);margin:0.35rem 0 0.25rem" data-i18n="diagram.prompt">
+          กรุณาเลือกตำแหน่งราวจับของคุณ
+        </p>
+        <p class="rail-click-hint" style="font-size:0.9rem;color:var(--gray-600, #546e7a);margin:0 0 0.75rem" data-i18n="diagram.clickHint">
+          คลิกเพื่อเลือกตำแหน่งราวจับของคุณได้
+        </p>
+      </div>
+      <p id="rail-prompts-shaped" class="rail-click-hint" style="font-size:0.9rem;color:var(--gray-600);margin:0 0 0.75rem" hidden>
+        <!-- unused: click prompts above apply to all shapes -->
+      </p>
+      <div class="stats-bar">
+        <div class="stat">
+          <div class="num" id="stat-floats">—</div>
+          <div class="lbl" data-i18n="stats.floats">ทุ่นลอยน้ำ</div>
+        </div>
+        <div class="stat">
+          <div class="num" id="stat-size" style="font-size:1rem">—</div>
+          <div class="lbl" data-i18n="stats.size">ขนาดจริง</div>
+        </div>
+        <div class="stat">
+          <div class="num" id="stat-rails">—</div>
+          <div class="lbl" data-i18n="stats.rails">ราว (ชุด)</div>
+        </div>
+      </div>
+      <div class="diagram-wrap" id="diagram" aria-live="polite"></div>
+      <div class="diagram-legend">
+        <span><i class="swatch float"></i> <span data-i18n="legend.float">ทุ่น 1.20×1.20 ม.</span></span>
+        <span><i class="swatch rail"></i> <span data-i18n="legend.rail">ราวจับกันตก</span></span>
+      </div>
+
+      <div style="margin-top:1rem">
+        <div class="capacity-box">
+          <div class="cap-label" data-i18n="cap.label">ความสามารถรับน้ำหนักโดยประมาณ</div>
+          <div class="cap-value" id="cap-value">—</div>
+          <div class="cap-per-m2" id="cap-per-m2" style="margin-top:0.35rem;font-size:0.95rem;opacity:0.95">—</div>
+        </div>
+        <p class="assumption-note" data-i18n-html="cap.assumption">
+          สูตรรวม: <code>capacity_kg = พื้นที่(ตร.ม.) × 375 × จำนวนชั้น</code>
+          <br />
+          ต่อตร.ม.: <code>capacity_kg_per_m2 = 375 × จำนวนชั้น</code>
+          (= รวม ÷ พื้นที่)
+          <br />
+          อ้างอิงค่าแรงพยุงตัวไม่น้อยกว่า 375 กก./ตร.ม. ต่อชั้น ตามคุณลักษณะผลิตภัณฑ์ (วว.) — ยังไม่หักน้ำหนักโครงสร้าง/พื้น
+        </p>
+      </div>
+    </section>
+
+    <!-- Railings (click helpers for all shapes) -->
+    <section class="card" id="rail-card">
+      <h2><span class="icon">🧱</span> <span data-i18n="rail.heading">ราวจับกันตก</span></h2>
+      <div id="rail-helpers-block">
+        <p style="font-size:0.85rem;color:var(--gray-500);margin-bottom:0.85rem" data-i18n="rail.help1">
+          ใช้แผนผังมุมสูงด้านบน — กดที่เส้นเพื่อวาง/เอาออกราวจับทีละช่วง (วางระหว่างทุ่นได้)
+        </p>
+        <p style="font-size:0.8rem;color:var(--gray-500);margin-bottom:0.75rem" data-i18n="rail.help2">
+          แต่ละช่วง = 1.2 ม. ตามขอบหนึ่งด้านของทุ่นหนึ่งลูก — รวมขอบนอกและเส้นระหว่างทุ่น
+        </p>
+        <div class="rail-helpers" role="group" data-i18n-aria="rail.helpersAria" aria-label="ทางลัดราวจับ">
+          <button type="button" class="rail-helper" id="rail-all-perimeter" data-i18n="rail.allPerimeter">ขอบนอกทั้งหมด</button>
+          <button type="button" class="rail-helper" id="rail-ns-only" data-i18n="rail.nsOnly">เฉพาะขอบนอกบน-ล่าง</button>
+          <button type="button" class="rail-helper rail-helper-clear" id="rail-clear" data-i18n="rail.clear">ล้างราว</button>
+        </div>
+      </div>
+      <p id="rail-shaped-note" style="font-size:0.85rem;color:var(--gray-500);margin-bottom:0.5rem" hidden>
+        <!-- unused: helpers apply to all shapes via diagram clicks -->
+      </p>
+      <p class="rail-hint" id="rail-per-m">ราวจับ ≈ — /ม.</p>
+    </section>
+
+
+    <!-- Gangway add-on (quote only — not drawn on plan) -->
+    <section class="card" id="gangway-card">
+      <h2><span class="icon">🌉</span> <span data-i18n="gangway.heading">แกงเวย์ (ตัวเลือกเสริม)</span></h2>
+      <label class="gangway-toggle" style="display:flex;align-items:flex-start;gap:0.65rem;cursor:pointer;margin-bottom:0.85rem">
+        <input type="checkbox" id="gangway-enabled" style="width:1.25rem;height:1.25rem;margin-top:0.15rem;flex-shrink:0" />
+        <span>
+          <strong data-i18n="gangway.enable">เพิ่มแกงเวย์ในใบเสนอราคา</strong>
+          <span style="display:block;font-size:0.85rem;color:var(--gray-500);margin-top:0.2rem" data-i18n="gangway.enableHint">
+            ไม่แสดงบนแผนผังมุมสูง — คิดราคาเป็นรายการแยกในใบเสนอราคาเท่านั้น
+          </span>
+        </span>
+      </label>
+            <div id="gangway-controls" hidden>
+        <div id="gangway-sections" class="gangway-field" hidden>
+          <div class="gangway-field-label" id="gangway-sections-label" data-i18n="gangway.secLabel">เลือกเซกชันของรูปที่เลือกอยู่</div>
+          <div class="gangway-choice-row" role="group" data-i18n-aria="gangway.secAria" aria-label="เซกชันแกงเวย์">
+            <button type="button" class="gangway-choice" id="gangway-sec-A" aria-pressed="true" data-i18n="gangway.secA">เซกชัน A</button>
+            <button type="button" class="gangway-choice" id="gangway-sec-B" aria-pressed="false" data-i18n="gangway.secB">เซกชัน B</button>
+          </div>
+          <p style="font-size:0.8rem;color:var(--gray-500);margin-top:0.35rem" data-i18n="gangway.secMin">เลือกได้อย่างน้อย 1 เซกชัน (หรือทั้งสอง)</p>
+        </div>
+        <div class="gangway-field" style="margin-top:0.85rem">
+          <div class="gangway-field-label" data-i18n="gangway.width">ความกว้าง</div>
+          <div class="gangway-choice-row" id="gangway-width-choices" role="radiogroup" data-i18n-aria="gangway.widthAria" aria-label="ความกว้างแกงเวย์">
+            <button type="button" class="gangway-choice" data-gangway-width="1.2" aria-pressed="true">1.2 ม.</button>
+            <button type="button" class="gangway-choice" data-gangway-width="2.4" aria-pressed="false">2.4 ม.</button>
+          </div>
+        </div>
+        <div class="gangway-field" style="margin-top:0.85rem">
+          <div class="gangway-field-label" data-i18n="gangway.length">ความยาว (เมตรเต็มเท่านั้น)</div>
+          <div class="gangway-choice-row gangway-length-row" id="gangway-length-choices" role="radiogroup" data-i18n-aria="gangway.lengthAria" aria-label="ความยาวแกงเวย์">
+            <button type="button" class="gangway-choice" data-gangway-length="3" aria-pressed="true">3 ม.</button>
+            <button type="button" class="gangway-choice" data-gangway-length="4" aria-pressed="false">4 ม.</button>
+            <button type="button" class="gangway-choice" data-gangway-length="5" aria-pressed="false">5 ม.</button>
+            <button type="button" class="gangway-choice" data-gangway-length="6" aria-pressed="false">6 ม.</button>
+            <button type="button" class="gangway-choice" data-gangway-length="7" aria-pressed="false">7 ม.</button>
+            <button type="button" class="gangway-choice" data-gangway-length="8" aria-pressed="false">8 ม.</button>
+            <button type="button" class="gangway-choice" data-gangway-length="9" aria-pressed="false">9 ม.</button>
+            <button type="button" class="gangway-choice" data-gangway-length="10" aria-pressed="false">10 ม.</button>
+          </div>
+        </div>
+        <div class="gangway-field" style="margin-top:0.85rem">
+          <div class="gangway-field-label" data-i18n="gangway.qty">จำนวนชุด</div>
+          <div class="stepper" style="max-width:12rem">
+            <button type="button" id="gangway-qty-dec" aria-label="ลดจำนวนแกงเวย์">−</button>
+            <div class="value-display"><span id="gangway-qty-val">1</span><span class="unit" data-i18n="unit.sets">ชุด</span></div>
+            <button type="button" id="gangway-qty-inc" aria-label="เพิ่มจำนวนแกงเวย์">+</button>
+          </div>
+        </div>
+        <p id="gangway-price-hint" style="font-size:0.9rem;margin-top:0.85rem;color:var(--gray-600)">
+          ราคาโดยประมาณ: —
+        </p>
+        <p style="font-size:0.8rem;color:var(--gray-500);margin-top:0.35rem" data-i18n="gangway.formula">
+          สูตรต่อชุด: ฐาน 1.2×3 ม. = 30,000 บาท · ยาวเกิน 3 ม. เมตรละ +10,000 · กว้าง 2.4 ม. = ×2 · คูณจำนวนชุด และจำนวนเซกชันที่เลือก (แอล/ที)
+        </p>
+      </div></section>
+
+    <!-- Quote -->
+    <section class="card">
+      <h2><span class="icon">🧾</span> <span data-i18n="quote.heading">ใบเสนอราคาโดยประมาณ</span></h2>
+      <div style="overflow-x:auto">
+        <table class="quote-table">
+          <thead>
+            <tr>
+              <th data-i18n="quote.col.item">รายการ</th>
+              <th style="text-align:center" data-i18n="quote.col.qty">จำนวน</th>
+              <th style="text-align:right" data-i18n="quote.col.unit">ราคา/หน่วย</th>
+              <th style="text-align:right" data-i18n="quote.col.total">รวม</th>
+            </tr>
+          </thead>
+          <tbody id="quote-body"></tbody>
+        </table>
+      </div>
+
+      <div class="grand-total-row">
+        <span class="label" data-i18n="quote.grandTotal">ยอดรวมทั้งสิ้น</span>
+        <span class="amount" id="grand-total">—</span>
+      </div>
+
+      <div class="disclaimer" role="note" data-i18n="quote.disclaimer">
+        ราคานี้ไม่รวมค่าขนส่งและค่าติดตั้ง
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn btn-primary" id="btn-print" data-i18n="quote.print">🖨️ พิมพ์ใบเสนอราคา</button>
+        <button type="button" class="btn btn-secondary" id="btn-download" data-i18n="quote.download">⬇️ ดาวน์โหลด HTML</button>
+      </div>
+      <p style="font-size:0.8rem;color:var(--gray-500);margin-top:0.75rem;text-align:center" data-i18n="quote.printTip">
+        เคล็ดลับ: ในหน้าพิมพ์ เลือก “บันทึกเป็น PDF” เพื่อได้ไฟล์ PDF
+      </p>
+    </section>
+
+    <!-- Admin -->
+    <section class="admin-panel full-width no-print" id="admin-panel">
+      <button type="button" class="admin-toggle" id="admin-toggle">
+        <span data-i18n="admin.toggle">⚙️ ตั้งค่าราคา (แอดมิน)</span>
+        <span class="chevron">▼</span>
+      </button>
+      <div class="admin-body">
+        <div class="admin-field">
+          <label for="price-float" data-i18n="admin.float">ราคาทุ่นลอยน้ำ / ชุด (บาท)</label>
+          <input type="number" id="price-float" min="0" step="100" />
+          <span class="hint" data-i18n="admin.floatHint">ค่าเริ่มต้นตามทะเบียน: 18,000 บาท (พร้อม Quick Lock + ตัวเชื่อม)</span>
+        </div>
+        <div class="admin-field">
+          <label for="price-hdpe" data-i18n="admin.hdpe">ราคาแผ่นพื้น HDPE / ชุด (บาท)</label>
+          <input type="number" id="price-hdpe" min="0" step="100" />
+          <span class="hint" data-i18n="admin.hdpeHint">ค่าเริ่มต้น: 7,500 บาท — 1 ชุดต่อ 1 ทุ่นชั้นบน</span>
+        </div>
+        <div class="admin-field">
+          <label for="price-rail" data-i18n="admin.rail">ราคาราวจับกันตก / ชุด 1.2 ม. (บาท)</label>
+          <input type="number" id="price-rail" min="0" step="100" />
+          <span class="hint" data-i18n="admin.railHint">ค่าเริ่มต้น: 4,500 บาท/ชุด — แสดงเทียบต่อเมตรในหน้าหลัก</span>
+        </div>
+        <button type="button" class="btn btn-secondary" id="btn-reset-prices" style="max-width:220px" data-i18n="admin.reset">
+          รีเซ็ตราคาเริ่มต้น
+        </button>
+        <p class="hint" data-i18n="admin.saved">ราคาถูกบันทึกในเบราว์เซอร์ (localStorage) อัตโนมัติ</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer no-print">
+    <span data-i18n="footer">บริษัท โฟลทิลลา เทคโนโลยี จำกัด · Floating Pier Configurator</span>
+  </footer>
+
+  <!-- Print-only quote -->
+  <div id="print-quote" class="print-only" aria-hidden="true"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
