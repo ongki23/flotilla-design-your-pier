@@ -831,12 +831,117 @@
     else state.railSegs[key] = true;
   }
 
+  function cellSectionMap(cells) {
+    var map = {};
+    var i;
+    for (i = 0; i < cells.length; i++) {
+      map[cells[i].x + "," + cells[i].y] = cells[i].section;
+    }
+    return map;
+  }
+
+  /** Sections that touch an edge key (h:y:x or v:y:x). */
+  function edgeTouchingSections(key, secMap) {
+    var parts = key.split(":");
+    var secs = {};
+    var y = parseInt(parts[1], 10);
+    var x = parseInt(parts[2], 10);
+    if (parts[0] === "h") {
+      if (secMap[x + "," + (y - 1)]) secs[secMap[x + "," + (y - 1)]] = true;
+      if (secMap[x + "," + y]) secs[secMap[x + "," + y]] = true;
+    } else if (parts[0] === "v") {
+      if (secMap[x - 1 + "," + y]) secs[secMap[x - 1 + "," + y]] = true;
+      if (secMap[x + "," + y]) secs[secMap[x + "," + y]] = true;
+    }
+    return Object.keys(secs);
+  }
+
+  /**
+   * Edge keys owned by one L/T section (exclusive).
+   * Shared edges between A and B are assigned to A so section totals stay
+   * consistent with the top-view rail count (no double-count).
+   */
+  function exclusiveEdgesForSection(geo, sectionId) {
+    var secMap = cellSectionMap(geo.cells);
+    var valid = edgeKeysFromCells(geo.cells);
+    var keys = [];
+    Object.keys(valid).forEach(function (k) {
+      var secs = edgeTouchingSections(k, secMap);
+      if (!secs.length) return;
+      if (secs.length === 1) {
+        if (secs[0] === sectionId) keys.push(k);
+        return;
+      }
+      // Shared edge: prefer section A
+      var owner = secs.indexOf("A") >= 0 ? "A" : secs.slice().sort()[0];
+      if (owner === sectionId) keys.push(k);
+    });
+    keys.sort();
+    return keys;
+  }
+
+  function countOnKeys(keys) {
+    var n = 0;
+    var i;
+    if (!state.railSegs) return 0;
+    for (i = 0; i < keys.length; i++) {
+      if (state.railSegs[keys[i]]) n++;
+    }
+    return n;
+  }
+
+  /** Sync L/T section rail steppers to the top-view (railSegs) counts. */
+  function syncRailCountsFromDiagram(geo) {
+    if (state.shape === "L") {
+      var keysA = exclusiveEdgesForSection(geo, "A");
+      var keysB = exclusiveEdgesForSection(geo, "B");
+      state.l.railA = countOnKeys(keysA);
+      state.l.railB = countOnKeys(keysB);
+      state._railMaxA = keysA.length;
+      state._railMaxB = keysB.length;
+    } else if (state.shape === "T") {
+      var keysBar = exclusiveEdgesForSection(geo, "A");
+      var keysStem = exclusiveEdgesForSection(geo, "B");
+      state.t.railBar = countOnKeys(keysBar);
+      state.t.railStem = countOnKeys(keysStem);
+      state._railMaxBar = keysBar.length;
+      state._railMaxStem = keysStem.length;
+    }
+  }
+
   function clampRailCounts() {
-    var maxA = 200;
-    state.l.railA = clampInt(state.l.railA, 0, maxA);
-    state.l.railB = clampInt(state.l.railB, 0, maxA);
-    state.t.railBar = clampInt(state.t.railBar, 0, maxA);
-    state.t.railStem = clampInt(state.t.railStem, 0, maxA);
+    // Kept for call sites; real sync happens via syncRailCountsFromDiagram.
+    var geo = buildGeometry();
+    syncRailSegs(geo);
+    syncRailCountsFromDiagram(geo);
+  }
+
+  /**
+   * +/- for section rail steppers: add/remove a rail on the plan for that
+   * section, capped at the number of placeable edges (matches top-view).
+   */
+  function adjustSectionRail(key, delta) {
+    var geo = buildGeometry();
+    syncRailSegs(geo);
+    var sectionId = null;
+    if (key === "railA" || key === "railBar") sectionId = "A";
+    else if (key === "railB" || key === "railStem") sectionId = "B";
+    if (!sectionId) return;
+    if (!state.railSegs) state.railSegs = {};
+    var keys = exclusiveEdgesForSection(geo, sectionId);
+    var on = [];
+    var off = [];
+    var i;
+    for (i = 0; i < keys.length; i++) {
+      if (state.railSegs[keys[i]]) on.push(keys[i]);
+      else off.push(keys[i]);
+    }
+    if (delta > 0) {
+      if (off.length) state.railSegs[off[0]] = true;
+    } else if (delta < 0) {
+      if (on.length) delete state.railSegs[on[on.length - 1]];
+    }
+    syncRailCountsFromDiagram(geo);
   }
 
 
@@ -867,6 +972,7 @@
     var capacity = Math.round(areaM2 * capacityPerM2);
 
     syncRailSegs(g);
+    syncRailCountsFromDiagram(g);
     var railSegs = countOnSegs(state.railSegs);
 
     var floatCost = floats * state.prices.floatPrice;
@@ -1066,6 +1172,13 @@
       var el = $(id);
       if (el) el.textContent = String(v);
     }
+    function setRailButtons(field, value, max) {
+      document.querySelectorAll('[data-field="' + field + '"]').forEach(function (btn) {
+        var d = parseInt(btn.getAttribute("data-delta"), 10) || 0;
+        if (d > 0) btn.disabled = value >= max;
+        else if (d < 0) btn.disabled = value <= 0;
+      });
+    }
     set("val-l-aCols", state.l.aCols);
     set("val-l-aRows", state.l.aRows);
     set("val-l-bCols", state.l.bCols);
@@ -1078,6 +1191,10 @@
     set("val-t-stemRows", state.t.stemRows);
     set("val-t-railBar", state.t.railBar);
     set("val-t-railStem", state.t.railStem);
+    setRailButtons("l.railA", state.l.railA, state._railMaxA || 0);
+    setRailButtons("l.railB", state.l.railB, state._railMaxB || 0);
+    setRailButtons("t.railBar", state.t.railBar, state._railMaxBar || 0);
+    setRailButtons("t.railStem", state.t.railStem, state._railMaxStem || 0);
   }
 
   function renderDiagram(c) {
@@ -2159,16 +2276,12 @@
     var cur = state[group][key];
     var next = cur + delta;
     var isRail = key.indexOf("rail") === 0 || key === "railA" || key === "railB" || key === "railBar" || key === "railStem";
-    var isWidth =
-      key === "aRows" ||
-      key === "bRows" ||
-      key === "barRows" ||
-      key === "stemCols" ||
-      key === "stemRows" ||
-      key === "barCols";
     // widths / stem must stay >= MIN_ROWS (2); lengths (aCols, bCols) >= 1
     if (isRail) {
-      next = clampInt(next, 0, 200);
+      // Drive the top-view rails; stepper value is synced from the plan.
+      adjustSectionRail(key, delta);
+      render();
+      return;
     } else if (key === "aCols" || key === "bCols") {
       next = clampInt(next, 1, MAX_MODULE);
     } else if (key === "stemCols") {
