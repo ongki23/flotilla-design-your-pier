@@ -89,9 +89,9 @@
       "stats.size": "ขนาดจริง",
       "stats.rails": "ราว (ชุด)",
       "legend.float": "ทุ่น 1.20×1.20 ม.",
-      "legend.secA": "เซกชัน A",
-      "legend.secB": "เซกชัน B",
-      "legend.secC": "เซกชัน C",
+
+
+
       "legend.rail": "ราวจับกันตก",
       "cap.label": "ความสามารถรับน้ำหนักโดยประมาณ",
       "cap.total": "รวม",
@@ -313,9 +313,9 @@
       "stats.size": "Actual size",
       "stats.rails": "Rails (sets)",
       "legend.float": "Float 1.20×1.20 m",
-      "legend.secA": "Section A",
-      "legend.secB": "Section B",
-      "legend.secC": "Section C",
+
+
+
       "legend.rail": "Safety railing",
       "cap.label": "Estimated load capacity",
       "cap.total": "total",
@@ -1116,10 +1116,6 @@
     setHidden($("controls-L"), state.shape !== "L");
     setHidden($("controls-T"), state.shape !== "T");
     setHidden($("controls-U"), state.shape !== "U");
-    var shaped = state.shape === "L" || state.shape === "T" || state.shape === "U";
-    setHidden($("legend-sec-A"), !shaped);
-    setHidden($("legend-sec-B"), !shaped);
-    setHidden($("legend-sec-C"), state.shape !== "U");
     // Click-to-select prompts + helpers for every shape
     setHidden($("rail-prompts-straight"), false);
     setHidden($("rail-prompts-shaped"), true);
