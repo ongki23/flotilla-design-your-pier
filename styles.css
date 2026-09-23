@@ -439,6 +439,63 @@ input[type="range"]::-webkit-slider-thumb {
 .swatch.float { background: #26a69a; }
 .swatch.rail { background: #ff8f00; }
 
+.swatch.fender { background: #c62828; }
+.swatch.cleat {
+  background: linear-gradient(135deg, #cfd8dc 0%, #90a4ae 50%, #eceff1 100%);
+  border-color: #607d8b;
+}
+.swatch.light {
+  background: radial-gradient(circle at 50% 35%, #fff8e1 0%, #ffe082 45%, #ff8f00 100%);
+  border-color: #f57f17;
+}
+
+/* Accessory plan: fender edge hits */
+.diagram-wrap .fender-seg {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.diagram-wrap .fender-seg:hover .fender-hit {
+  filter: brightness(1.08);
+}
+.diagram-wrap .fender-seg.off:hover .fender-hit {
+  fill: rgba(198, 40, 40, 0.4);
+}
+
+/* Cleat cell hit targets */
+.diagram-wrap .cleat-cell {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.diagram-wrap .cleat-cell:hover .cleat-hit {
+  fill: rgba(96, 125, 139, 0.22);
+}
+
+/* Solar light cell hit targets */
+.diagram-wrap .light-cell {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.diagram-wrap .light-cell:hover .light-hit {
+  fill: rgba(255, 193, 7, 0.28);
+}
+.diagram-wrap .light-corner-hint {
+  pointer-events: none;
+}
+
+.diagram-wrap.accessory-mode-fender .cleat-cell,
+.diagram-wrap.accessory-mode-fender .light-cell {
+  pointer-events: none;
+}
+.diagram-wrap.accessory-mode-cleat .fender-seg,
+.diagram-wrap.accessory-mode-cleat .light-cell {
+  pointer-events: none;
+}
+.diagram-wrap.accessory-mode-light .fender-seg,
+.diagram-wrap.accessory-mode-light .cleat-cell {
+  pointer-events: none;
+}
+
+
 /* Capacity */
 .capacity-box {
   text-align: center;

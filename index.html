@@ -97,7 +97,7 @@
       <!-- L-shape section controls -->
       <div id="controls-L" class="section-controls shape-panel" data-shape-panel="L" hidden>
         <p class="size-hint" style="font-size:0.85rem;color:var(--gray-500);margin:0 0 0.85rem" data-i18n="size.L.hint">
-          เฉพาะรูปตัวแอล — เซกชัน A และ B ของรูปนี้เท่านั้น (ไม่เกี่ยวกับตัวไอ/ตัวที)
+          เฉพาะรูปตัวแอล — เซกชัน A และ B ของรูปนี้เท่านั้น
         </p>
         <div class="section-block">
           <h3 class="section-heading" data-i18n="size.L.secA">เซกชัน A · รูปตัวแอล</h3>
@@ -149,7 +149,7 @@
 
       <!-- T-shape section controls -->
       <div id="controls-T" class="section-controls shape-panel" data-shape-panel="T" hidden>
-        <p class="size-hint" style="font-size:0.85rem;color:var(--gray-500);margin:0 0 0.85rem" data-i18n="size.T.hint">เฉพาะรูปตัวที — เซกชัน A และ B ของรูปนี้เท่านั้น (ไม่เกี่ยวกับตัวไอ/ตัวแอล)</p>
+        <p class="size-hint" style="font-size:0.85rem;color:var(--gray-500);margin:0 0 0.85rem" data-i18n="size.T.hint">เฉพาะรูปตัวที — เซกชัน A และ B ของรูปนี้เท่านั้น</p>
         <div class="section-block">
           <h3 class="section-heading" data-i18n="size.T.secA">เซกชัน A · รูปตัวที</h3>
           <div class="module-grid">
@@ -360,6 +360,55 @@
     </section>
 
 
+
+    <!-- Accessory plan: fenders & cleats (separate from railing diagram) -->
+    <section class="card" id="accessory-plan-card">
+      <h2><span class="icon">🛡️</span> <span data-i18n="accessory.heading">แผนผังมุมสูง · กันชน คลีต และเสาไฟโซลาร์เซลล์</span></h2>
+      <p class="rail-prompt" style="font-size:1.05rem;font-weight:700;color:var(--teal-800, #00695c);margin:0.35rem 0 0.25rem" data-i18n="accessory.fenderPrompt">
+        กรุณาเลือกตำแหน่งกันชน
+      </p>
+      <p class="rail-prompt" style="font-size:1rem;font-weight:700;color:#455a64;margin:0 0 0.35rem" data-i18n="accessory.cleatPrompt">
+        กรุณาเลือกตำแหน่งคลีต (สแตนเลส)
+      </p>
+      <p class="rail-prompt" style="font-size:1rem;font-weight:700;color:#e65100;margin:0 0 0.35rem" data-i18n="accessory.lightPrompt">
+        ตัวเสาไฟกับคลีตจะติดตั้งด้านมุมของตัวทุ่น
+      </p>
+      <p class="rail-click-hint" style="font-size:0.9rem;color:var(--gray-600, #546e7a);margin:0 0 0.75rem" data-i18n="accessory.clickHint">
+        เลือกโหมดด้านล่าง แล้วคลิกขอบนอกเพื่อวางกันชน หรือคลิกทุ่นเพื่อวางคลีต/เสาไฟโซลาร์เซลล์ — คลิกอีกครั้งเพื่อเอาออก
+      </p>
+      <div class="gangway-choice-row" role="group" data-i18n-aria="accessory.modeAria" aria-label="โหมดวางอุปกรณ์" style="margin-bottom:0.75rem">
+        <button type="button" class="gangway-choice" id="accessory-mode-fender" aria-pressed="true" data-i18n="accessory.modeFender">กันชน / เฟนเดอร์</button>
+        <button type="button" class="gangway-choice" id="accessory-mode-cleat" aria-pressed="false" data-i18n="accessory.modeCleat">คลีต</button>
+        <button type="button" class="gangway-choice" id="accessory-mode-light" aria-pressed="false" data-i18n="accessory.modeLight">เสาไฟโซลาร์เซลล์</button>
+      </div>
+      <div class="rail-helpers" role="group" data-i18n-aria="accessory.helpersAria" aria-label="ทางลัดกันชน คลีต และเสาไฟโซลาร์เซลล์" style="margin-bottom:0.75rem">
+        <button type="button" class="rail-helper rail-helper-clear" id="accessory-clear-fenders" data-i18n="accessory.clearFenders">ล้างกันชน</button>
+        <button type="button" class="rail-helper rail-helper-clear" id="accessory-clear-cleats" data-i18n="accessory.clearCleats">ล้างคลีต</button>
+        <button type="button" class="rail-helper rail-helper-clear" id="accessory-clear-lights" data-i18n="accessory.clearLights">ล้างเสาไฟโซลาร์เซลล์</button>
+      </div>
+      <div class="stats-bar">
+        <div class="stat">
+          <div class="num" id="stat-fenders">0</div>
+          <div class="lbl" data-i18n="stats.fenders">กันชน (ชุด)</div>
+        </div>
+        <div class="stat">
+          <div class="num" id="stat-cleats">0</div>
+          <div class="lbl" data-i18n="stats.cleats">คลีต (ชุด)</div>
+        </div>
+        <div class="stat">
+          <div class="num" id="stat-lights">0</div>
+          <div class="lbl" data-i18n="stats.lights">เสาไฟโซลาร์เซลล์</div>
+        </div>
+      </div>
+      <div class="diagram-wrap" id="accessory-diagram" aria-live="polite"></div>
+      <div class="diagram-legend">
+        <span><i class="swatch float"></i> <span data-i18n="legend.float">ทุ่น 1.20×1.20 ม.</span></span>
+        <span><i class="swatch fender"></i> <span data-i18n="legend.fender">กันชน / เฟนเดอร์</span></span>
+        <span><i class="swatch cleat"></i> <span data-i18n="legend.cleat">คลีตสแตนเลส</span></span>
+        <span><i class="swatch light"></i> <span data-i18n="legend.light">เสาไฟโซลาร์เซลล์</span></span>
+      </div>
+    </section>
+
     <!-- Gangway add-on (quote only — not drawn on plan) -->
     <section class="card" id="gangway-card">
       <h2><span class="icon">🌉</span> <span data-i18n="gangway.heading">แกงเวย์ (ตัวเลือกเสริม)</span></h2>
@@ -414,9 +463,34 @@
           ราคาโดยประมาณ: —
         </p>
         <p style="font-size:0.8rem;color:var(--gray-500);margin-top:0.35rem" data-i18n="gangway.formula">
-          สูตรต่อชุด: ฐาน 1.2×3 ม. = 30,000 บาท · ยาวเกิน 3 ม. เมตรละ +10,000 · กว้าง 2.4 ม. = ×2 · คูณจำนวนชุด และจำนวนเซกชันที่เลือก (แอล/ที)
+          สูตรต่อชุด: ฐาน 1.2×3 ม. = 30,000 บาท · ยาวเกิน 3 ม. เมตรละ +10,000 · กว้าง 2.4 ม. = ×2 · คูณจำนวนชุด
         </p>
       </div></section>
+
+
+    <!-- Mooring system add-on (quote only — not drawn on plan) -->
+    <section class="card" id="mooring-card">
+      <h2><span class="icon">⚓</span> <span data-i18n="mooring.heading">ระบบสมอยึดโยง (ตัวเลือกเสริม)</span></h2>
+      <label class="gangway-toggle" style="display:flex;align-items:flex-start;gap:0.65rem;cursor:pointer;margin-bottom:0.85rem">
+        <input type="checkbox" id="mooring-enabled" style="width:1.25rem;height:1.25rem;margin-top:0.15rem;flex-shrink:0" />
+        <span>
+          <strong data-i18n="mooring.enable">เพิ่มระบบสมอยึดโยงในใบเสนอราคา</strong>
+          <span style="display:block;font-size:0.85rem;color:var(--gray-500);margin-top:0.2rem" data-i18n="mooring.enableHint">
+            ลูกค้ากรอกจำนวนชุดเอง — ราคา 7,500 บาท/ชุด (ปรับได้ในแอดมิน)
+          </span>
+        </span>
+      </label>
+      <div id="mooring-controls" hidden>
+        <div class="gangway-field">
+          <div class="gangway-field-label" data-i18n="mooring.qty">จำนวนชุด</div>
+          <input type="number" id="mooring-qty" min="0" step="1" value="1" style="max-width:10rem;padding:0.5rem 0.65rem;font-size:1.05rem;border:1px solid var(--gray-300);border-radius:8px" />
+          <p style="font-size:0.8rem;color:var(--gray-500);margin-top:0.35rem" data-i18n="mooring.qtyHint">พิมพ์จำนวนที่ต้องการ (ไม่มีเพดานสูงสุด)</p>
+        </div>
+        <p id="mooring-price-hint" style="font-size:0.9rem;margin-top:0.85rem;color:var(--gray-600)">
+          ราคาโดยประมาณ: —
+        </p>
+      </div>
+    </section>
 
     <!-- Quote -->
     <section class="card">
@@ -474,6 +548,27 @@
           <label for="price-rail" data-i18n="admin.rail">ราคาราวจับกันตก / ชุด 1.2 ม. (บาท)</label>
           <input type="number" id="price-rail" min="0" step="100" />
           <span class="hint" data-i18n="admin.railHint">ค่าเริ่มต้น: 4,500 บาท/ชุด — แสดงเทียบต่อเมตรในหน้าหลัก</span>
+        </div>
+        <div class="admin-field">
+          <label for="price-fender" data-i18n="admin.fender">ราคาเฟนเดอร์กันชน / ชิ้น (บาท)</label>
+          <input type="number" id="price-fender" min="0" step="50" />
+          <span class="hint" data-i18n="admin.fenderHint">ค่าเริ่มต้น: 1,900 บาท — ตามจำนวนที่คลิกบนแผนผัง</span>
+        </div>
+        <div class="admin-field">
+          <label for="price-cleat" data-i18n="admin.cleat">ราคาคลีต / ชิ้น (บาท)</label>
+          <input type="number" id="price-cleat" min="0" step="50" />
+          <span class="hint" data-i18n="admin.cleatHint">ค่าเริ่มต้น: 1,250 บาท — ตามจำนวนที่คลิกบนแผนผัง</span>
+        </div>
+        <div class="admin-field">
+          <label for="price-light" data-i18n="admin.light">ราคาเสาไฟโซลาร์เซลล์ / ต้น (บาท)</label>
+          <input type="number" id="price-light" min="0" step="50" />
+          <span class="hint" data-i18n="admin.lightHint">ค่าเริ่มต้น: 4,500 บาท — ตามจำนวนที่คลิกบนแผนผัง</span>
+        </div>
+
+        <div class="admin-field">
+          <label for="price-mooring" data-i18n="admin.mooring">ราคาระบบสมอยึดโยง / ชุด (บาท)</label>
+          <input type="number" id="price-mooring" min="0" step="50" />
+          <span class="hint" data-i18n="admin.mooringHint">ค่าเริ่มต้น: 7,500 บาท/ชุด — ตามจำนวนที่ลูกค้ากรอก</span>
         </div>
         <button type="button" class="btn btn-secondary" id="btn-reset-prices" style="max-width:220px" data-i18n="admin.reset">
           รีเซ็ตราคาเริ่มต้น

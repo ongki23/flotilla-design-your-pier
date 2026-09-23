@@ -17,6 +17,10 @@
     floatPrice: 18000,
     hdpePrice: 7500,
     railingPrice: 4500,
+    fenderPrice: 1900, // กันชน / เฟนเดอร์
+    cleatPrice: 1250, // คลีตสแตนเลส
+    lightPrice: 4500, // เสาไฟโซลาร์เซลล์ — single hook for unit price
+    mooringPrice: 7500, // ระบบสมอยึดโยง — THB per set
   };
 
   var HEADER_LOGO_DATA = "data:image/jpeg;base64,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";
@@ -62,10 +66,10 @@
       "size.lengthFloats": "ความยาว (ทุ่น)",
       "size.widthFloats": "ความกว้าง (ทุ่น)",
       "size.railCount": "จำนวนราวจับ (ช่วง 1.2 ม.)",
-      "size.L.hint": "เฉพาะรูปตัวแอล — เซกชัน A และ B ของรูปนี้เท่านั้น (ไม่เกี่ยวกับตัวไอ/ตัวที)",
+      "size.L.hint": "เฉพาะรูปตัวแอล — เซกชัน A และ B ของรูปนี้เท่านั้น",
       "size.L.secA": "เซกชัน A · รูปตัวแอล",
       "size.L.secB": "เซกชัน B · รูปตัวแอล",
-      "size.T.hint": "เฉพาะรูปตัวที — เซกชัน A และ B ของรูปนี้เท่านั้น (ไม่เกี่ยวกับตัวไอ/ตัวแอล)",
+      "size.T.hint": "เฉพาะรูปตัวที — เซกชัน A และ B ของรูปนี้เท่านั้น",
       "size.T.secA": "เซกชัน A · รูปตัวที",
       "size.T.secB": "เซกชัน B · รูปตัวที",
       "size.T.stemWidth": "ความกว้างตามเซกชัน A (ทุ่น)",
@@ -93,6 +97,28 @@
 
 
       "legend.rail": "ราวจับกันตก",
+      "legend.fender": "กันชน / เฟนเดอร์",
+      "legend.cleat": "คลีตสแตนเลส",
+      "legend.light": "เสาไฟโซลาร์เซลล์",
+      "accessory.heading": "แผนผังมุมสูง · กันชน คลีต และเสาไฟโซลาร์เซลล์",
+      "accessory.fenderPrompt": "กรุณาเลือกตำแหน่งกันชน",
+      "accessory.cleatPrompt": "กรุณาเลือกตำแหน่งคลีต (สแตนเลส)",
+      "accessory.lightPrompt": "ตัวเสาไฟกับคลีตจะติดตั้งด้านมุมของตัวทุ่น",
+      "accessory.clickHint": "เลือกโหมดด้านล่าง แล้วคลิกขอบนอกเพื่อวางกันชน หรือคลิกทุ่นเพื่อวางคลีต/เสาไฟโซลาร์เซลล์ — คลิกอีกครั้งเพื่อเอาออก",
+      "accessory.modeAria": "โหมดวางอุปกรณ์",
+      "accessory.modeFender": "กันชน / เฟนเดอร์",
+      "accessory.modeCleat": "คลีต",
+      "accessory.modeLight": "เสาไฟโซลาร์เซลล์",
+      "accessory.helpersAria": "ทางลัดกันชน คลีต และเสาไฟโซลาร์เซลล์",
+      "accessory.clearFenders": "ล้างกันชน",
+      "accessory.clearCleats": "ล้างคลีต",
+      "accessory.clearLights": "ล้างเสาไฟโซลาร์เซลล์",
+      "stats.fenders": "กันชน (ชุด)",
+      "stats.cleats": "คลีต (ชุด)",
+      "stats.lights": "เสาไฟโซลาร์เซลล์",
+      "quote.fenderItem": "เฟนเดอร์ / กันชน",
+      "quote.cleatItem": "คลีตสแตนเลส",
+      "quote.lightItem": "เสาไฟโซลาร์เซลล์",
       "cap.label": "ความสามารถรับน้ำหนักโดยประมาณ",
       "cap.total": "รวม",
       "cap.perM2": "{0} กก./ตร.ม.  ({1} ÷ {2} ตร.ม. · {3} ชั้น)",
@@ -107,6 +133,19 @@
       "rail.clear": "ล้างราว",
       "rail.perM": "ราวจับ ≈ {0}/ม. (คิดเป็นชุดละ 1.2 ม. · {1} ช่วง)",
       "gangway.heading": "แกงเวย์ (ตัวเลือกเสริม)",
+      "mooring.heading": "ระบบสมอยึดโยง (ตัวเลือกเสริม)",
+      "mooring.enable": "เพิ่มระบบสมอยึดโยงในใบเสนอราคา",
+      "mooring.enableHint": "ลูกค้ากรอกจำนวนชุดเอง — ราคา 7,500 บาท/ชุด (ปรับได้ในแอดมิน)",
+      "mooring.qty": "จำนวนชุด",
+      "mooring.qtyHint": "พิมพ์จำนวนที่ต้องการ (ไม่มีเพดานสูงสุด)",
+      "mooring.priceOn": "ราคาโดยประมาณ: {0} ({1} บาท/ชุด × {2} ชุด)",
+      "mooring.priceOff": "ราคาโดยประมาณ: — (ติ๊กเพื่อเพิ่มในใบเสนอราคา)",
+      "quote.mooringItem": "ระบบสมอยึดโยง (ตัวเลือกเสริม)",
+      "admin.mooring": "ราคาระบบสมอยึดโยง / ชุด (บาท)",
+      "admin.mooringHint": "ค่าเริ่มต้น: 7,500 บาท/ชุด — ตามจำนวนที่ลูกค้ากรอก",
+      "print.mooringTitle": "ระบบสมอยึดโยง",
+      "print.mooringDesc": "ระบบสมอยึดโยง (ตัวเลือกเสริม) · ตามจำนวนชุดที่เลือกในระบบ",
+
       "gangway.enable": "เพิ่มแกงเวย์ในใบเสนอราคา",
       "gangway.enableHint": "ไม่แสดงบนแผนผังมุมสูง — คิดราคาเป็นรายการแยกในใบเสนอราคาเท่านั้น",
       "gangway.secLabel": "เลือกเซกชันของรูปที่เลือกอยู่",
@@ -121,7 +160,7 @@
       "gangway.length": "ความยาว (เมตรเต็มเท่านั้น)",
       "gangway.lengthAria": "ความยาวแกงเวย์",
       "gangway.qty": "จำนวนชุด",
-      "gangway.formula": "สูตรต่อชุด: ฐาน 1.2×3 ม. = 30,000 บาท · ยาวเกิน 3 ม. เมตรละ +10,000 · กว้าง 2.4 ม. = ×2 · คูณจำนวนชุด และจำนวนเซกชันที่เลือก (แอล/ที)",
+      "gangway.formula": "สูตรต่อชุด: ฐาน 1.2×3 ม. = 30,000 บาท · ยาวเกิน 3 ม. เมตรละ +10,000 · กว้าง 2.4 ม. = ×2 · คูณจำนวนชุด",
       "gangway.priceOn": "ราคาโดยประมาณ: {0} ({1}×{2} ม. × {3} ชุด{4}{5})",
       "gangway.priceOff": "ราคาโดยประมาณ: — (ติ๊กเพื่อเพิ่มในใบเสนอราคา)",
       "gangway.secTimes": " × {0} เซกชัน",
@@ -148,6 +187,12 @@
       "admin.hdpeHint": "ค่าเริ่มต้น: 7,500 บาท — 1 ชุดต่อ 1 ทุ่นชั้นบน",
       "admin.rail": "ราคาราวจับกันตก / ชุด 1.2 ม. (บาท)",
       "admin.railHint": "ค่าเริ่มต้น: 4,500 บาท/ชุด — แสดงเทียบต่อเมตรในหน้าหลัก",
+            "admin.fender": "ราคาเฟนเดอร์กันชน / ชิ้น (บาท)",
+      "admin.fenderHint": "ค่าเริ่มต้น: 1,900 บาท — ตามจำนวนที่คลิกบนแผนผัง",
+      "admin.cleat": "ราคาคลีต / ชิ้น (บาท)",
+      "admin.cleatHint": "ค่าเริ่มต้น: 1,250 บาท — ตามจำนวนที่คลิกบนแผนผัง",
+      "admin.light": "ราคาเสาไฟโซลาร์เซลล์ / ต้น (บาท)",
+      "admin.lightHint": "ค่าเริ่มต้น: 4,500 บาท — ตามจำนวนที่คลิกบนแผนผัง",
       "admin.reset": "รีเซ็ตราคาเริ่มต้น",
       "admin.saved": "ราคาถูกบันทึกในเบราว์เซอร์ (localStorage) อัตโนมัติ",
       "footer": "บริษัท โฟลทิลลา เทคโนโลยี จำกัด · Floating Pier Configurator",
@@ -207,8 +252,18 @@
       "print.hdpeDesc": "แผ่นพื้น HDPE สำหรับชั้นบนของท่าเทียบเรือ",
       "print.railDesc": "ราวจับกันตก ช่วงละ 1.2 ม. ตามแผนผังที่เลือก",
       "print.gangwayDesc": "แกงเวย์เสริมตามขนาดและความยาวที่กำหนดในระบบ",
-      "print.fenderTitle": "Fenders (กันชน)",
-      "print.fenderDesc": "Customer to select fender type / model. Type and specification to be confirmed by customer.",
+      "print.fenderTitle": "Fenders / เฟนเดอร์ (กันชน)",
+      "print.fenderDesc": "กันชนตามขอบนอกที่เลือกบนแผนผัง · 1,900 บาท/ชุด",
+      "print.cleatTitle": "Stainless cleats / คลีตสแตนเลส",
+      "print.cleatDesc": "คลีตสแตนเลสวางบนทุ่นตามแผนผัง · 1,250 บาท/ชุด",
+      "print.lightTitle": "Solar light poles / เสาไฟโซลาร์เซลล์",
+      "print.lightDesc": "เสาไฟโซลาร์เซลล์วางบนทุ่นตามแผนผัง · 4,500 บาท/ชุด",
+      "print.fenders": "กันชน / เฟนเดอร์",
+      "print.fendersVal": "{0} ชุด",
+      "print.cleats": "คลีตสแตนเลส",
+      "print.cleatsVal": "{0} ชุด",
+      "print.lights": "เสาไฟโซลาร์เซลล์",
+      "print.lightsVal": "{0} ชุด",
       "print.anchorTitle": "Anchor / Mooring Anchor (สมอ)",
       "print.anchorDesc": "Anchor format / type to be specified later. Specification pending customer confirmation.",
       "print.ropeTitle": "Giant Rope (เชือกยายักษ์)",
@@ -221,7 +276,7 @@
       "print.subTotal": "Sub Total",
       "print.vat": "VAT 7%",
       "print.grandTotalLabel": "Grand Total",
-      "print.tbdNote": "หมายเหตุ: รายการ Fenders / Anchor / Giant Rope (TBD) ไม่รวมในยอดรวมด้านบน",
+      "print.tbdNote": "หมายเหตุ: รายการ Anchor / Giant Rope (TBD) ไม่รวมในยอดรวมด้านบน",
       "print.amountWords": "Amount in words: To be advised (TBD)",
       "print.bankH2": "Bank Account Details",
       "print.bankName": "Account Name : Flotilla Technology Co., Ltd.",
@@ -286,10 +341,10 @@
       "size.lengthFloats": "Length (floats)",
       "size.widthFloats": "Width (floats)",
       "size.railCount": "Railing count (1.2 m spans)",
-      "size.L.hint": "L-shape only — sections A and B for this shape (not I/T)",
+      "size.L.hint": "L-shape only — sections A and B for this shape",
       "size.L.secA": "Section A · L-shape",
       "size.L.secB": "Section B · L-shape",
-      "size.T.hint": "T-shape only — sections A and B for this shape (not I/L)",
+      "size.T.hint": "T-shape only — sections A and B for this shape",
       "size.T.secA": "Section A · T-shape",
       "size.T.secB": "Section B · T-shape",
       "size.T.stemWidth": "Width along section A (floats)",
@@ -317,6 +372,28 @@
 
 
       "legend.rail": "Safety railing",
+      "legend.fender": "Fender / bumper",
+      "legend.cleat": "Stainless cleat",
+      "legend.light": "Solar cell light pole",
+      "accessory.heading": "Top plan · fenders, cleats & solar lights",
+      "accessory.fenderPrompt": "Please select fender / bumper positions",
+      "accessory.cleatPrompt": "Please select stainless cleat positions",
+      "accessory.lightPrompt": "Light poles and cleats are installed at the float corners",
+      "accessory.clickHint": "Choose a mode below, then click outer edges for fenders or floats for cleats/solar lights — click again to remove",
+      "accessory.modeAria": "Accessory placement mode",
+      "accessory.modeFender": "Fender / bumper",
+      "accessory.modeCleat": "Cleat",
+      "accessory.modeLight": "Solar cell light pole",
+      "accessory.helpersAria": "Fender, cleat & solar light shortcuts",
+      "accessory.clearFenders": "Clear fenders",
+      "accessory.clearCleats": "Clear cleats",
+      "accessory.clearLights": "Clear solar lights",
+      "stats.fenders": "Fenders (sets)",
+      "stats.cleats": "Cleats (sets)",
+      "stats.lights": "Solar light poles",
+      "quote.fenderItem": "Fender / bumper",
+      "quote.cleatItem": "Stainless cleat",
+      "quote.lightItem": "Solar cell light pole",
       "cap.label": "Estimated load capacity",
       "cap.total": "total",
       "cap.perM2": "{0} kg/m²  ({1} ÷ {2} m² · {3} layer(s))",
@@ -331,6 +408,19 @@
       "rail.clear": "Clear rails",
       "rail.perM": "Railing ≈ {0}/m (priced per 1.2 m set · {1} spans)",
       "gangway.heading": "Gangway (optional add-on)",
+      "mooring.heading": "Anchor mooring system (optional add-on)",
+      "mooring.enable": "Add anchor mooring system to quote",
+      "mooring.enableHint": "Customer enters quantity — 7,500 THB per set (editable in admin)",
+      "mooring.qty": "Quantity (sets)",
+      "mooring.qtyHint": "Type how many sets you need (no maximum)",
+      "mooring.priceOn": "Est. price: {0} ({1} THB/set × {2} set(s))",
+      "mooring.priceOff": "Est. price: — (check to add to quote)",
+      "quote.mooringItem": "Anchor mooring system (optional)",
+      "admin.mooring": "Anchor mooring system price / set (THB)",
+      "admin.mooringHint": "Default: 7,500 THB/set — from customer quantity",
+      "print.mooringTitle": "Anchor mooring system",
+      "print.mooringDesc": "Optional anchor mooring system · per quantity selected in the configurator",
+
       "gangway.enable": "Add gangway to quote",
       "gangway.enableHint": "Not shown on the plan — priced as a separate quote line only",
       "gangway.secLabel": "Choose sections for the selected shape",
@@ -345,7 +435,7 @@
       "gangway.length": "Length (whole meters only)",
       "gangway.lengthAria": "Gangway length",
       "gangway.qty": "Quantity (sets)",
-      "gangway.formula": "Per set: base 1.2×3 m = 30,000 THB · over 3 m +10,000/m · width 2.4 m = ×2 · multiply by qty and selected sections (L/T)",
+      "gangway.formula": "Per set: base 1.2×3 m = 30,000 THB · over 3 m +10,000/m · width 2.4 m = ×2 · multiply by qty",
       "gangway.priceOn": "Est. price: {0} ({1}×{2} m × {3} set(s){4}{5})",
       "gangway.priceOff": "Est. price: — (check to add to quote)",
       "gangway.secTimes": " × {0} section(s)",
@@ -372,6 +462,12 @@
       "admin.hdpeHint": "Default: 7,500 THB — 1 set per top float",
       "admin.rail": "Railing price / 1.2 m set (THB)",
       "admin.railHint": "Default: 4,500 THB/set — shown per meter on the main page",
+      "admin.fender": "Fender / bumper price / pc (THB)",
+      "admin.fenderHint": "Default: 1,900 THB — from plan clicks",
+      "admin.cleat": "Cleat price / pc (THB)",
+      "admin.cleatHint": "Default: 1,250 THB — from plan clicks",
+      "admin.light": "Solar light pole price / pc (THB)",
+      "admin.lightHint": "Default: 4,500 THB — from plan clicks",
       "admin.reset": "Reset to defaults",
       "admin.saved": "Prices are saved in the browser (localStorage) automatically",
       "footer": "Flotilla Technology Co., Ltd. · Floating Pier Configurator",
@@ -432,7 +528,17 @@
       "print.railDesc": "Safety railing in 1.2 m spans as selected on the plan",
       "print.gangwayDesc": "Optional gangway sized per the configurator selection",
       "print.fenderTitle": "Fenders (กันชน)",
-      "print.fenderDesc": "Customer to select fender type / model. Type and specification to be confirmed by customer.",
+      "print.fenderDesc": "Outer-edge fenders as selected on the accessory plan · 1,900 THB each",
+      "print.cleatTitle": "Stainless cleats (คลีตสแตนเลส)",
+      "print.cleatDesc": "Stainless cleats placed on floats per the accessory plan · 1,250 THB each",
+      "print.lightTitle": "Solar cell light poles (เสาไฟโซลาร์เซลล์)",
+      "print.lightDesc": "Solar cell light poles placed on floats per the accessory plan · 4,500 THB each",
+      "print.fenders": "Fenders",
+      "print.fendersVal": "{0} set(s)",
+      "print.cleats": "Stainless cleats",
+      "print.cleatsVal": "{0} set(s)",
+      "print.lights": "Solar cell light poles",
+      "print.lightsVal": "{0} set(s)",
       "print.anchorTitle": "Anchor / Mooring Anchor (สมอ)",
       "print.anchorDesc": "Anchor format / type to be specified later. Specification pending customer confirmation.",
       "print.ropeTitle": "Giant Rope (เชือกยายักษ์)",
@@ -445,7 +551,7 @@
       "print.subTotal": "Sub Total",
       "print.vat": "VAT 7%",
       "print.grandTotalLabel": "Grand Total",
-      "print.tbdNote": "Note: Fenders / Anchor / Giant Rope (TBD) are not included in the totals above",
+      "print.tbdNote": "Note: Anchor / Giant Rope (TBD) are not included in the totals above",
       "print.amountWords": "Amount in words: To be advised (TBD)",
       "print.bankH2": "Bank Account Details",
       "print.bankName": "Account Name : Flotilla Technology Co., Ltd.",
@@ -552,10 +658,15 @@
     reqW: 2.4,
     layers: 1,
     railSegs: {},
+    fenderSegs: {},
+    cleatCells: {},
+    lightCells: {}, // เสาไฟโซลาร์เซลล์ on float cells ("x,y")
+    accessoryMode: "fender", // fender | cleat | light
     prices: loadPrices(),
     activePreset: "6x2",
     _railCols: 0,
     _railRows: 0,
+    _accessoryShape: null,
     // L: A horizontal along +X; B vertical along +Y beyond A (no shared cells)
     // A: x=0..aCols-1, y=0..aRows-1
     // B: x=0..bRows-1, y=aRows..aRows+bCols-1  (bRows=width, bCols=length of stem)
@@ -565,6 +676,7 @@
     u: { aCols: 2, aRows: 4, bCols: 8, bRows: 2, cCols: 2, cRows: 4 },
     // Gangway add-on (quote only — never drawn on plan)
     gangway: { enabled: false, width: 1.2, length: 3, qty: 1, sectionA: true, sectionB: false, sectionC: false },
+    mooring: { enabled: false, qty: 1 },
   };
 
   function loadPrices() {
@@ -572,11 +684,19 @@
       var raw = localStorage.getItem("flotilla_pier_prices");
       if (raw) {
         var p = JSON.parse(raw);
-        return {
+        var loaded = {
           floatPrice: num(p.floatPrice, DEFAULTS.floatPrice),
           hdpePrice: num(p.hdpePrice, DEFAULTS.hdpePrice),
           railingPrice: num(p.railingPrice, DEFAULTS.railingPrice),
+          fenderPrice: num(p.fenderPrice, DEFAULTS.fenderPrice),
+          cleatPrice: num(p.cleatPrice, DEFAULTS.cleatPrice),
+          lightPrice: num(p.lightPrice, DEFAULTS.lightPrice),
+          mooringPrice: num(p.mooringPrice, DEFAULTS.mooringPrice),
         };
+        // Migrate stale default: fender was 3500, now 1900
+        if (loaded.fenderPrice === 3500) loaded.fenderPrice = DEFAULTS.fenderPrice;
+        if (loaded.lightPrice == null || loaded.lightPrice === 0) loaded.lightPrice = DEFAULTS.lightPrice;
+        return loaded;
       }
     } catch (e) { /* ignore */ }
     return Object.assign({}, DEFAULTS);
@@ -693,10 +813,10 @@
       var ubRows = clampInt(state.u.bRows, MIN_ROWS, MAX_MODULE);
       var ucCols = clampInt(state.u.cCols, MIN_ROWS, MAX_MODULE);
       var ucRows = clampInt(state.u.cRows, 1, MAX_MODULE);
-      // Keep both arms the same length so they meet the bottom bar.
+      // Arms A/C lengths are independent; both meet the bottom bar (bottom-aligned).
       var armH = Math.max(uaRows, ucRows);
-      uaRows = armH;
-      ucRows = armH;
+      var aY0 = armH - uaRows;
+      var cY0 = armH - ucRows;
       var minBar = uaCols + ucCols;
       if (ubCols < minBar) ubCols = minBar;
       state.u.aCols = uaCols;
@@ -708,12 +828,12 @@
 
       for (r = 0; r < uaRows; r++) {
         for (c = 0; c < uaCols; c++) {
-          cells.push({ x: c, y: r, section: "A" });
+          cells.push({ x: c, y: aY0 + r, section: "A" });
         }
       }
       for (r = 0; r < ucRows; r++) {
         for (c = 0; c < ucCols; c++) {
-          cells.push({ x: ubCols - ucCols + c, y: r, section: "C" });
+          cells.push({ x: ubCols - ucCols + c, y: cY0 + r, section: "C" });
         }
       }
       for (r = 0; r < ubRows; r++) {
@@ -736,9 +856,9 @@
         cRows: ucRows,
         topFloats: uaCols * uaRows + ubCols * ubRows + ucCols * ucRows,
         sections: [
-          { id: "A", label: "A", x0: 0, y0: 0, w: uaCols, h: uaRows },
+          { id: "A", label: "A", x0: 0, y0: aY0, w: uaCols, h: uaRows },
           { id: "B", label: "B", x0: 0, y0: armH, w: ubCols, h: ubRows },
-          { id: "C", label: "C", x0: ubCols - ucCols, y0: 0, w: ucCols, h: ucRows },
+          { id: "C", label: "C", x0: ubCols - ucCols, y0: cY0, w: ucCols, h: ucRows },
         ],
       };
     }
@@ -942,6 +1062,72 @@
     else state.railSegs[key] = true;
   }
 
+  function syncFenderSegs(geo) {
+    var valid = allPerimeterFromCells(geo.cells);
+    if (state.fenderSegs == null) state.fenderSegs = {};
+    if (state._accessoryShape && state._accessoryShape !== state.shape) {
+      state.fenderSegs = {};
+      state.cleatCells = {};
+      state.lightCells = {};
+    } else {
+      var nextF = {};
+      Object.keys(state.fenderSegs).forEach(function (k) {
+        if (state.fenderSegs[k] && valid[k]) nextF[k] = true;
+      });
+      state.fenderSegs = nextF;
+    }
+    state._accessoryShape = state.shape;
+  }
+
+  function syncCleatCells(geo) {
+    var occ = cellOccupancy(geo.cells);
+    if (state.cleatCells == null) state.cleatCells = {};
+    if (state._accessoryShape && state._accessoryShape !== state.shape) {
+      // shape clear handled in syncFenderSegs
+      state.cleatCells = {};
+    } else {
+      var nextC = {};
+      Object.keys(state.cleatCells).forEach(function (k) {
+        if (state.cleatCells[k] && occ[k]) nextC[k] = true;
+      });
+      state.cleatCells = nextC;
+    }
+  }
+
+  function syncLightCells(geo) {
+    var occ = cellOccupancy(geo.cells);
+    if (state.lightCells == null) state.lightCells = {};
+    if (state._accessoryShape && state._accessoryShape !== state.shape) {
+      // shape clear handled in syncFenderSegs / shape click
+      state.lightCells = {};
+    } else {
+      var nextL = {};
+      Object.keys(state.lightCells).forEach(function (k) {
+        if (state.lightCells[k] && occ[k]) nextL[k] = true;
+      });
+      state.lightCells = nextL;
+    }
+  }
+
+  function toggleFenderKey(key) {
+    if (!state.fenderSegs) state.fenderSegs = {};
+    if (state.fenderSegs[key]) delete state.fenderSegs[key];
+    else state.fenderSegs[key] = true;
+  }
+
+  function toggleCleatKey(key) {
+    if (!state.cleatCells) state.cleatCells = {};
+    if (state.cleatCells[key]) delete state.cleatCells[key];
+    else state.cleatCells[key] = true;
+  }
+
+  function toggleLightKey(key) {
+    if (!state.lightCells) state.lightCells = {};
+    if (state.lightCells[key]) delete state.lightCells[key];
+    else state.lightCells[key] = true;
+  }
+
+
   function clampRailCounts() {
     // Section A/B no longer hold railing quantities.
   }
@@ -973,11 +1159,20 @@
     var capacity = Math.round(areaM2 * capacityPerM2);
 
     syncRailSegs(g);
+    syncFenderSegs(g);
+    syncCleatCells(g);
+    syncLightCells(g);
     var railSegs = countOnSegs(state.railSegs);
+    var fenderSegs = countOnSegs(state.fenderSegs);
+    var cleatCount = countOnSegs(state.cleatCells);
+    var lightCount = countOnSegs(state.lightCells);
 
     var floatCost = floats * state.prices.floatPrice;
     var hdpeCost = topFloats * state.prices.hdpePrice;
     var railCost = railSegs * state.prices.railingPrice;
+    var fenderCost = fenderSegs * state.prices.fenderPrice;
+    var cleatCost = cleatCount * state.prices.cleatPrice;
+    var lightCost = lightCount * state.prices.lightPrice;
 
     var gwEnabled = !!state.gangway.enabled;
     var gwW = Number(state.gangway.width) >= 2.4 ? 2.4 : 1.2; // only 1.2 or 2.4
@@ -991,11 +1186,11 @@
     state.gangway.length = gwL;
     state.gangway.qty = gwQty;
 
-    // I-shape: no A/B. L/T: at least one section.
-    var needsSections = state.shape === "L" || state.shape === "T" || state.shape === "U";
+    // I/L/T/U: no gangway section picker — width/length/qty only; system places.
+    var needsSections = false; // I/L/T/U: no section picker — width/length/qty only; system places
     var secA = needsSections ? !!state.gangway.sectionA : false;
     var secB = needsSections ? !!state.gangway.sectionB : false;
-    var secC = state.shape === "U" ? !!state.gangway.sectionC : false;
+    var secC = needsSections && state.shape === "U" ? !!state.gangway.sectionC : false;
     if (needsSections && !secA && !secB && !secC) {
       secA = true;
       state.gangway.sectionA = true;
@@ -1016,7 +1211,13 @@
       ? ""
       : [secA ? "A" : null, secB ? "B" : null, secC ? "C" : null].filter(Boolean).join(", ");
 
-    var total = floatCost + hdpeCost + railCost + gwCost;
+    
+    var moEnabled = !!(state.mooring && state.mooring.enabled);
+    var moQty = Math.max(0, Math.floor(num(state.mooring && state.mooring.qty, 0)));
+    if (state.mooring) state.mooring.qty = moQty;
+    var moUnit = state.prices.mooringPrice;
+    var moCost = moEnabled ? moQty * moUnit : 0;
+    var total = floatCost + hdpeCost + railCost + gwCost + fenderCost + cleatCost + lightCost + moCost;
     var railPerMeter = state.prices.railingPrice / MODULE;
 
     var finalL = +(g.width * MODULE).toFixed(2);
@@ -1038,9 +1239,15 @@
       capacityPerM2: capacityPerM2,
       capacity: capacity,
       railSegs: railSegs,
+      fenderSegs: fenderSegs,
+      cleatCount: cleatCount,
+      lightCount: lightCount,
       floatCost: floatCost,
       hdpeCost: hdpeCost,
       railCost: railCost,
+      fenderCost: fenderCost,
+      cleatCost: cleatCost,
+      lightCost: lightCost,
       gangwayEnabled: gwEnabled,
       gangwayWidth: gwW,
       gangwayLength: gwL,
@@ -1052,6 +1259,10 @@
       gangwayUnitCost: gwUnit,
       gangwaySecCount: secCount,
       gangwayCost: gwCost,
+      mooringEnabled: moEnabled,
+      mooringQty: moQty,
+      mooringUnitCost: moUnit,
+      mooringCost: moCost,
       total: total,
       railPerMeter: railPerMeter,
       shape: g.shape,
@@ -1650,6 +1861,449 @@
   }
 
 
+
+  function buildAccessorySVG(c) {
+    var g = c.geo;
+    var cells = g.cells || [];
+    var width = g.width;
+    var height = g.height;
+    var maxDim = Math.max(width, height, 1);
+    var cell = Math.min(44, Math.floor(340 / maxDim));
+    cell = Math.max(16, cell);
+    var fenderW = Math.max(3, Math.round(cell * 0.16));
+    var hit = Math.max(12, fenderW + 4);
+    var pad = hit + 16;
+    var w = width * cell + pad * 2;
+    var h = height * cell + pad * 2;
+    var mode =
+      state.accessoryMode === "cleat"
+        ? "cleat"
+        : state.accessoryMode === "light"
+          ? "light"
+          : "fender";
+    var parts = [];
+    parts.push(
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' +
+        w +
+        " " +
+        h +
+        '" width="' +
+        w +
+        '" height="' +
+        h +
+        '" role="img" aria-label="' +
+        t("accessory.heading") +
+        '">'
+    );
+    parts.push('<rect width="' + w + '" height="' + h + '" fill="transparent"/>');
+
+    var fillBySection = {
+      A: "#26c6da",
+      B: "#5c6bc0",
+      C: "#66bb6a",
+      bar: "#26c6da",
+      stem: "#5c6bc0",
+      main: "#26a69a",
+    };
+    var strokeBySection = {
+      A: "#00838f",
+      B: "#3949ab",
+      C: "#2e7d32",
+      bar: "#00838f",
+      stem: "#3949ab",
+      main: "#00695c",
+    };
+
+    var occ = cellOccupancy(cells);
+    var peri = allPerimeterFromCells(cells);
+    var fenderColor = "#c62828";
+    var offFill = "rgba(198,40,40,0.22)";
+    var offStroke = "rgba(198,40,40,0.55)";
+
+    function emitCleatMarker(cx, cy, s) {
+      parts.push(
+        '<g pointer-events="none">' +
+          '<ellipse cx="' +
+          cx +
+          '" cy="' +
+          cy +
+          '" rx="' +
+          s * 0.85 +
+          '" ry="' +
+          s * 0.35 +
+          '" fill="#cfd8dc" stroke="#546e7a" stroke-width="1.5"/>' +
+          '<rect x="' +
+          (cx - s * 0.18) +
+          '" y="' +
+          (cy - s * 0.55) +
+          '" width="' +
+          s * 0.36 +
+          '" height="' +
+          s * 1.1 +
+          '" rx="2" fill="#90a4ae" stroke="#455a64" stroke-width="1"/>' +
+          '<circle cx="' +
+          (cx - s * 0.45) +
+          '" cy="' +
+          cy +
+          '" r="' +
+          Math.max(1.5, s * 0.12) +
+          '" fill="#eceff1" stroke="#607d8b" stroke-width="0.75"/>' +
+          '<circle cx="' +
+          (cx + s * 0.45) +
+          '" cy="' +
+          cy +
+          '" r="' +
+          Math.max(1.5, s * 0.12) +
+          '" fill="#eceff1" stroke="#607d8b" stroke-width="0.75"/>' +
+          "</g>"
+      );
+    }
+
+    function emitLightMarker(cx, cy, s) {
+      // Amber solar lamp-post icon (distinct from stainless cleat)
+      var poleH = s * 1.15;
+      var poleW = Math.max(1.5, s * 0.14);
+      parts.push(
+        '<g pointer-events="none">' +
+          '<rect x="' +
+          (cx - poleW / 2) +
+          '" y="' +
+          (cy - poleH * 0.15) +
+          '" width="' +
+          poleW +
+          '" height="' +
+          poleH +
+          '" rx="1" fill="#f9a825" stroke="#f57f17" stroke-width="0.75"/>' +
+          '<circle cx="' +
+          cx +
+          '" cy="' +
+          (cy - poleH * 0.35) +
+          '" r="' +
+          Math.max(3, s * 0.38) +
+          '" fill="#ffe082" stroke="#ff8f00" stroke-width="1.5"/>' +
+          '<circle cx="' +
+          cx +
+          '" cy="' +
+          (cy - poleH * 0.35) +
+          '" r="' +
+          Math.max(1.2, s * 0.14) +
+          '" fill="#fff8e1"/>' +
+          "</g>"
+      );
+    }
+
+    cells.forEach(function (cellObj) {
+      var x = pad + cellObj.x * cell;
+      var y = pad + cellObj.y * cell;
+      var gap = 2;
+      var fill = fillBySection[cellObj.section] || "#26a69a";
+      var stroke = strokeBySection[cellObj.section] || "#00695c";
+      var ck = cellObj.x + "," + cellObj.y;
+      var hasCleat = !!(state.cleatCells && state.cleatCells[ck]);
+      var hasLight = !!(state.lightCells && state.lightCells[ck]);
+      var cx = x + cell / 2;
+      var cy = y + cell / 2;
+      var s = Math.max(6, cell * 0.28);
+
+      parts.push(
+        '<rect x="' +
+          (x + gap / 2) +
+          '" y="' +
+          (y + gap / 2) +
+          '" width="' +
+          (cell - gap) +
+          '" height="' +
+          (cell - gap) +
+          '" rx="3" fill="' +
+          fill +
+          '" stroke="' +
+          stroke +
+          '" stroke-width="2"/>'
+      );
+
+
+      if (mode === "cleat") {
+        var hitFill = hasCleat ? "rgba(96,125,139,0.12)" : "rgba(255,255,255,0.01)";
+        parts.push(
+          '<g class="cleat-cell' +
+            (hasCleat ? " on" : " off") +
+            '" data-cleat-key="' +
+            ck +
+            '" style="cursor:pointer">'
+        );
+        parts.push(
+          '<rect class="cleat-hit" x="' +
+            (x + gap / 2) +
+            '" y="' +
+            (y + gap / 2) +
+            '" width="' +
+            (cell - gap) +
+            '" height="' +
+            (cell - gap) +
+            '" rx="3" fill="' +
+            hitFill +
+            '" stroke="' +
+            (hasCleat ? "#607d8b" : "rgba(96,125,139,0.35)") +
+            '" stroke-width="' +
+            (hasCleat ? "2" : "1") +
+            '"' +
+            (hasCleat ? "" : ' stroke-dasharray="4 3"') +
+            "><title>" +
+            (hasCleat ? "คลีตเปิด — กดเพื่อปิด" : "คลีตปิด — กดเพื่อเปิด") +
+            "</title></rect>"
+        );
+        if (hasCleat) emitCleatMarker(cx, cy, s);
+        parts.push("</g>");
+        if (hasLight) emitLightMarker(cx, cy - s * 0.55, s * 0.85);
+      } else if (mode === "light") {
+        var lHitFill = hasLight ? "rgba(255,193,7,0.18)" : "rgba(255,255,255,0.01)";
+        parts.push(
+          '<g class="light-cell' +
+            (hasLight ? " on" : " off") +
+            '" data-light-key="' +
+            ck +
+            '" style="cursor:pointer">'
+        );
+        parts.push(
+          '<rect class="light-hit" x="' +
+            (x + gap / 2) +
+            '" y="' +
+            (y + gap / 2) +
+            '" width="' +
+            (cell - gap) +
+            '" height="' +
+            (cell - gap) +
+            '" rx="3" fill="' +
+            lHitFill +
+            '" stroke="' +
+            (hasLight ? "#ff8f00" : "rgba(255,143,0,0.4)") +
+            '" stroke-width="' +
+            (hasLight ? "2" : "1") +
+            '"' +
+            (hasLight ? "" : ' stroke-dasharray="4 3"') +
+            "><title>" +
+            (hasLight
+              ? "เสาไฟโซลาร์เซลล์เปิด — กดเพื่อปิด"
+              : "เสาไฟโซลาร์เซลล์ปิด — กดเพื่อเปิด") +
+            "</title></rect>"
+        );
+        if (hasLight) emitLightMarker(cx, cy, s);
+        parts.push("</g>");
+        if (hasCleat) emitCleatMarker(cx, cy + s * 0.35, s * 0.75);
+      } else {
+        // Fender mode: show installed markers non-interactive
+        if (hasCleat) emitCleatMarker(cx, cy - (hasLight ? s * 0.35 : 0), s * (hasLight ? 0.75 : 1));
+        if (hasLight) emitLightMarker(cx, cy + (hasCleat ? s * 0.35 : 0), s * (hasCleat ? 0.85 : 1));
+        if (!hasCleat && !hasLight) {
+          parts.push(
+            '<circle cx="' +
+              cx +
+              '" cy="' +
+              cy +
+              '" r="' +
+              Math.max(2, cell * 0.08) +
+              '" fill="rgba(255,255,255,0.45)" opacity="0.85"/>'
+          );
+        }
+      }
+    });
+
+    function isFenderOn(key) {
+      return !!(state.fenderSegs && state.fenderSegs[key]);
+    }
+
+    function emitFender(key, rx, ry, rw, rh, horizontal) {
+      var on = isFenderOn(key);
+      var cls = "fender-seg" + (on ? " on" : " off");
+      var title = on ? "กันชนเปิด — กดเพื่อปิด" : "กันชนปิด — กดเพื่อเปิด";
+      if (mode !== "fender") {
+        // show installed fenders only
+        if (!on) return;
+        parts.push(
+          '<rect x="' +
+            rx +
+            '" y="' +
+            ry +
+            '" width="' +
+            rw +
+            '" height="' +
+            rh +
+            '" rx="2" fill="' +
+            fenderColor +
+            '" pointer-events="none"/>'
+        );
+        return;
+      }
+      parts.push('<g class="' + cls + '" data-fender-key="' + key + '" style="cursor:pointer">');
+      parts.push(
+        '<rect class="fender-hit" x="' +
+          rx +
+          '" y="' +
+          ry +
+          '" width="' +
+          rw +
+          '" height="' +
+          rh +
+          '" rx="2" fill="' +
+          (on ? fenderColor : offFill) +
+          '" stroke="' +
+          (on ? fenderColor : offStroke) +
+          '" stroke-width="' +
+          (on ? "0" : "1.25") +
+          '"' +
+          (on ? "" : ' stroke-dasharray="4 3"') +
+          "><title>" +
+          title +
+          "</title></rect>"
+      );
+      if (on) {
+        var inset = horizontal ? Math.max(0, (rh - fenderW) / 2) : Math.max(0, (rw - fenderW) / 2);
+        var vx = horizontal ? rx : rx + inset;
+        var vy = horizontal ? ry + inset : ry;
+        var vw = horizontal ? rw : Math.min(fenderW, rw);
+        var vh = horizontal ? Math.min(fenderW, rh) : rh;
+        parts.push(
+          '<rect x="' +
+            vx +
+            '" y="' +
+            vy +
+            '" width="' +
+            vw +
+            '" height="' +
+            vh +
+            '" rx="2" fill="' +
+            fenderColor +
+            '" pointer-events="none"/>'
+        );
+      }
+      parts.push("</g>");
+    }
+
+    Object.keys(peri).forEach(function (key) {
+      var partsK = key.split(":");
+      var orient = partsK[0];
+      var a = parseInt(partsK[1], 10);
+      var b = parseInt(partsK[2], 10);
+      if (orient === "h") {
+        var hy = a;
+        var hx = b;
+        var hx0 = pad + hx * cell;
+        var above = hasCellAt(occ, hx, hy - 1);
+        var below = hasCellAt(occ, hx, hy);
+        var hyCenter;
+        if (below && !above) hyCenter = pad + hy * cell - hit / 2 - 1;
+        else if (above && !below) hyCenter = pad + hy * cell + hit / 2 + 1;
+        else hyCenter = pad + hy * cell;
+        emitFender(key, hx0, hyCenter - hit / 2, cell, hit, true);
+      } else if (orient === "v") {
+        var vy = a;
+        var vx = b;
+        var vy0 = pad + vy * cell;
+        var left = hasCellAt(occ, vx - 1, vy);
+        var right = hasCellAt(occ, vx, vy);
+        var vxCenter;
+        if (right && !left) vxCenter = pad + vx * cell - hit / 2 - 1;
+        else if (left && !right) vxCenter = pad + vx * cell + hit / 2 + 1;
+        else vxCenter = pad + vx * cell;
+        emitFender(key, vxCenter - hit / 2, vy0, hit, cell, false);
+      }
+    });
+
+    parts.push("</svg>");
+    return parts.join("");
+  }
+
+  function renderAccessoryDiagram(c) {
+    var wrap = $("accessory-diagram");
+    if (!wrap) return;
+    wrap.innerHTML = buildAccessorySVG(c);
+    wrap.classList.toggle("accessory-mode-fender", state.accessoryMode === "fender");
+    wrap.classList.toggle("accessory-mode-cleat", state.accessoryMode === "cleat");
+    wrap.classList.toggle("accessory-mode-light", state.accessoryMode === "light");
+
+    var modeF = $("accessory-mode-fender");
+    var modeC = $("accessory-mode-cleat");
+    var modeL = $("accessory-mode-light");
+    if (modeF) modeF.setAttribute("aria-pressed", state.accessoryMode === "fender" ? "true" : "false");
+    if (modeC) modeC.setAttribute("aria-pressed", state.accessoryMode === "cleat" ? "true" : "false");
+    if (modeL) modeL.setAttribute("aria-pressed", state.accessoryMode === "light" ? "true" : "false");
+
+    var sf = $("stat-fenders");
+    var sc = $("stat-cleats");
+    var sl = $("stat-lights");
+    if (sf) sf.textContent = formatNum(c.fenderSegs);
+    if (sc) sc.textContent = formatNum(c.cleatCount);
+    if (sl) sl.textContent = formatNum(c.lightCount);
+
+    var fNodes = wrap.querySelectorAll("[data-fender-key]");
+    for (var i = 0; i < fNodes.length; i++) {
+      (function (el) {
+        el.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (state.accessoryMode !== "fender") return;
+          var key = el.getAttribute("data-fender-key");
+          if (!key) return;
+          toggleFenderKey(key);
+          render();
+        });
+      })(fNodes[i]);
+    }
+    var cNodes = wrap.querySelectorAll("[data-cleat-key]");
+    for (var j = 0; j < cNodes.length; j++) {
+      (function (el) {
+        el.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (state.accessoryMode !== "cleat") return;
+          var key = el.getAttribute("data-cleat-key");
+          if (!key) return;
+          toggleCleatKey(key);
+          render();
+        });
+      })(cNodes[j]);
+    }
+    var lNodes = wrap.querySelectorAll("[data-light-key]");
+    for (var k = 0; k < lNodes.length; k++) {
+      (function (el) {
+        el.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (state.accessoryMode !== "light") return;
+          var key = el.getAttribute("data-light-key");
+          if (!key) return;
+          toggleLightKey(key);
+          render();
+        });
+      })(lNodes[k]);
+    }
+  }
+
+
+  function renderMooringUI(c) {
+    var en = $("mooring-enabled");
+    var box = $("mooring-controls");
+    if (en) en.checked = !!(state.mooring && state.mooring.enabled);
+    if (box) setHidden(box, !(state.mooring && state.mooring.enabled));
+    var q = $("mooring-qty");
+    if (q && document.activeElement !== q) {
+      q.value = String((state.mooring && state.mooring.qty) || 0);
+    }
+    var hint = $("mooring-price-hint");
+    if (hint) {
+      if (state.mooring && state.mooring.enabled) {
+        hint.textContent = t(
+          "mooring.priceOn",
+          formatTHB(c.mooringCost),
+          formatNum(state.prices.mooringPrice),
+          formatNum(c.mooringQty)
+        );
+      } else {
+        hint.textContent = t("mooring.priceOff");
+      }
+    }
+  }
+
   function renderGangwayUI(c) {
     var en = $("gangway-enabled");
     var box = $("gangway-controls");
@@ -1657,7 +2311,7 @@
     if (en) en.checked = !!state.gangway.enabled;
     if (box) setHidden(box, !state.gangway.enabled);
 
-    var needsSections = state.shape === "L" || state.shape === "T" || state.shape === "U";
+    var needsSections = false; // I/L/T/U: no section picker — width/length/qty only; system places
     if (secBox) setHidden(secBox, !needsSections);
 
     var btnA = $("gangway-sec-A");
@@ -1746,7 +2400,50 @@
       "<td>" +
       formatTHB(c.railCost) +
       "</td>" +
-      "</tr>";
+      "</tr>" +
+      "<tr>" +
+      "<td>" +
+      t("quote.fenderItem") +
+      "</td>" +
+      '<td class="qty">' +
+      t("quote.sets", formatNum(c.fenderSegs)) +
+      "</td>" +
+      "<td>" +
+      formatTHB(state.prices.fenderPrice) +
+      "</td>" +
+      "<td>" +
+      formatTHB(c.fenderCost) +
+      "</td>" +
+      "</tr>" +
+      "<tr>" +
+      "<td>" +
+      t("quote.cleatItem") +
+      "</td>" +
+      '<td class="qty">' +
+      t("quote.sets", formatNum(c.cleatCount)) +
+      "</td>" +
+      "<td>" +
+      formatTHB(state.prices.cleatPrice) +
+      "</td>" +
+      "<td>" +
+      formatTHB(c.cleatCost) +
+      "</td>" +
+      "</tr>" +
+      "<tr>" +
+      "<td>" +
+      t("quote.lightItem") +
+      "</td>" +
+      '<td class="qty">' +
+      t("quote.sets", formatNum(c.lightCount)) +
+      "</td>" +
+      "<td>" +
+      formatTHB(state.prices.lightPrice) +
+      "</td>" +
+      "<td>" +
+      formatTHB(c.lightCost) +
+      "</td>" +
+      "</tr>" +
+      "";
 
     if (c.gangwayEnabled) {
       var gwSec = c.gangwaySectionsLabel ? t("gangway.secDot", c.gangwaySectionsLabel) : "";
@@ -1768,6 +2465,24 @@
         "</td>" +
         "<td>" +
         formatTHB(c.gangwayCost) +
+        "</td>" +
+        "</tr>";
+    }
+
+    if (c.mooringEnabled) {
+      tbody.innerHTML +=
+        "<tr>" +
+        "<td>" +
+        t("quote.mooringItem") +
+        "</td>" +
+        '<td class="qty">' +
+        t("quote.sets", formatNum(c.mooringQty)) +
+        "</td>" +
+        "<td>" +
+        formatTHB(state.prices.mooringPrice) +
+        "</td>" +
+        "<td>" +
+        formatTHB(c.mooringCost) +
         "</td>" +
         "</tr>";
     }
@@ -1899,6 +2614,10 @@
     $("price-float").value = state.prices.floatPrice;
     $("price-hdpe").value = state.prices.hdpePrice;
     $("price-rail").value = state.prices.railingPrice;
+    if ($("price-fender")) $("price-fender").value = state.prices.fenderPrice;
+    if ($("price-cleat")) $("price-cleat").value = state.prices.cleatPrice;
+    if ($("price-light")) $("price-light").value = state.prices.lightPrice;
+    if ($("price-mooring")) $("price-mooring").value = state.prices.mooringPrice;
   }
 
   function sizeSummaryText(c) {
@@ -2104,12 +2823,44 @@
       itemNo++,
       t("print.fenderTitle"),
       t("print.fenderDesc"),
-      tbd,
-      t("print.unit.pieces"),
-      tbd,
-      tbd,
-      true
+      formatNum(c.fenderSegs),
+      t("print.unit.sets"),
+      formatMoney(state.prices.fenderPrice),
+      formatMoney(c.fenderCost),
+      false
     );
+    rows += boqRow(
+      itemNo++,
+      t("print.cleatTitle"),
+      t("print.cleatDesc"),
+      formatNum(c.cleatCount),
+      t("print.unit.sets"),
+      formatMoney(state.prices.cleatPrice),
+      formatMoney(c.cleatCost),
+      false
+    );
+    rows += boqRow(
+      itemNo++,
+      t("print.lightTitle"),
+      t("print.lightDesc"),
+      formatNum(c.lightCount),
+      t("print.unit.sets"),
+      formatMoney(state.prices.lightPrice),
+      formatMoney(c.lightCost),
+      false
+    );
+    if (c.mooringEnabled) {
+      rows += boqRow(
+        itemNo++,
+        t("print.mooringTitle"),
+        t("print.mooringDesc"),
+        formatNum(c.mooringQty),
+        t("print.unit.sets"),
+        formatMoney(state.prices.mooringPrice),
+        formatMoney(c.mooringCost),
+        false
+      );
+    }
     rows += boqRow(
       itemNo++,
       t("print.anchorTitle"),
@@ -2203,6 +2954,21 @@
       t("print.rails") +
       "</th><td>" +
       t("print.railsVal", formatNum(c.railSegs)) +
+      "</td></tr>" +
+      "<tr><th>" +
+      t("print.fenders") +
+      "</th><td>" +
+      t("print.fendersVal", formatNum(c.fenderSegs)) +
+      "</td></tr>" +
+      "<tr><th>" +
+      t("print.cleats") +
+      "</th><td>" +
+      t("print.cleatsVal", formatNum(c.cleatCount)) +
+      "</td></tr>" +
+      "<tr><th>" +
+      t("print.lights") +
+      "</th><td>" +
+      t("print.lightsVal", formatNum(c.lightCount)) +
       "</td></tr>" +
       "</tbody></table>" +
       '<div class="pq-diagram">' +
@@ -2366,8 +3132,10 @@
     syncSectionDisplays();
     renderStats(c);
     renderDiagram(c);
+    renderAccessoryDiagram(c);
     renderQuote(c);
     renderGangwayUI(c);
+    renderMooringUI(c);
     updatePrintArea(c);
   }
 
@@ -2383,8 +3151,7 @@
     if (group === "u") {
       if (key === "aRows" || key === "cRows") {
         next = clampInt(next, 1, MAX_MODULE);
-        state.u.aRows = next;
-        state.u.cRows = next; // keep arms equal length
+        state.u[key] = next; // A and C arm lengths are independent
       } else if (key === "aCols" || key === "cCols" || key === "bRows") {
         next = clampInt(next, MIN_ROWS, MAX_MODULE);
         state.u[key] = next;
@@ -2422,7 +3189,11 @@
         if (!s || s === state.shape) return;
         state.shape = s;
         state.railSegs = {};
+        state.fenderSegs = {};
+        state.cleatCells = {};
+        state.lightCells = {};
         state._railShape = s;
+        state._accessoryShape = s;
         render();
       });
     });
@@ -2532,6 +3303,49 @@
       });
     }
 
+    var modeFenderBtn = $("accessory-mode-fender");
+    if (modeFenderBtn) {
+      modeFenderBtn.addEventListener("click", function () {
+        state.accessoryMode = "fender";
+        render();
+      });
+    }
+    var modeCleatBtn = $("accessory-mode-cleat");
+    if (modeCleatBtn) {
+      modeCleatBtn.addEventListener("click", function () {
+        state.accessoryMode = "cleat";
+        render();
+      });
+    }
+    var modeLightBtn = $("accessory-mode-light");
+    if (modeLightBtn) {
+      modeLightBtn.addEventListener("click", function () {
+        state.accessoryMode = "light";
+        render();
+      });
+    }
+    var clearFendersBtn = $("accessory-clear-fenders");
+    if (clearFendersBtn) {
+      clearFendersBtn.addEventListener("click", function () {
+        state.fenderSegs = {};
+        render();
+      });
+    }
+    var clearCleatsBtn = $("accessory-clear-cleats");
+    if (clearCleatsBtn) {
+      clearCleatsBtn.addEventListener("click", function () {
+        state.cleatCells = {};
+        render();
+      });
+    }
+    var clearLightsBtn = $("accessory-clear-lights");
+    if (clearLightsBtn) {
+      clearLightsBtn.addEventListener("click", function () {
+        state.lightCells = {};
+        render();
+      });
+    }
+
     $("admin-toggle").addEventListener("click", function () {
       $("admin-panel").classList.toggle("open");
     });
@@ -2540,10 +3354,14 @@
       state.prices.floatPrice = num($("price-float").value, DEFAULTS.floatPrice);
       state.prices.hdpePrice = num($("price-hdpe").value, DEFAULTS.hdpePrice);
       state.prices.railingPrice = num($("price-rail").value, DEFAULTS.railingPrice);
+      if ($("price-fender")) state.prices.fenderPrice = num($("price-fender").value, DEFAULTS.fenderPrice);
+      if ($("price-cleat")) state.prices.cleatPrice = num($("price-cleat").value, DEFAULTS.cleatPrice);
+      if ($("price-light")) state.prices.lightPrice = num($("price-light").value, DEFAULTS.lightPrice);
+      if ($("price-mooring")) state.prices.mooringPrice = num($("price-mooring").value, DEFAULTS.mooringPrice);
       savePrices();
       render();
     }
-    ["price-float", "price-hdpe", "price-rail"].forEach(function (id) {
+    ["price-float", "price-hdpe", "price-rail", "price-fender", "price-cleat", "price-light", "price-mooring"].forEach(function (id) {
       $(id).addEventListener("change", onPriceChange);
       $(id).addEventListener("input", onPriceChange);
     });
@@ -2555,6 +3373,32 @@
       render();
     });
 
+
+    // Mooring system add-on (quote only)
+    (function bindMooring() {
+      var en = $("mooring-enabled");
+      if (en) {
+        en.addEventListener("change", function () {
+          if (!state.mooring) state.mooring = { enabled: false, qty: 1 };
+          state.mooring.enabled = !!en.checked;
+          if (state.mooring.enabled && !(state.mooring.qty > 0)) state.mooring.qty = 1;
+          render();
+        });
+      }
+      var q = $("mooring-qty");
+      if (q) {
+        function syncQty() {
+          if (!state.mooring) state.mooring = { enabled: false, qty: 0 };
+          var n = Math.floor(Number(q.value));
+          if (!isFinite(n) || n < 0) n = 0;
+          state.mooring.qty = n;
+          render();
+        }
+        q.addEventListener("change", syncQty);
+        q.addEventListener("input", syncQty);
+      }
+    })();
+
     // Gangway add-on (quote only)
     (function bindGangway() {
       var en = $("gangway-enabled");
@@ -2565,7 +3409,7 @@
         });
       }
       function toggleSec(which) {
-        if (state.shape !== "L" && state.shape !== "T" && state.shape !== "U") return;
+        return; // section picker removed for L/T/U — auto-place
         if (which === "A") state.gangway.sectionA = !state.gangway.sectionA;
         if (which === "B") state.gangway.sectionB = !state.gangway.sectionB;
         if (which === "C") {
