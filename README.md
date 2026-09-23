@@ -30,11 +30,11 @@ cd /workspace/floating-pier-configurator && python3 -m http.server 8080
 
 | ปุ่ม | Geometry (โมดูลทุ่น 1.2×1.2 ม.) |
 |------|--------------------------------|
-| **ตรง** | หนึ่งเซกชั่น `cols × rows` (`rows ≥ 2`) — สไลเดอร์/พรีเซ็ตเดิม + คลิกวางราวบน SVG |
+| **ตรง** | หนึ่งเซกชั่น `cols × rows` (`rows ≥ 1`) — สไลเดอร์/พรีเซ็ตเดิม + คลิกวางราวบน SVG |
 | **รูปตัวแอล** | เซกชั่น A (แขนหลัก): `aCols × aRows` ที่ `[0..aCols)×[0..aRows)` ; เซกชั่น B (แขนตั้ง): `bCols` ยาวตาม +Y × `bRows` กว้าง ที่ `[0..bRows)×[aRows..aRows+bCols)` — **ต่อเกินมุม ไม่ซ้อน** → `topFloats = aCols·aRows + bCols·bRows` (ค่าเริ่มต้น A 6×2, B 4×2) |
 | **รูปตัวที** | คาน `barCols × barRows` ที่ y=0..barRows−1 ; ก้าน `stemCols × stemRows` ต่อด้านล่างตรงกลาง `stemStart = ⌊(barCols−stemCols)/2⌋` → `topFloats = bar + stem` (ค่าเริ่มต้น คาน 8×2, ก้าน 2×4) |
 
-ความกว้างทุกเซกชั่นสี่เหลี่ยม **อย่างน้อย 2 แถว** (`MIN_ROWS = 2`)
+ความกว้างทุกเซกชั่นสี่เหลี่ยม **อย่างน้อย 1 แถว** (`MIN_ROWS = 1`) — อนุญาตแถวเดียว
 
 ---
 

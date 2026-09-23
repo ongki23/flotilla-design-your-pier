@@ -10,7 +10,7 @@
   var MODULE = 1.2; // meters per float edge
   var CAPACITY_PER_M2 = 375; // kg/m² (TISTR / วว.)
   var LAYER_HEIGHT = 0.3;
-  var MIN_ROWS = 2;
+  var MIN_ROWS = 1;
   var MAX_MODULE = 30;
 
   var DEFAULTS = {
@@ -40,7 +40,7 @@
       "shape.U.sub": "เซกชัน A + B + C",
       "shapeLabel.U": "รูปตัวยู",
       "size.title.U": "เซกชัน A / B / C · รูปตัวยูเท่านั้น",
-      "size.U.hint": "เฉพาะรูปตัวยู — เซกชัน A (แขนซ้าย) B (คานล่าง) C (แขนขวา) · ความกว้างแขนอย่างน้อย 2 ทุ่น · วางราวจับจากแผนผังมุมสูง",
+      "size.U.hint": "เฉพาะรูปตัวยู — เซกชัน A (แขนซ้าย) B (คานล่าง) C (แขนขวา) · วางราวจับจากแผนผังมุมสูง",
       "size.U.secA": "เซกชัน A · แขนซ้าย",
       "size.U.secB": "เซกชัน B · คานล่าง",
       "size.U.secC": "เซกชัน C · แขนขวา",
@@ -62,7 +62,7 @@
       "size.lengthFloats": "ความยาว (ทุ่น)",
       "size.widthFloats": "ความกว้าง (ทุ่น)",
       "size.railCount": "จำนวนราวจับ (ช่วง 1.2 ม.)",
-      "size.L.hint": "เฉพาะรูปตัวแอล — เซกชัน A และ B ของรูปนี้เท่านั้น (ไม่เกี่ยวกับตัวไอ/ตัวที) · ความกว้างอย่างน้อย 2 ทุ่น",
+      "size.L.hint": "เฉพาะรูปตัวแอล — เซกชัน A และ B ของรูปนี้เท่านั้น (ไม่เกี่ยวกับตัวไอ/ตัวที)",
       "size.L.secA": "เซกชัน A · รูปตัวแอล",
       "size.L.secB": "เซกชัน B · รูปตัวแอล",
       "size.T.hint": "เฉพาะรูปตัวที — เซกชัน A และ B ของรูปนี้เท่านั้น (ไม่เกี่ยวกับตัวไอ/ตัวแอล)",
@@ -264,7 +264,7 @@
       "shape.U.sub": "Sections A + B + C",
       "shapeLabel.U": "U-shape",
       "size.title.U": "Sections A / B / C · U-shape only",
-      "size.U.hint": "U-shape only — sections A (left arm), B (bottom bar), C (right arm) · arm width at least 2 floats · place railings on the top-view plan",
+      "size.U.hint": "U-shape only — sections A (left arm), B (bottom bar), C (right arm) · place railings on the top-view plan",
       "size.U.secA": "Section A · left arm",
       "size.U.secB": "Section B · bottom bar",
       "size.U.secC": "Section C · right arm",
@@ -286,7 +286,7 @@
       "size.lengthFloats": "Length (floats)",
       "size.widthFloats": "Width (floats)",
       "size.railCount": "Railing count (1.2 m spans)",
-      "size.L.hint": "L-shape only — sections A and B for this shape (not I/T) · width at least 2 floats",
+      "size.L.hint": "L-shape only — sections A and B for this shape (not I/T)",
       "size.L.secA": "Section A · L-shape",
       "size.L.secB": "Section B · L-shape",
       "size.T.hint": "T-shape only — sections A and B for this shape (not I/L)",
@@ -2379,7 +2379,7 @@
     if (group !== "l" && group !== "t" && group !== "u") return;
     var cur = state[group][key];
     var next = cur + delta;
-    // widths / stem must stay >= MIN_ROWS (2); lengths (aCols, bCols) >= 1
+    // widths / stem must stay >= MIN_ROWS (1); lengths (aCols, bCols) >= 1
     if (group === "u") {
       if (key === "aRows" || key === "cRows") {
         next = clampInt(next, 1, MAX_MODULE);
@@ -2469,7 +2469,7 @@
       render();
     });
     $("dec-W").addEventListener("click", function () {
-      state.reqW = Math.max(2.4, +(state.reqW - 1.2).toFixed(1));
+      state.reqW = Math.max(1.2, +(state.reqW - 1.2).toFixed(1));
       state.activePreset = null;
       syncSliders();
       render();
