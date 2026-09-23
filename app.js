@@ -36,6 +36,18 @@
       "shape.L.sub": "สองแขนเชื่อมมุม",
       "shape.T.title": "รูปตัวที",
       "shape.T.sub": "เซกชัน A + B",
+      "shape.U.title": "รูปตัวยู",
+      "shape.U.sub": "เซกชัน A + B + C",
+      "shapeLabel.U": "รูปตัวยู",
+      "size.title.U": "เซกชัน A / B / C · รูปตัวยูเท่านั้น",
+      "size.U.hint": "เฉพาะรูปตัวยู — เซกชัน A (แขนซ้าย) B (คานล่าง) C (แขนขวา) · ความกว้างแขนอย่างน้อย 2 ทุ่น · วางราวจับจากแผนผังมุมสูง",
+      "size.U.secA": "เซกชัน A · แขนซ้าย",
+      "size.U.secB": "เซกชัน B · คานล่าง",
+      "size.U.secC": "เซกชัน C · แขนขวา",
+      "size.U.armLen": "ความยาวแขน (ทุ่น)",
+      "size.detailU": "A {0}×{1} + B {2}×{3} + C {4}×{5} = {6} ทุ่น",
+      "gangway.secLabelU": "เลือกเซกชันของรูปตัวยู (A / B / C)",
+      "gangway.secC": "เซกชัน C",
       "shapeLabel.straight": "รูปตัวไอ",
       "shapeLabel.L": "รูปตัวแอล",
       "shapeLabel.T": "รูปตัวที",
@@ -77,6 +89,9 @@
       "stats.size": "ขนาดจริง",
       "stats.rails": "ราว (ชุด)",
       "legend.float": "ทุ่น 1.20×1.20 ม.",
+      "legend.secA": "เซกชัน A",
+      "legend.secB": "เซกชัน B",
+      "legend.secC": "เซกชัน C",
       "legend.rail": "ราวจับกันตก",
       "cap.label": "ความสามารถรับน้ำหนักโดยประมาณ",
       "cap.total": "รวม",
@@ -245,6 +260,18 @@
       "shape.L.sub": "Two arms joined at a corner",
       "shape.T.title": "T-shape",
       "shape.T.sub": "Sections A + B",
+      "shape.U.title": "U-shape",
+      "shape.U.sub": "Sections A + B + C",
+      "shapeLabel.U": "U-shape",
+      "size.title.U": "Sections A / B / C · U-shape only",
+      "size.U.hint": "U-shape only — sections A (left arm), B (bottom bar), C (right arm) · arm width at least 2 floats · place railings on the top-view plan",
+      "size.U.secA": "Section A · left arm",
+      "size.U.secB": "Section B · bottom bar",
+      "size.U.secC": "Section C · right arm",
+      "size.U.armLen": "Arm length (floats)",
+      "size.detailU": "A {0}×{1} + B {2}×{3} + C {4}×{5} = {6} floats",
+      "gangway.secLabelU": "Choose U-shape sections (A / B / C)",
+      "gangway.secC": "Section C",
       "shapeLabel.straight": "I-shape",
       "shapeLabel.L": "L-shape",
       "shapeLabel.T": "T-shape",
@@ -286,6 +313,9 @@
       "stats.size": "Actual size",
       "stats.rails": "Rails (sets)",
       "legend.float": "Float 1.20×1.20 m",
+      "legend.secA": "Section A",
+      "legend.secB": "Section B",
+      "legend.secC": "Section C",
       "legend.rail": "Safety railing",
       "cap.label": "Estimated load capacity",
       "cap.total": "total",
@@ -517,7 +547,7 @@
   ];
 
   var state = {
-    shape: "straight", // straight | L | T
+    shape: "straight", // straight | L | T | U
     reqL: 7.2,
     reqW: 2.4,
     layers: 1,
@@ -532,8 +562,9 @@
     l: { aCols: 6, aRows: 2, bCols: 4, bRows: 2 },
     // T: bar on top; stem centered below
     t: { barCols: 8, barRows: 2, stemCols: 2, stemRows: 4 },
+    u: { aCols: 2, aRows: 4, bCols: 8, bRows: 2, cCols: 2, cRows: 4 },
     // Gangway add-on (quote only — never drawn on plan)
-    gangway: { enabled: false, width: 1.2, length: 3, qty: 1, sectionA: true, sectionB: false },
+    gangway: { enabled: false, width: 1.2, length: 3, qty: 1, sectionA: true, sectionB: false, sectionC: false },
   };
 
   function loadPrices() {
@@ -650,6 +681,64 @@
         sections: [
           { id: "A", label: "A", x0: 0, y0: 0, w: aCols, h: aRows },
           { id: "B", label: "B", x0: 0, y0: aRows, w: bRows, h: bCols },
+        ],
+      };
+    }
+
+
+    if (shape === "U") {
+      var uaCols = clampInt(state.u.aCols, MIN_ROWS, MAX_MODULE);
+      var uaRows = clampInt(state.u.aRows, 1, MAX_MODULE);
+      var ubCols = clampInt(state.u.bCols, MIN_ROWS, MAX_MODULE);
+      var ubRows = clampInt(state.u.bRows, MIN_ROWS, MAX_MODULE);
+      var ucCols = clampInt(state.u.cCols, MIN_ROWS, MAX_MODULE);
+      var ucRows = clampInt(state.u.cRows, 1, MAX_MODULE);
+      // Keep both arms the same length so they meet the bottom bar.
+      var armH = Math.max(uaRows, ucRows);
+      uaRows = armH;
+      ucRows = armH;
+      var minBar = uaCols + ucCols;
+      if (ubCols < minBar) ubCols = minBar;
+      state.u.aCols = uaCols;
+      state.u.aRows = uaRows;
+      state.u.bCols = ubCols;
+      state.u.bRows = ubRows;
+      state.u.cCols = ucCols;
+      state.u.cRows = ucRows;
+
+      for (r = 0; r < uaRows; r++) {
+        for (c = 0; c < uaCols; c++) {
+          cells.push({ x: c, y: r, section: "A" });
+        }
+      }
+      for (r = 0; r < ucRows; r++) {
+        for (c = 0; c < ucCols; c++) {
+          cells.push({ x: ubCols - ucCols + c, y: r, section: "C" });
+        }
+      }
+      for (r = 0; r < ubRows; r++) {
+        for (c = 0; c < ubCols; c++) {
+          cells.push({ x: c, y: armH + r, section: "B" });
+        }
+      }
+      width = ubCols;
+      height = armH + ubRows;
+      return {
+        shape: shape,
+        cells: cells,
+        width: width,
+        height: height,
+        aCols: uaCols,
+        aRows: uaRows,
+        bCols: ubCols,
+        bRows: ubRows,
+        cCols: ucCols,
+        cRows: ucRows,
+        topFloats: uaCols * uaRows + ubCols * ubRows + ucCols * ucRows,
+        sections: [
+          { id: "A", label: "A", x0: 0, y0: 0, w: uaCols, h: uaRows },
+          { id: "B", label: "B", x0: 0, y0: armH, w: ubCols, h: ubRows },
+          { id: "C", label: "C", x0: ubCols - ucCols, y0: 0, w: ucCols, h: ucRows },
         ],
       };
     }
@@ -903,23 +992,29 @@
     state.gangway.qty = gwQty;
 
     // I-shape: no A/B. L/T: at least one section.
-    var needsSections = state.shape === "L" || state.shape === "T";
+    var needsSections = state.shape === "L" || state.shape === "T" || state.shape === "U";
     var secA = needsSections ? !!state.gangway.sectionA : false;
     var secB = needsSections ? !!state.gangway.sectionB : false;
-    if (needsSections && !secA && !secB) {
+    var secC = state.shape === "U" ? !!state.gangway.sectionC : false;
+    if (needsSections && !secA && !secB && !secC) {
       secA = true;
       state.gangway.sectionA = true;
     }
+    if (state.shape !== "U") {
+      secC = false;
+      state.gangway.sectionC = false;
+    }
     state.gangway.sectionA = secA;
     state.gangway.sectionB = secB;
-    var secCount = needsSections ? (secA ? 1 : 0) + (secB ? 1 : 0) : 1;
+    state.gangway.sectionC = secC;
+    var secCount = needsSections ? (secA ? 1 : 0) + (secB ? 1 : 0) + (secC ? 1 : 0) : 1;
     if (secCount < 1) secCount = 1;
 
     var gwUnit = gangwayPrice(gwW, gwL);
     var gwCost = gwEnabled ? gwUnit * gwQty * secCount : 0;
     var gwSectionsLabel = !needsSections
       ? ""
-      : [secA ? "A" : null, secB ? "B" : null].filter(Boolean).join(", ");
+      : [secA ? "A" : null, secB ? "B" : null, secC ? "C" : null].filter(Boolean).join(", ");
 
     var total = floatCost + hdpeCost + railCost + gwCost;
     var railPerMeter = state.prices.railingPrice / MODULE;
@@ -952,6 +1047,7 @@
       gangwayQty: gwQty,
       gangwaySectionA: secA,
       gangwaySectionB: secB,
+      gangwaySectionC: secC,
       gangwaySectionsLabel: gwSectionsLabel,
       gangwayUnitCost: gwUnit,
       gangwaySecCount: secCount,
@@ -988,6 +1084,7 @@
   function shapeLabel(shape) {
     if (shape === "L") return t("shapeLabel.L");
     if (shape === "T") return t("shapeLabel.T");
+    if (shape === "U") return t("shapeLabel.U");
     return t("shapeLabel.straight");
   }
 
@@ -1018,6 +1115,11 @@
     setHidden($("controls-straight"), state.shape !== "straight");
     setHidden($("controls-L"), state.shape !== "L");
     setHidden($("controls-T"), state.shape !== "T");
+    setHidden($("controls-U"), state.shape !== "U");
+    var shaped = state.shape === "L" || state.shape === "T" || state.shape === "U";
+    setHidden($("legend-sec-A"), !shaped);
+    setHidden($("legend-sec-B"), !shaped);
+    setHidden($("legend-sec-C"), state.shape !== "U");
     // Click-to-select prompts + helpers for every shape
     setHidden($("rail-prompts-straight"), false);
     setHidden($("rail-prompts-shaped"), true);
@@ -1029,6 +1131,10 @@
         title.textContent = t("size.title.straight");
       } else if (state.shape === "L") {
         title.textContent = t("size.title.L");
+      } else if (state.shape === "T") {
+        title.textContent = t("size.title.T");
+      } else if (state.shape === "U") {
+        title.textContent = t("size.title.U");
       } else {
         title.textContent = t("size.title.T");
       }
@@ -1039,6 +1145,8 @@
         gwSecLabel.textContent = t("gangway.secLabelL");
       } else if (state.shape === "T") {
         gwSecLabel.textContent = t("gangway.secLabelT");
+      } else if (state.shape === "U") {
+        gwSecLabel.textContent = t("gangway.secLabelU");
       } else {
         gwSecLabel.textContent = t("gangway.secLabel");
       }
@@ -1091,6 +1199,12 @@
     set("val-t-barRows", state.t.barRows);
     set("val-t-stemCols", state.t.stemCols);
     set("val-t-stemRows", state.t.stemRows);
+    set("val-u-aCols", state.u.aCols);
+    set("val-u-aRows", state.u.aRows);
+    set("val-u-bCols", state.u.bCols);
+    set("val-u-bRows", state.u.bRows);
+    set("val-u-cCols", state.u.cCols);
+    set("val-u-cRows", state.u.cRows);
   }
 
   function renderDiagram(c) {
@@ -1313,12 +1427,30 @@
         '"/>'
     );
 
+    // Distinct section colors so A / B / C read clearly on the top-view plan
     var fillBySection = {
-      A: "#26a69a",
-      B: "#00897b",
-      bar: "#26a69a",
-      stem: "#00897b",
+      A: "#26c6da",
+      B: "#5c6bc0",
+      C: "#66bb6a",
+      bar: "#26c6da",
+      stem: "#5c6bc0",
       main: "#26a69a",
+    };
+    var strokeBySection = {
+      A: "#00838f",
+      B: "#3949ab",
+      C: "#2e7d32",
+      bar: "#00838f",
+      stem: "#3949ab",
+      main: "#00695c",
+    };
+    var labelBgBySection = {
+      A: "rgba(0,131,143,0.88)",
+      B: "rgba(57,73,171,0.88)",
+      C: "rgba(46,125,50,0.88)",
+      bar: "rgba(0,131,143,0.88)",
+      stem: "rgba(57,73,171,0.88)",
+      main: "rgba(0,105,92,0.88)",
     };
 
     g.cells.forEach(function (cellObj) {
@@ -1326,6 +1458,7 @@
       var y = pad + cellObj.y * cell;
       var gap = 2;
       var fill = fillBySection[cellObj.section] || "#26a69a";
+      var stroke = strokeBySection[cellObj.section] || "#00695c";
       parts.push(
         '<rect x="' +
           (x + gap / 2) +
@@ -1337,7 +1470,9 @@
           (cell - gap) +
           '" rx="3" fill="' +
           fill +
-          '" stroke="#00695c" stroke-width="1.5"/>'
+          '" stroke="' +
+          stroke +
+          '" stroke-width="2"/>'
       );
       parts.push(
         '<circle cx="' +
@@ -1346,23 +1481,58 @@
           (y + cell / 2) +
           '" r="' +
           Math.max(2, cell * 0.08) +
-          '" fill="#80cbc4" opacity="0.7"/>'
+          '" fill="rgba(255,255,255,0.45)" opacity="0.85"/>'
       );
     });
 
-    // Section labels (light) — no หน้าเหนือ/หลังใต้
+    // Strong section outline + badge label (A / B / C stand out on U and L/T)
     g.sections.forEach(function (sec) {
-      if (!sec.label) return;
-      var cx = pad + (sec.x0 + sec.w / 2) * cell;
-      var cy = pad + (sec.y0 + sec.h / 2) * cell;
+      if (!sec.label || sec.id === "main") return;
+      var sx = pad + sec.x0 * cell;
+      var sy = pad + sec.y0 * cell;
+      var sw = sec.w * cell;
+      var sh = sec.h * cell;
+      var stroke = strokeBySection[sec.id] || "#00695c";
+      var bg = labelBgBySection[sec.id] || "rgba(0,105,92,0.88)";
+      parts.push(
+        '<rect x="' +
+          sx +
+          '" y="' +
+          sy +
+          '" width="' +
+          sw +
+          '" height="' +
+          sh +
+          '" fill="none" stroke="' +
+          stroke +
+          '" stroke-width="3" stroke-dasharray="6 3" rx="4" pointer-events="none"/>'
+      );
+      var cx = sx + sw / 2;
+      var cy = sy + sh / 2;
+      var fontSize = Math.max(14, Math.min(28, cell * 0.55));
+      var badgeW = Math.max(28, fontSize * 1.35);
+      var badgeH = Math.max(22, fontSize * 1.05);
+      parts.push(
+        '<rect x="' +
+          (cx - badgeW / 2) +
+          '" y="' +
+          (cy - badgeH / 2) +
+          '" width="' +
+          badgeW +
+          '" height="' +
+          badgeH +
+          '" rx="6" fill="' +
+          bg +
+          '" stroke="#fff" stroke-width="1.5" pointer-events="none"/>'
+      );
       parts.push(
         '<text x="' +
           cx +
           '" y="' +
           cy +
-          '" text-anchor="middle" dominant-baseline="middle" fill="rgba(0,50,40,0.35)" font-size="' +
-          Math.max(11, cell * 0.45) +
-          '" font-weight="700" font-family="Sarabun,sans-serif" pointer-events="none">' +
+          '" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-size="' +
+          fontSize +
+          '" font-weight="800" font-family="Sarabun,sans-serif" pointer-events="none">' +
           sec.label +
           "</text>"
       );
@@ -1490,13 +1660,18 @@
     if (en) en.checked = !!state.gangway.enabled;
     if (box) setHidden(box, !state.gangway.enabled);
 
-    var needsSections = state.shape === "L" || state.shape === "T";
+    var needsSections = state.shape === "L" || state.shape === "T" || state.shape === "U";
     if (secBox) setHidden(secBox, !needsSections);
 
     var btnA = $("gangway-sec-A");
     var btnB = $("gangway-sec-B");
+    var btnC = $("gangway-sec-C");
     if (btnA) btnA.setAttribute("aria-pressed", state.gangway.sectionA ? "true" : "false");
     if (btnB) btnB.setAttribute("aria-pressed", state.gangway.sectionB ? "true" : "false");
+    if (btnC) {
+      setHidden(btnC, state.shape !== "U");
+      btnC.setAttribute("aria-pressed", state.gangway.sectionC ? "true" : "false");
+    }
 
     document.querySelectorAll("[data-gangway-width]").forEach(function (btn) {
       var on = Number(btn.getAttribute("data-gangway-width")) === Number(state.gangway.width);
@@ -1696,6 +1871,30 @@
           c.topFloats
         );
       }
+    } else if (c.shape === "U") {
+      var gu = c.geo;
+      var elRU = $("size-rounded-U");
+      var elDU = $("size-detail-U");
+      if (elRU) {
+        elRU.textContent = t(
+          "size.topFloatsBox",
+          formatNum(c.topFloats),
+          c.bboxW,
+          c.bboxH
+        );
+      }
+      if (elDU) {
+        elDU.textContent = t(
+          "size.detailU",
+          gu.aCols,
+          gu.aRows,
+          gu.bCols,
+          gu.bRows,
+          gu.cCols,
+          gu.cRows,
+          c.topFloats
+        );
+      }
     }
   }
 
@@ -1725,6 +1924,18 @@
         c.topFloats,
         c.bboxW,
         c.bboxH
+      );
+    }
+    if (c.shape === "U") {
+      return t(
+        "size.detailU",
+        c.geo.aCols,
+        c.geo.aRows,
+        c.geo.bCols,
+        c.geo.bRows,
+        c.geo.cCols,
+        c.geo.cRows,
+        c.topFloats
       );
     }
     return t(
@@ -2168,10 +2379,30 @@
     if (parts.length !== 2) return;
     var group = parts[0];
     var key = parts[1];
-    if (group !== "l" && group !== "t") return;
+    if (group !== "l" && group !== "t" && group !== "u") return;
     var cur = state[group][key];
     var next = cur + delta;
     // widths / stem must stay >= MIN_ROWS (2); lengths (aCols, bCols) >= 1
+    if (group === "u") {
+      if (key === "aRows" || key === "cRows") {
+        next = clampInt(next, 1, MAX_MODULE);
+        state.u.aRows = next;
+        state.u.cRows = next; // keep arms equal length
+      } else if (key === "aCols" || key === "cCols" || key === "bRows") {
+        next = clampInt(next, MIN_ROWS, MAX_MODULE);
+        state.u[key] = next;
+      } else if (key === "bCols") {
+        next = clampInt(next, MIN_ROWS, MAX_MODULE);
+        state.u.bCols = next;
+      } else {
+        next = clampInt(next, MIN_ROWS, MAX_MODULE);
+        state.u[key] = next;
+      }
+      var minBar = state.u.aCols + state.u.cCols;
+      if (state.u.bCols < minBar) state.u.bCols = minBar;
+      render();
+      return;
+    }
     if (key === "aCols" || key === "bCols") {
       next = clampInt(next, 1, MAX_MODULE);
     } else if (key === "stemCols") {
@@ -2206,7 +2437,7 @@
       });
     });
 
-    // Section steppers (L/T)
+    // Section steppers (L/T/U)
     document.querySelectorAll("[data-field]").forEach(function (btn) {
       btn.addEventListener("click", function () {
         var field = btn.getAttribute("data-field");
@@ -2337,10 +2568,14 @@
         });
       }
       function toggleSec(which) {
-        if (state.shape !== "L" && state.shape !== "T") return;
+        if (state.shape !== "L" && state.shape !== "T" && state.shape !== "U") return;
         if (which === "A") state.gangway.sectionA = !state.gangway.sectionA;
         if (which === "B") state.gangway.sectionB = !state.gangway.sectionB;
-        if (!state.gangway.sectionA && !state.gangway.sectionB) {
+        if (which === "C") {
+          if (state.shape !== "U") return;
+          state.gangway.sectionC = !state.gangway.sectionC;
+        }
+        if (!state.gangway.sectionA && !state.gangway.sectionB && !state.gangway.sectionC) {
           // keep at least one
           if (which === "A") state.gangway.sectionB = true;
           else state.gangway.sectionA = true;
@@ -2349,8 +2584,10 @@
       }
       var btnA = $("gangway-sec-A");
       var btnB = $("gangway-sec-B");
+      var btnC = $("gangway-sec-C");
       if (btnA) btnA.addEventListener("click", function () { toggleSec("A"); });
       if (btnB) btnB.addEventListener("click", function () { toggleSec("B"); });
+      if (btnC) btnC.addEventListener("click", function () { toggleSec("C"); });
       document.querySelectorAll("[data-gangway-width]").forEach(function (btn) {
         btn.addEventListener("click", function () {
           state.gangway.width = Number(btn.getAttribute("data-gangway-width")) >= 2.4 ? 2.4 : 1.2;

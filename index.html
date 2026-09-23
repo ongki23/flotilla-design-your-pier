@@ -45,6 +45,11 @@
           <span class="shape-title" data-i18n="shape.T.title">รูปตัวที</span>
           <small data-i18n="shape.T.sub">เซกชัน A + B</small>
         </button>
+        <button type="button" class="shape-card" data-shape="U" aria-pressed="false">
+          <span class="shape-icon" aria-hidden="true">⊔</span>
+          <span class="shape-title" data-i18n="shape.U.title">รูปตัวยู</span>
+          <small data-i18n="shape.U.sub">เซกชัน A + B + C</small>
+        </button>
       </div>
     </section>
 
@@ -193,6 +198,79 @@
         </div>
       </div>
 
+
+      <!-- U-shape section controls -->
+      <div id="controls-U" class="section-controls shape-panel" data-shape-panel="U" hidden>
+        <p class="size-hint" style="font-size:0.85rem;color:var(--gray-500);margin:0 0 0.85rem" data-i18n="size.U.hint">เฉพาะรูปตัวยู — เซกชัน A / B / C ของรูปนี้เท่านั้น · ความกว้างแขนอย่างน้อย 2 ทุ่น · วางราวจับจากแผนผังมุมสูง</p>
+        <div class="section-block">
+          <h3 class="section-heading" data-i18n="size.U.secA">เซกชัน A · แขนซ้าย</h3>
+          <div class="module-grid">
+            <div class="dim-row">
+              <label data-i18n="size.widthFloats">ความกว้าง (ทุ่น)</label>
+              <div class="stepper">
+                <button type="button" data-field="u.aCols" data-delta="-1" aria-label="ลดความกว้าง A">−</button>
+                <div class="value-display"><span id="val-u-aCols">2</span><span class="unit" data-i18n="unit.floats">ทุ่น</span></div>
+                <button type="button" data-field="u.aCols" data-delta="1" aria-label="เพิ่มความกว้าง A">+</button>
+              </div>
+            </div>
+            <div class="dim-row">
+              <label data-i18n="size.U.armLen">ความยาวแขน (ทุ่น)</label>
+              <div class="stepper">
+                <button type="button" data-field="u.aRows" data-delta="-1" aria-label="ลดความยาวแขน">−</button>
+                <div class="value-display"><span id="val-u-aRows">4</span><span class="unit" data-i18n="unit.floats">ทุ่น</span></div>
+                <button type="button" data-field="u.aRows" data-delta="1" aria-label="เพิ่มความยาวแขน">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-block">
+          <h3 class="section-heading" data-i18n="size.U.secB">เซกชัน B · คานล่าง</h3>
+          <div class="module-grid">
+            <div class="dim-row">
+              <label data-i18n="size.lengthFloats">ความยาว (ทุ่น)</label>
+              <div class="stepper">
+                <button type="button" data-field="u.bCols" data-delta="-1" aria-label="ลดความยาว B">−</button>
+                <div class="value-display"><span id="val-u-bCols">8</span><span class="unit" data-i18n="unit.floats">ทุ่น</span></div>
+                <button type="button" data-field="u.bCols" data-delta="1" aria-label="เพิ่มความยาว B">+</button>
+              </div>
+            </div>
+            <div class="dim-row">
+              <label data-i18n="size.widthFloats">ความกว้าง (ทุ่น)</label>
+              <div class="stepper">
+                <button type="button" data-field="u.bRows" data-delta="-1" aria-label="ลดความกว้าง B">−</button>
+                <div class="value-display"><span id="val-u-bRows">2</span><span class="unit" data-i18n="unit.floats">ทุ่น</span></div>
+                <button type="button" data-field="u.bRows" data-delta="1" aria-label="เพิ่มความกว้าง B">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-block">
+          <h3 class="section-heading" data-i18n="size.U.secC">เซกชัน C · แขนขวา</h3>
+          <div class="module-grid">
+            <div class="dim-row">
+              <label data-i18n="size.widthFloats">ความกว้าง (ทุ่น)</label>
+              <div class="stepper">
+                <button type="button" data-field="u.cCols" data-delta="-1" aria-label="ลดความกว้าง C">−</button>
+                <div class="value-display"><span id="val-u-cCols">2</span><span class="unit" data-i18n="unit.floats">ทุ่น</span></div>
+                <button type="button" data-field="u.cCols" data-delta="1" aria-label="เพิ่มความกว้าง C">+</button>
+              </div>
+            </div>
+            <div class="dim-row">
+              <label data-i18n="size.U.armLen">ความยาวแขน (ทุ่น)</label>
+              <div class="stepper">
+                <button type="button" data-field="u.cRows" data-delta="-1" aria-label="ลดความยาวแขน C">−</button>
+                <div class="value-display"><span id="val-u-cRows">4</span><span class="unit" data-i18n="unit.floats">ทุ่น</span></div>
+                <button type="button" data-field="u.cRows" data-delta="1" aria-label="เพิ่มความยาวแขน C">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="size-summary">
+          <div class="rounded" id="size-rounded-U">ขนาด: —</div>
+          <div class="requested" id="size-detail-U">—</div>
+        </div>
+      </div>
+
       <div class="layer-block" style="margin-top:1rem">
         <h3 style="font-size:1rem;margin:0 0 0.5rem" data-i18n="layers.heading">จำนวนชั้นทุ่น</h3>
         <p style="font-size:0.8rem;color:var(--gray-500);margin:0 0 0.65rem" data-i18n-html="layers.hint">
@@ -239,6 +317,9 @@
       <div class="diagram-legend">
         <span><i class="swatch float"></i> <span data-i18n="legend.float">ทุ่น 1.20×1.20 ม.</span></span>
         <span><i class="swatch rail"></i> <span data-i18n="legend.rail">ราวจับกันตก</span></span>
+        <span id="legend-sec-A" class="legend-sec" hidden><i class="swatch sec-A"></i> <span data-i18n="legend.secA">เซกชัน A</span></span>
+        <span id="legend-sec-B" class="legend-sec" hidden><i class="swatch sec-B"></i> <span data-i18n="legend.secB">เซกชัน B</span></span>
+        <span id="legend-sec-C" class="legend-sec" hidden><i class="swatch sec-C"></i> <span data-i18n="legend.secC">เซกชัน C</span></span>
       </div>
 
       <div style="margin-top:1rem">
@@ -300,6 +381,7 @@
           <div class="gangway-choice-row" role="group" data-i18n-aria="gangway.secAria" aria-label="เซกชันแกงเวย์">
             <button type="button" class="gangway-choice" id="gangway-sec-A" aria-pressed="true" data-i18n="gangway.secA">เซกชัน A</button>
             <button type="button" class="gangway-choice" id="gangway-sec-B" aria-pressed="false" data-i18n="gangway.secB">เซกชัน B</button>
+            <button type="button" class="gangway-choice" id="gangway-sec-C" aria-pressed="false" data-i18n="gangway.secC" hidden>เซกชัน C</button>
           </div>
           <p style="font-size:0.8rem;color:var(--gray-500);margin-top:0.35rem" data-i18n="gangway.secMin">เลือกได้อย่างน้อย 1 เซกชัน (หรือทั้งสอง)</p>
         </div>
