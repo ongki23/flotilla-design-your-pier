@@ -1096,11 +1096,12 @@
     if (!el) return;
     if (hidden) {
       el.setAttribute("hidden", "");
-      el.style.display = "none";
+      // important: beats .section-controls { display: grid }
+      el.style.setProperty("display", "none", "important");
       el.setAttribute("aria-hidden", "true");
     } else {
       el.removeAttribute("hidden");
-      el.style.display = "";
+      el.style.removeProperty("display");
       el.setAttribute("aria-hidden", "false");
     }
   }

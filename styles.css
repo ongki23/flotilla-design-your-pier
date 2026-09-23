@@ -1065,10 +1065,16 @@ footer.app-footer {
   opacity: 0.9;
 }
 
-/* L/T section controls */
+/* L/T/U section controls */
 .section-controls {
   display: grid;
   gap: 1rem;
+}
+/* Author display:grid must not override the hidden attribute — otherwise U size
+   labels (Section A/B/C) leak into L and T views. */
+.section-controls[hidden],
+.shape-panel[hidden] {
+  display: none !important;
 }
 .section-block {
   padding: 0.85rem 1rem;
