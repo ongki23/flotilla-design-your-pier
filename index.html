@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=t24" />
 </head>
 <body>
   <header class="app-header no-print">
@@ -31,22 +31,22 @@
       <h2><span class="icon">🔷</span> <span data-i18n="shape.heading">เลือกรูปทรงท่าเทียบเรือ</span></h2>
       <div class="shape-selector" id="shape-selector" role="radiogroup" data-i18n-aria="shape.aria" aria-label="รูปทรง">
         <button type="button" class="shape-card" data-shape="straight" aria-pressed="true">
-          <span class="shape-icon" aria-hidden="true">▬</span>
+          <span class="shape-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square" style="vertical-align:-0.12em"><path d="M12 4v16"/></svg></span>
           <span class="shape-title" data-i18n="shape.straight.title">รูปตัวไอ</span>
           <small data-i18n="shape.straight.sub">รูปตัวไอ (I)</small>
         </button>
         <button type="button" class="shape-card" data-shape="L" aria-pressed="false">
-          <span class="shape-icon" aria-hidden="true">⌞</span>
+          <span class="shape-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square" style="vertical-align:-0.12em"><path d="M7 4v16h11"/></svg></span>
           <span class="shape-title" data-i18n="shape.L.title">รูปตัวแอล</span>
           <small data-i18n="shape.L.sub">สองแขนเชื่อมมุม</small>
         </button>
         <button type="button" class="shape-card" data-shape="T" aria-pressed="false">
-          <span class="shape-icon" aria-hidden="true">⊥</span>
+          <span class="shape-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square" style="vertical-align:-0.12em"><path d="M4 5h16M12 5v15"/></svg></span>
           <span class="shape-title" data-i18n="shape.T.title">รูปตัวที</span>
           <small data-i18n="shape.T.sub">เซกชัน A + B</small>
         </button>
         <button type="button" class="shape-card" data-shape="U" aria-pressed="false">
-          <span class="shape-icon" aria-hidden="true">⊔</span>
+          <span class="shape-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square" style="vertical-align:-0.12em"><path d="M5 5v14h14V5"/></svg></span>
           <span class="shape-title" data-i18n="shape.U.title">รูปตัวยู</span>
           <small data-i18n="shape.U.sub">เซกชัน A + B + C</small>
         </button>
@@ -54,7 +54,7 @@
     </section>
 
     <!-- Size / section controls -->
-    <section class="card">
+    <section class="card" id="size-card">
       <h2><span class="icon">📐</span> <span id="size-card-title" data-i18n="size.title.straight">เลือกขนาดตัวอยาก</span></h2>
 
       <!-- Straight-only: presets + sliders -->
@@ -287,7 +287,7 @@
 
     <!-- Diagram + capacity -->
     <section class="card">
-      <h2><span class="icon">🗺️</span> <span data-i18n="diagram.heading">แผนผังมุมสูง</span></h2>
+      <h2><span class="icon">🗺️</span> <span data-i18n="diagram.heading">แผนผังมุมสูง ทุ่นและราวจับ</span></h2>
       <div id="rail-prompts-straight">
         <p class="rail-prompt" style="font-size:1.05rem;font-weight:700;color:var(--teal-800, #00695c);margin:0.35rem 0 0.25rem" data-i18n="diagram.prompt">
           กรุณาเลือกตำแหน่งราวจับของคุณ
@@ -319,27 +319,10 @@
         <span><i class="swatch rail"></i> <span data-i18n="legend.rail">ราวจับกันตก</span></span>
       </div>
 
-      <div style="margin-top:1rem">
-        <div class="capacity-box">
-          <div class="cap-label" data-i18n="cap.label">ความสามารถรับน้ำหนักโดยประมาณ</div>
-          <div class="cap-value" id="cap-value">—</div>
-          <div class="cap-per-m2" id="cap-per-m2" style="margin-top:0.35rem;font-size:0.95rem;opacity:0.95">—</div>
-        </div>
-        <p class="assumption-note" data-i18n-html="cap.assumption">
-          สูตรรวม: <code>capacity_kg = พื้นที่(ตร.ม.) × 375 × จำนวนชั้น</code>
-          <br />
-          ต่อตร.ม.: <code>capacity_kg_per_m2 = 375 × จำนวนชั้น</code>
-          (= รวม ÷ พื้นที่)
-          <br />
-          อ้างอิงค่าแรงพยุงตัวไม่น้อยกว่า 375 กก./ตร.ม. ต่อชั้น ตามคุณลักษณะผลิตภัณฑ์ (วว.) — ยังไม่หักน้ำหนักโครงสร้าง/พื้น
-        </p>
-      </div>
-    </section>
+      <!-- Railing options (merged into top-view panel) -->
+      <div id="rail-card">
 
-    <!-- Railings (click helpers for all shapes) -->
-    <section class="card" id="rail-card">
-      <h2><span class="icon">🧱</span> <span data-i18n="rail.heading">ราวจับกันตก</span></h2>
-      <div id="rail-helpers-block">
+      <div id="rail-helpers-block" style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--gray-200,#e0e6ea)">
         <p style="font-size:0.85rem;color:var(--gray-500);margin-bottom:0.85rem" data-i18n="rail.help1">
           ใช้แผนผังมุมสูงด้านบน — กดที่เส้นเพื่อวาง/เอาออกราวจับทีละช่วง (วางระหว่างทุ่นได้)
         </p>
@@ -357,6 +340,51 @@
         <!-- unused: helpers apply to all shapes via diagram clicks -->
       </p>
       <p class="rail-hint" id="rail-per-m">ราวจับ ≈ — /ม.</p>
+      </div>
+    </section>
+
+
+    <!-- Capacity -->
+    <section class="card" id="capacity-card">
+      <div id="capacity-block">
+        <div class="capacity-box">
+          <div class="cap-label" data-i18n="cap.label">ความสามารถรับน้ำหนักโดยประมาณ</div>
+          <div class="cap-value" id="cap-value">—</div>
+          <div class="cap-per-m2" id="cap-per-m2" style="margin-top:0.35rem;font-size:0.95rem;opacity:0.95">—</div>
+        </div>
+        <p class="assumption-note" data-i18n-html="cap.assumption">
+          สูตรรวม: <code>capacity_kg = พื้นที่(ตร.ม.) × 375 × จำนวนชั้น</code>
+          <br />
+          ต่อตร.ม.: <code>capacity_kg_per_m2 = 375 × จำนวนชั้น</code>
+          (= รวม ÷ พื้นที่)
+          <br />
+          อ้างอิงค่าแรงพยุงตัวไม่น้อยกว่า 375 กก./ตร.ม. ต่อชั้น ตามคุณลักษณะผลิตภัณฑ์ (วว.) — ยังไม่หักน้ำหนักโครงสร้าง/พื้น
+        </p>
+      </div>
+    </section>
+
+    <!-- Mooring system add-on (quote only — not drawn on plan) -->
+    <section class="card" id="mooring-card">
+      <h2><span class="icon">⚓</span> <span data-i18n="mooring.heading">ระบบสมอยึดโยง (ตัวเลือกเสริม)</span></h2>
+      <label class="gangway-toggle" style="display:flex;align-items:flex-start;gap:0.65rem;cursor:pointer;margin-bottom:0.85rem">
+        <input type="checkbox" id="mooring-enabled" style="width:1.25rem;height:1.25rem;margin-top:0.15rem;flex-shrink:0" />
+        <span>
+          <strong data-i18n="mooring.enable">เพิ่มระบบสมอยึดโยงในใบเสนอราคา</strong>
+          <span style="display:block;font-size:0.85rem;color:var(--gray-500);margin-top:0.2rem" data-i18n="mooring.enableHint">
+            ลูกค้ากรอกจำนวนชุดเอง — ราคา 7,009.35 บาท/ชุด (ก่อน VAT) (ปรับได้ในแอดมิน)
+          </span>
+        </span>
+      </label>
+      <div id="mooring-controls" hidden>
+        <div class="gangway-field">
+          <div class="gangway-field-label" data-i18n="mooring.qty">จำนวนชุด</div>
+          <input type="number" id="mooring-qty" min="0" step="1" value="1" style="max-width:10rem;padding:0.5rem 0.65rem;font-size:1.05rem;border:1px solid var(--gray-300);border-radius:8px" />
+          <p style="font-size:0.8rem;color:var(--gray-500);margin-top:0.35rem" data-i18n="mooring.qtyHint">พิมพ์จำนวนที่ต้องการ (ไม่มีเพดานสูงสุด)</p>
+        </div>
+        <p id="mooring-price-hint" style="font-size:0.9rem;margin-top:0.85rem;color:var(--gray-600)">
+          ราคาโดยประมาณ: —
+        </p>
+      </div>
     </section>
 
 
@@ -463,34 +491,11 @@
           ราคาโดยประมาณ: —
         </p>
         <p style="font-size:0.8rem;color:var(--gray-500);margin-top:0.35rem" data-i18n="gangway.formula">
-          สูตรต่อชุด: ฐาน 1.2×3 ม. = 30,000 บาท · ยาวเกิน 3 ม. เมตรละ +10,000 · กว้าง 2.4 ม. = ×2 · คูณจำนวนชุด
+          สูตรต่อชุด: ฐาน 1.2×3 ม. = 30,000 บาท · ยาวเกิน 3 ม. เมตรละ +10,000 · กว้าง 2.4 ม. = ×2 · คูณจำนวนชุด · ราคานี้รวม VAT ระบบแสดงเป็นราคาก่อน VAT (÷1.07)
         </p>
       </div></section>
 
 
-    <!-- Mooring system add-on (quote only — not drawn on plan) -->
-    <section class="card" id="mooring-card">
-      <h2><span class="icon">⚓</span> <span data-i18n="mooring.heading">ระบบสมอยึดโยง (ตัวเลือกเสริม)</span></h2>
-      <label class="gangway-toggle" style="display:flex;align-items:flex-start;gap:0.65rem;cursor:pointer;margin-bottom:0.85rem">
-        <input type="checkbox" id="mooring-enabled" style="width:1.25rem;height:1.25rem;margin-top:0.15rem;flex-shrink:0" />
-        <span>
-          <strong data-i18n="mooring.enable">เพิ่มระบบสมอยึดโยงในใบเสนอราคา</strong>
-          <span style="display:block;font-size:0.85rem;color:var(--gray-500);margin-top:0.2rem" data-i18n="mooring.enableHint">
-            ลูกค้ากรอกจำนวนชุดเอง — ราคา 7,500 บาท/ชุด (ปรับได้ในแอดมิน)
-          </span>
-        </span>
-      </label>
-      <div id="mooring-controls" hidden>
-        <div class="gangway-field">
-          <div class="gangway-field-label" data-i18n="mooring.qty">จำนวนชุด</div>
-          <input type="number" id="mooring-qty" min="0" step="1" value="1" style="max-width:10rem;padding:0.5rem 0.65rem;font-size:1.05rem;border:1px solid var(--gray-300);border-radius:8px" />
-          <p style="font-size:0.8rem;color:var(--gray-500);margin-top:0.35rem" data-i18n="mooring.qtyHint">พิมพ์จำนวนที่ต้องการ (ไม่มีเพดานสูงสุด)</p>
-        </div>
-        <p id="mooring-price-hint" style="font-size:0.9rem;margin-top:0.85rem;color:var(--gray-600)">
-          ราคาโดยประมาณ: —
-        </p>
-      </div>
-    </section>
 
     <!-- Quote -->
     <section class="card">
@@ -508,6 +513,9 @@
           <tbody id="quote-body"></tbody>
         </table>
       </div>
+
+      <div class="quote-manual-note" id="quote-manual-note" hidden data-i18n="quote.manualNote"></div>
+      <div class="quote-sums" id="quote-sums"></div>
 
       <div class="grand-total-row">
         <span class="label" data-i18n="quote.grandTotal">ยอดรวมทั้งสิ้น</span>
@@ -535,45 +543,56 @@
       </button>
       <div class="admin-body">
         <div class="admin-field">
-          <label for="price-float" data-i18n="admin.float">ราคาทุ่นลอยน้ำ / ชุด (บาท)</label>
-          <input type="number" id="price-float" min="0" step="100" />
-          <span class="hint" data-i18n="admin.floatHint">ค่าเริ่มต้นตามทะเบียน: 18,000 บาท (พร้อม Quick Lock + ตัวเชื่อม)</span>
+          <label for="price-float" data-i18n="admin.float">ราคาทุ่นลอยน้ำ / ชุด (บาท · ก่อน VAT)</label>
+          <input type="number" id="price-float" min="0" step="0.01" />
+          <span class="hint" data-i18n="admin.floatHint">ค่าเริ่มต้น: 16,822.43 บาท ก่อน VAT (พร้อม Quick Lock + ตัวเชื่อม)</span>
         </div>
         <div class="admin-field">
-          <label for="price-hdpe" data-i18n="admin.hdpe">ราคาแผ่นพื้น HDPE / ชุด (บาท)</label>
-          <input type="number" id="price-hdpe" min="0" step="100" />
-          <span class="hint" data-i18n="admin.hdpeHint">ค่าเริ่มต้น: 7,500 บาท — 1 ชุดต่อ 1 ทุ่นชั้นบน</span>
+          <label for="price-hdpe" data-i18n="admin.hdpe">ราคาแผ่นพื้น HDPE / ชุด (บาท · ก่อน VAT)</label>
+          <input type="number" id="price-hdpe" min="0" step="0.01" />
+          <span class="hint" data-i18n="admin.hdpeHint">ค่าเริ่มต้น: 7,009.35 บาท — 1 ชุดต่อ 1 ทุ่นชั้นบน</span>
         </div>
         <div class="admin-field">
-          <label for="price-rail" data-i18n="admin.rail">ราคาราวจับกันตก / ชุด 1.2 ม. (บาท)</label>
-          <input type="number" id="price-rail" min="0" step="100" />
-          <span class="hint" data-i18n="admin.railHint">ค่าเริ่มต้น: 4,500 บาท/ชุด — แสดงเทียบต่อเมตรในหน้าหลัก</span>
+          <label for="price-rail" data-i18n="admin.rail">ราคาราวจับกันตก / ชุด 1.2 ม. (บาท · ก่อน VAT)</label>
+          <input type="number" id="price-rail" min="0" step="0.01" />
+          <span class="hint" data-i18n="admin.railHint">ค่าเริ่มต้น: 4,205.61 บาท/ชุด — แสดงเทียบต่อเมตรในหน้าหลัก</span>
         </div>
         <div class="admin-field">
-          <label for="price-fender" data-i18n="admin.fender">ราคาเฟนเดอร์กันชน / ชิ้น (บาท)</label>
-          <input type="number" id="price-fender" min="0" step="50" />
-          <span class="hint" data-i18n="admin.fenderHint">ค่าเริ่มต้น: 1,900 บาท — ตามจำนวนที่คลิกบนแผนผัง</span>
+          <label for="price-fender" data-i18n="admin.fender">ราคาเฟนเดอร์กันชน / ชิ้น (บาท · ก่อน VAT)</label>
+          <input type="number" id="price-fender" min="0" step="0.01" />
+          <span class="hint" data-i18n="admin.fenderHint">ค่าเริ่มต้น: 2,616.82 บาท — ตามจำนวนที่คลิกบนแผนผัง</span>
         </div>
         <div class="admin-field">
-          <label for="price-cleat" data-i18n="admin.cleat">ราคาคลีต / ชิ้น (บาท)</label>
-          <input type="number" id="price-cleat" min="0" step="50" />
-          <span class="hint" data-i18n="admin.cleatHint">ค่าเริ่มต้น: 1,250 บาท — ตามจำนวนที่คลิกบนแผนผัง</span>
+          <label for="price-cleat" data-i18n="admin.cleat">ราคาคลีต / ชิ้น (บาท · ก่อน VAT)</label>
+          <input type="number" id="price-cleat" min="0" step="0.01" />
+          <span class="hint" data-i18n="admin.cleatHint">ค่าเริ่มต้น: 1,168.22 บาท — ตามจำนวนที่คลิกบนแผนผัง</span>
         </div>
         <div class="admin-field">
-          <label for="price-light" data-i18n="admin.light">ราคาเสาไฟโซลาร์เซลล์ / ต้น (บาท)</label>
-          <input type="number" id="price-light" min="0" step="50" />
-          <span class="hint" data-i18n="admin.lightHint">ค่าเริ่มต้น: 4,500 บาท — ตามจำนวนที่คลิกบนแผนผัง</span>
+          <label for="price-light" data-i18n="admin.light">ราคาเสาไฟโซลาร์เซลล์ / ต้น (บาท · ก่อน VAT)</label>
+          <input type="number" id="price-light" min="0" step="0.01" />
+          <span class="hint" data-i18n="admin.lightHint">ค่าเริ่มต้น: 4,205.61 บาท — ตามจำนวนที่คลิกบนแผนผัง</span>
         </div>
 
         <div class="admin-field">
-          <label for="price-mooring" data-i18n="admin.mooring">ราคาระบบสมอยึดโยง / ชุด (บาท)</label>
-          <input type="number" id="price-mooring" min="0" step="50" />
-          <span class="hint" data-i18n="admin.mooringHint">ค่าเริ่มต้น: 7,500 บาท/ชุด — ตามจำนวนที่ลูกค้ากรอก</span>
+          <label for="price-mooring" data-i18n="admin.mooring">ราคาระบบสมอยึดโยง / ชุด (บาท · ก่อน VAT)</label>
+          <input type="number" id="price-mooring" min="0" step="0.01" />
+          <span class="hint" data-i18n="admin.mooringHint">ค่าเริ่มต้น: 7,009.35 บาท/ชุด — ตามจำนวนที่ลูกค้ากรอก</span>
         </div>
         <button type="button" class="btn btn-secondary" id="btn-reset-prices" style="max-width:220px" data-i18n="admin.reset">
           รีเซ็ตราคาเริ่มต้น
         </button>
         <p class="hint" data-i18n="admin.saved">ราคาถูกบันทึกในเบราว์เซอร์ (localStorage) อัตโนมัติ</p>
+
+        <!-- Quote items editor (auto rows by default; manual rows when toggled) -->
+        <h3 class="admin-section-title" data-i18n="admin.qr.title">รายการในใบเสนอราคา (แก้ไขเอง)</h3>
+        <p class="hint" data-i18n="admin.qr.intro"></p>
+        <div id="qr-editor"></div>
+
+        <!-- Quote details typed by admin (customer side blank by default) -->
+        <h3 class="admin-section-title" data-i18n="admin.qi.title">ข้อมูลในใบเสนอราคา (พิมพ์เอง)</h3>
+        <p class="hint" data-i18n="admin.qi.hint"></p>
+        <div class="qi-grid" id="qi-fields"></div>
+        <button type="button" class="btn btn-secondary" id="btn-reset-quote-info" style="max-width:220px" data-i18n="admin.qi.reset">ล้างข้อมูลใบเสนอราคา</button>
       </div>
     </section>
   </main>
@@ -585,6 +604,6 @@
   <!-- Print-only quote -->
   <div id="print-quote" class="print-only" aria-hidden="true"></div>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=t24"></script>
 </body>
 </html>

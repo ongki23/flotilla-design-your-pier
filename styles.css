@@ -739,7 +739,12 @@ footer.app-footer {
   color: var(--gray-500);
 }
 
-/* ========== PRINT / FLOTILLA QUOTATION ========== */
+/* ========== PRINT / FLOTILLA QUOTATION (A4, one page) ========== */
+@page {
+  size: A4;
+  margin: 8mm 10mm;
+}
+
 @media print {
   body {
     background: white;
@@ -754,272 +759,415 @@ footer.app-footer {
 
   #print-quote {
     display: block !important;
-    padding: 0.8cm 1.2cm;
-    font-size: 10pt;
+    padding: 0;
+    margin: 0;
+    max-width: none;
   }
 }
 
 .print-only { display: none; }
 
 #print-quote {
-  font-family: var(--font);
-  color: #111;
-  max-width: 900px;
+  font-family: "Sarabun", "Noto Sans Thai", sans-serif;
+  color: #000;
+  max-width: 190mm;
   margin: 0 auto;
-  line-height: 1.45;
 }
 
-#print-quote .pq-letterhead {
-  margin-bottom: 0.5rem;
-}
-
-#print-quote .pq-logo {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-#print-quote .pq-docbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 0.35rem;
+/* Generated from QUOTE_CSS_RULES in app.js (same rules are used by "Download HTML") */
+#print-quote .pq-sheet {
+  font-family:Sarabun,'Noto Sans Thai',sans-serif;
+  color:#000;
+  font-size:9pt;
+  line-height:1.28;
+  background:#fff;
 }
 
 #print-quote .pq-doccode {
-  font-size: 0.8rem;
-  color: #555;
-  letter-spacing: 0.02em;
+  text-align:right;
+  font-size:6.5pt;
+  margin:0 0 1mm;
+}
+
+#print-quote .pq-head {
+  display:flex;
+  align-items:center;
+  gap:7mm;
+  margin:0 0 1mm;
+}
+
+#print-quote .pq-head-logo {
+  flex:0 0 76mm;
+}
+
+#print-quote .pq-logo {
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+#print-quote .pq-head-co {
+  flex:1;
+  color:#1f3a93;
+}
+
+#print-quote .pq-co-name {
+  font-size:14.5pt;
+  font-weight:700;
+  line-height:1.2;
+}
+
+#print-quote .pq-co-addr,
+#print-quote .pq-co-contact {
+  font-size:7.5pt;
+  margin-top:1.2mm;
+}
+
+#print-quote .pq-badge-row {
+  text-align:right;
+  margin:2mm 0 3mm;
 }
 
 #print-quote .pq-badge {
-  display: inline-block;
-  background: #2B7DE9;
-  color: #fff;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  padding: 0.35rem 0.85rem;
-  border-radius: 4px;
-  font-size: 0.95rem;
+  display:inline-block;
+  border:1px solid #7fb0e6;
+  padding:0 2mm;
+  font-family:'Times New Roman',Times,serif;
+  font-size:11pt;
+  letter-spacing:.02em;
 }
 
-#print-quote .pq-company-line {
-  font-weight: 700;
-  color: #0a4d5c;
-  margin: 0.35rem 0 0.75rem;
-  font-size: 0.95rem;
+#print-quote .pq-info {
+  width:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
+  margin:0 0 2mm;
 }
 
-#print-quote .pq-meta-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem 1.25rem;
-  margin-bottom: 0.85rem;
-  font-size: 0.88rem;
+#print-quote .pq-info td {
+  padding:.5mm 1mm;
+  vertical-align:bottom;
+  border:0;
+  word-wrap:break-word;
 }
 
-#print-quote .pq-meta-row {
-  display: flex;
-  gap: 0.45rem;
-  margin: 0.18rem 0;
+#print-quote .pq-info td.pq-l {
+  font-weight:700;
 }
 
-#print-quote .pq-meta-label {
-  min-width: 9.5rem;
-  color: #333;
-  flex-shrink: 0;
+#print-quote .pq-info td.pq-r {
+  font-weight:700;
+  text-align:right;
 }
 
-#print-quote .pq-meta-value {
-  flex: 1;
-  border-bottom: 1px dotted #999;
-  min-height: 1.1em;
+#print-quote .pq-line {
+  border-bottom:1px dotted #444;
+  height:1.1em;
 }
 
-#print-quote h2 {
-  font-size: 1.05rem;
-  margin: 0.85rem 0 0.45rem;
-  color: #2B7DE9;
-  border-bottom: 2px solid #2B7DE9;
-  padding-bottom: 0.2rem;
+#print-quote .pq-boq {
+  width:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
 }
 
-#print-quote h3 {
-  font-size: 0.95rem;
-  margin: 0.4rem 0 0.3rem;
-  color: #0a4d5c;
+#print-quote .pq-boq th {
+  border:1px solid #000;
+  background:#f2f2f2;
+  font-weight:700;
+  text-align:center;
+  padding:1.2mm 1mm;
 }
 
-#print-quote table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 0.35rem 0 0.75rem;
+#print-quote .pq-boq td {
+  border-left:1px solid #000;
+  border-right:1px solid #000;
+  padding:.9mm 1.5mm;
+  vertical-align:top;
+  word-wrap:break-word;
 }
 
-#print-quote th,
-#print-quote td {
-  border: 1px solid #b0bec5;
-  padding: 0.35rem 0.5rem;
-  text-align: left;
-  vertical-align: top;
+#print-quote .pq-boq .c {
+  text-align:center;
 }
 
-#print-quote th {
-  background: #E3F2FD;
-  color: #0d47a1;
-  font-weight: 700;
+#print-quote .pq-boq .r {
+  text-align:right;
 }
 
-#print-quote td.num,
-#print-quote th.num {
-  text-align: right;
+#print-quote .pq-boq tr.pq-sum td {
+  border-top:1px solid #000;
+  border-bottom:1px solid #000;
 }
 
-#print-quote .pq-num {
-  width: 2.2rem;
-  text-align: center;
+#print-quote .pq-boq td.pq-words {
+  font-weight:700;
+  text-align:center;
+  vertical-align:middle;
 }
 
-#print-quote .pq-desc-sub {
-  font-size: 0.78rem;
-  color: #555;
+#print-quote .pq-boq td.pq-sl {
+  text-align:right;
+  vertical-align:middle;
 }
 
-#print-quote .pq-tbd-row td {
-  background: #fffde7;
+#print-quote .pq-boq td.pq-sv {
+  text-align:right;
+  vertical-align:middle;
 }
 
-#print-quote .pq-diagram {
-  text-align: center;
-  margin: 0.65rem 0;
+#print-quote .pq-boq tr.pq-grand td.pq-sv {
+  font-weight:700;
 }
 
-#print-quote .pq-diagram svg {
-  max-width: 100%;
-  height: auto;
+#print-quote .pq-boq td.pq-sl,
+#print-quote .pq-boq td.pq-sv {
+  border-bottom:1px solid #000;
 }
 
-#print-quote .pq-terms-totals {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 0.85rem;
-  margin: 0.85rem 0;
+#print-quote .pq-boq td.pq-term {
+  border:0;
+  padding:1.4mm 0 .8mm 1mm;
+  vertical-align:middle;
 }
 
-#print-quote .pq-terms p {
-  margin: 0.2rem 0;
-  font-size: 0.82rem;
+#print-quote .pq-boq td.pq-term .pq-tl {
+  display:inline-block;
+  min-width:31mm;
 }
 
-#print-quote .pq-total-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.3rem 0.45rem;
-  border-bottom: 1px solid #ddd;
+#print-quote .pq-pay {
+  margin:2mm 0 0;
 }
 
-#print-quote .pq-grand {
-  background: #2B7DE9;
-  color: #fff;
-  font-weight: 800;
-  border: none;
-  margin-top: 0.25rem;
+#print-quote .pq-boq .pq-wrow {
+  display:flex;
+  align-items:flex-start;
 }
 
-#print-quote .pq-tbd-note {
-  font-size: 0.72rem;
-  color: #c62828;
-  margin: 0.35rem 0 0;
+#print-quote .pq-boq .pq-wv {
+  flex:1;
 }
 
-#print-quote .pq-amount-words {
-  font-size: 0.85rem;
-  margin: 0.4rem 0;
+#print-quote .pq-boq td.pq-warr {
+  font-size:8pt;
+  line-height:1.2;
+  padding:.5mm 0 .5mm 1mm;
 }
 
-#print-quote .pq-bank {
-  margin: 0.85rem 0;
-  padding: 0.65rem;
-  background: #f5f9fc;
-  border-left: 4px solid #2B7DE9;
-  font-size: 0.82rem;
+#print-quote .pq-pay-head {
+  margin:0 0 .8mm;
 }
 
-#print-quote .pq-bank p {
-  margin: 0.15rem 0;
+#print-quote .pq-pay li.pq-pay-sub {
+  margin-left: 8mm;
 }
 
-#print-quote .pq-signatures {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.75rem;
-  margin: 1.25rem 0 0.85rem;
-  text-align: center;
+#print-quote .pq-pay ul {
+  list-style:none;
+  margin:0;
+  padding:0 0 0 12mm;
+  font-size:8pt;
 }
 
-#print-quote .pq-sig-title {
-  font-weight: 800;
-  color: #2B7DE9;
-  margin-bottom: 0.4rem;
+#print-quote .pq-pay li {
+  margin:.4mm 0;
+  position:relative;
+  padding-left:2.5mm;
+}
+
+#print-quote .pq-pay li:before {
+  content:'\2022';
+  position:absolute;
+  left:0;
+}
+
+#print-quote .pq-closing {
+  margin:1.5mm 0 1mm;
+}
+
+#print-quote .pq-sig {
+  width:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
+}
+
+#print-quote .pq-sig td,
+#print-quote .pq-sig th {
+  border:1px solid #000;
+  padding:.8mm 1.5mm;
+}
+
+#print-quote .pq-sig th {
+  font-weight:700;
+  text-align:center;
+}
+
+#print-quote .pq-sig td.pq-sbox {
+  text-align:center;
+  vertical-align:bottom;
 }
 
 #print-quote .pq-sig-space {
-  min-height: 3.2rem;
-  color: #888;
-  font-size: 0.82rem;
-  padding-top: 1.35rem;
+  height:14mm;
 }
 
-#print-quote .pq-customer {
-  border: 1px solid #b0bec5;
-  padding: 0.65rem;
-  margin: 0.85rem 0;
+#print-quote .pq-sig td.pq-sc {
+  text-align:center;
 }
 
-#print-quote .pq-customer-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.85rem;
-  margin: 0.4rem 0;
-  font-size: 0.82rem;
+#print-quote .pq-sig td.pq-sl2 {
+  text-align:left;
+  vertical-align:top;
 }
 
-#print-quote .pq-disclaimer {
-  margin-top: 0.65rem;
-  padding: 0.55rem;
-  border: 2px solid #ffb300;
-  background: #fff8e1;
-  color: #e65100;
-  font-weight: 700;
-  text-align: center;
-  font-size: 0.88rem;
+#print-quote .pq-sig td.pq-bank {
+  font-size:8pt;
+  line-height:1.25;
+  padding:1.5mm;
 }
 
-#print-quote .pq-assumption {
-  margin-top: 0.65rem;
-  font-size: 0.72rem;
-  color: #555;
-  line-height: 1.45;
-  padding: 0.5rem;
-  background: #f5f5f5;
-  border-radius: 4px;
+#print-quote .pq-boq tr,
+#print-quote .pq-sig tr {
+  page-break-inside:avoid;
 }
 
-#print-quote .pq-legal {
-  margin-top: 0.65rem;
-  font-size: 0.68rem;
-  color: #666;
-  line-height: 1.4;
+/* Quote page 2: top-view plans (mirrors QUOTE_CSS_RULES in app.js) */
+#print-quote .pq-plans {
+  page-break-before:always;
+  break-before:page;
+  -webkit-print-color-adjust:exact;
+  print-color-adjust:exact;
+}
+#print-quote .pq-head-sm .pq-head-logo { flex:0 0 52mm; }
+#print-quote .pq-head-sm .pq-co-name { font-size:12pt; }
+#print-quote .pq-plans-title {
+  text-align:center;
+  font-size:13pt;
+  font-weight:700;
+  margin:3mm 0 1mm;
+}
+#print-quote .pq-plans-ref {
+  text-align:center;
+  font-size:8pt;
+  color:#333;
+  margin:0 0 2mm;
+}
+#print-quote .pq-plan {
+  margin:0 0 2.5mm;
+  page-break-inside:avoid;
+  break-inside:avoid;
+}
+#print-quote .pq-plan-h {
+  font-size:10pt;
+  font-weight:700;
+  color:#1f3a93;
+  border-bottom:1px solid #1f3a93;
+  padding:0 0 .6mm;
+  margin:0 0 1.5mm;
+}
+#print-quote .pq-plan-svg {
+  text-align:center;
+  line-height:0;
+}
+#print-quote .pq-plan-svg svg {
+  display:block;
+  margin:0 auto;
+  width:100%;
+  height:auto;
+  max-width:150mm;
+  max-height:98mm;
+}
+#print-quote .pq-plan-legend {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:1.5mm 5mm;
+  font-size:8pt;
+  margin:1.2mm 0 0;
+}
+#print-quote .pq-plan-legend span {
+  display:inline-flex;
+  align-items:center;
+  gap:1.2mm;
+}
+#print-quote .pq-sw {
+  width:3.2mm;
+  height:3.2mm;
+  display:inline-block;
 }
 
-#print-quote .pq-footer {
-  margin-top: 1rem;
-  font-size: 0.72rem;
-  color: #666;
-  border-top: 1px solid #ddd;
-  padding-top: 0.45rem;
-  text-align: center;
+/* ---- Admin: quote items editor + quote details ---- */
+.admin-section-title {
+  margin: 0.5rem 0 0;
+  padding-top: 1rem;
+  border-top: 2px dashed var(--gray-300);
+  font-size: 1rem;
+  color: var(--teal-900);
+}
+.qi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.75rem 1rem;
+}
+.admin-field textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.6rem 0.85rem;
+  border: 2px solid var(--gray-200);
+  border-radius: 10px;
+  outline: none;
+  resize: vertical;
+}
+.admin-field textarea:focus { border-color: var(--teal-500); }
+.qr-badge {
+  padding: 0.6rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.qr-badge.auto { background: var(--teal-50); color: var(--teal-900); }
+.qr-badge.manual { background: var(--amber-bg); color: var(--amber-text); border: 1px solid var(--amber-border); }
+.qr-buttons { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 0.6rem 0; }
+.qr-buttons .btn { width: auto; padding: 0.6rem 1rem; }
+.qr-scroll { overflow-x: auto; }
+.qr-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 760px; }
+.qr-table th { text-align: left; padding: 0.4rem; color: var(--gray-500); font-size: 0.75rem; }
+.qr-table td { padding: 0.3rem; border-top: 1px solid var(--gray-200); vertical-align: top; }
+.qr-no { width: 2.5rem; text-align: center; color: var(--gray-500); padding-top: 0.7rem !important; }
+.qr-in {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.5rem;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+.qr-in:disabled { background: var(--gray-100); color: var(--gray-700); }
+.qr-in:focus { outline: none; border-color: var(--teal-500); }
+.qr-desc { min-width: 260px; resize: vertical; }
+.qr-qty, .qr-price { width: 7rem; text-align: right; }
+.qr-unit { width: 5rem; }
+.qr-total { text-align: right; white-space: nowrap; padding-top: 0.7rem !important; font-weight: 600; }
+.qr-act { white-space: nowrap; }
+.qr-act button { border: 1px solid var(--gray-300); background: #fff; border-radius: 6px; cursor: pointer; padding: 0.3rem 0.5rem; margin-right: 0.15rem; }
+.qr-act button:disabled { opacity: 0.35; cursor: default; }
+.qr-sums { margin-top: 0.5rem; font-size: 0.9rem; font-weight: 600; color: var(--teal-900); }
+.qr-empty { text-align: center; color: var(--gray-500); padding: 1rem !important; }
+
+/* On-page quote: VAT breakdown + manual note */
+.quote-sums { margin-top: 0.6rem; font-size: 0.9rem; color: var(--gray-700); }
+.quote-sums > div { display: flex; justify-content: space-between; padding: 0.15rem 0.25rem; }
+.quote-manual-note {
+  margin-top: 0.6rem;
+  padding: 0.6rem 0.85rem;
+  border-radius: 8px;
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-border);
+  color: var(--amber-text);
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 .screen-print-preview {
@@ -1100,6 +1248,7 @@ footer.app-footer {
   box-shadow: 0 2px 10px rgba(20, 145, 155, 0.35);
 }
 .shape-card .shape-icon {
+  font-size: 1.75rem;
   display: block;
   font-size: 1.75rem;
   line-height: 1.2;
