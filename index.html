@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=t24" />
+  <link rel="stylesheet" href="styles.css?v=t27" />
 </head>
 <body>
   <header class="app-header no-print">
@@ -366,25 +366,44 @@
     <!-- Mooring system add-on (quote only — not drawn on plan) -->
     <section class="card" id="mooring-card">
       <h2><span class="icon">⚓</span> <span data-i18n="mooring.heading">ระบบสมอยึดโยง (ตัวเลือกเสริม)</span></h2>
-      <label class="gangway-toggle" style="display:flex;align-items:flex-start;gap:0.65rem;cursor:pointer;margin-bottom:0.85rem">
-        <input type="checkbox" id="mooring-enabled" style="width:1.25rem;height:1.25rem;margin-top:0.15rem;flex-shrink:0" />
-        <span>
-          <strong data-i18n="mooring.enable">เพิ่มระบบสมอยึดโยงในใบเสนอราคา</strong>
-          <span style="display:block;font-size:0.85rem;color:var(--gray-500);margin-top:0.2rem" data-i18n="mooring.enableHint">
-            ลูกค้ากรอกจำนวนชุดเอง — ราคา 7,009.35 บาท/ชุด (ก่อน VAT) (ปรับได้ในแอดมิน)
+      <p style="font-size:0.85rem;color:var(--gray-500);margin:0 0 0.75rem" data-i18n="mooring.intro">เลือกได้ 1 หรือ 2 แบบ — ติ๊กแบบที่ต้องการแล้วกรอกจำนวน (แต่ละแบบเป็นรายการแยกในใบเสนอราคา)</p>
+      <div class="mooring-option" style="margin-bottom:0.85rem">
+        <label class="gangway-toggle" style="display:flex;align-items:flex-start;gap:0.65rem;cursor:pointer">
+          <input type="checkbox" id="mooring-concrete-enabled" style="width:1.25rem;height:1.25rem;margin-top:0.15rem;flex-shrink:0" />
+          <span>
+            <strong data-i18n="mooring.concrete">สมอปูน น้ำหนัก &lt; 150 กิโลกรัม</strong>
+            <span id="mooring-concrete-hint" style="display:block;font-size:0.85rem;color:var(--gray-500);margin-top:0.2rem">ราคา 5,140.19 บาท/ลูก (ก่อน VAT) (ปรับได้ในแอดมิน)</span>
           </span>
-        </span>
-      </label>
-      <div id="mooring-controls" hidden>
-        <div class="gangway-field">
-          <div class="gangway-field-label" data-i18n="mooring.qty">จำนวนชุด</div>
-          <input type="number" id="mooring-qty" min="0" step="1" value="1" style="max-width:10rem;padding:0.5rem 0.65rem;font-size:1.05rem;border:1px solid var(--gray-300);border-radius:8px" />
-          <p style="font-size:0.8rem;color:var(--gray-500);margin-top:0.35rem" data-i18n="mooring.qtyHint">พิมพ์จำนวนที่ต้องการ (ไม่มีเพดานสูงสุด)</p>
+        </label>
+        <div id="mooring-concrete-controls" hidden style="margin-top:0.6rem;padding-left:0.25rem">
+          <div class="gangway-field">
+            <div class="gangway-field-label" data-i18n="mooring.concreteQty">จำนวน (ลูก)</div>
+            <input type="number" id="mooring-concrete-qty" min="0" step="1" value="1" style="max-width:10rem;padding:0.5rem 0.65rem;font-size:1.05rem;border:1px solid var(--gray-300);border-radius:8px" />
+            <p style="font-size:0.8rem;color:var(--gray-500);margin-top:0.35rem" data-i18n="mooring.qtyHint">พิมพ์จำนวนที่ต้องการ (ไม่มีเพดานสูงสุด)</p>
+          </div>
+          <p id="mooring-concrete-price" style="font-size:0.9rem;margin-top:0.5rem;color:var(--gray-600)">ราคาโดยประมาณ: —</p>
         </div>
-        <p id="mooring-price-hint" style="font-size:0.9rem;margin-top:0.85rem;color:var(--gray-600)">
-          ราคาโดยประมาณ: —
-        </p>
       </div>
+      <div class="mooring-option" style="margin-bottom:0.85rem">
+        <label class="gangway-toggle" style="display:flex;align-items:flex-start;gap:0.65rem;cursor:pointer">
+          <input type="checkbox" id="mooring-screw-enabled" style="width:1.25rem;height:1.25rem;margin-top:0.15rem;flex-shrink:0" />
+          <span>
+            <strong data-i18n="mooring.screw">สมอเหล็ก Ground Screw Pile (ขนาด 89 × 3,000 mm.)</strong>
+            <span id="mooring-screw-hint" style="display:block;font-size:0.85rem;color:var(--gray-500);margin-top:0.2rem">ราคา 5,981.31 บาท/ชิ้น (ก่อน VAT) (ปรับได้ในแอดมิน)</span>
+          </span>
+        </label>
+        <div id="mooring-screw-controls" hidden style="margin-top:0.6rem;padding-left:0.25rem">
+          <div class="gangway-field">
+            <div class="gangway-field-label" data-i18n="mooring.screwQty">จำนวน (ชิ้น)</div>
+            <input type="number" id="mooring-screw-qty" min="0" step="1" value="1" style="max-width:10rem;padding:0.5rem 0.65rem;font-size:1.05rem;border:1px solid var(--gray-300);border-radius:8px" />
+            <p style="font-size:0.8rem;color:var(--gray-500);margin-top:0.35rem" data-i18n="mooring.qtyHint">พิมพ์จำนวนที่ต้องการ (ไม่มีเพดานสูงสุด)</p>
+          </div>
+          <p id="mooring-screw-price" style="font-size:0.9rem;margin-top:0.5rem;color:var(--gray-600)">ราคาโดยประมาณ: —</p>
+        </div>
+      </div>
+      <p id="mooring-price-hint" style="font-size:0.9rem;margin-top:0.25rem;color:var(--gray-600);font-weight:600">
+        ราคาโดยประมาณ: —
+      </p>
     </section>
 
 
@@ -417,11 +436,11 @@
       <div class="stats-bar">
         <div class="stat">
           <div class="num" id="stat-fenders">0</div>
-          <div class="lbl" data-i18n="stats.fenders">กันชน (ชุด)</div>
+          <div class="lbl" data-i18n="stats.fenders">กันชน (ชิ้น)</div>
         </div>
         <div class="stat">
           <div class="num" id="stat-cleats">0</div>
-          <div class="lbl" data-i18n="stats.cleats">คลีต (ชุด)</div>
+          <div class="lbl" data-i18n="stats.cleats">คลีต (ชิ้น)</div>
         </div>
         <div class="stat">
           <div class="num" id="stat-lights">0</div>
@@ -558,25 +577,30 @@
           <span class="hint" data-i18n="admin.railHint">ค่าเริ่มต้น: 4,205.61 บาท/ชุด — แสดงเทียบต่อเมตรในหน้าหลัก</span>
         </div>
         <div class="admin-field">
-          <label for="price-fender" data-i18n="admin.fender">ราคาเฟนเดอร์กันชน / ชิ้น (บาท · ก่อน VAT)</label>
+          <label for="price-fender" data-i18n="admin.fender">ราคาเฟนเดอร์ EPDM / ชิ้น (บาท · ก่อน VAT)</label>
           <input type="number" id="price-fender" min="0" step="0.01" />
-          <span class="hint" data-i18n="admin.fenderHint">ค่าเริ่มต้น: 2,616.82 บาท — ตามจำนวนที่คลิกบนแผนผัง</span>
+          <span class="hint" data-i18n="admin.fenderHint">ค่าเริ่มต้น: 6,355.14 บาท/ชิ้น — ตามจำนวนที่คลิกบนแผนผัง</span>
         </div>
         <div class="admin-field">
-          <label for="price-cleat" data-i18n="admin.cleat">ราคาคลีต / ชิ้น (บาท · ก่อน VAT)</label>
+          <label for="price-cleat" data-i18n="admin.cleat">ราคาพุกผูกเรือสเตนเลส (คลีต) / ชิ้น (บาท · ก่อน VAT)</label>
           <input type="number" id="price-cleat" min="0" step="0.01" />
-          <span class="hint" data-i18n="admin.cleatHint">ค่าเริ่มต้น: 1,168.22 บาท — ตามจำนวนที่คลิกบนแผนผัง</span>
+          <span class="hint" data-i18n="admin.cleatHint">ค่าเริ่มต้น: 14,953.27 บาท/ชิ้น — ตามจำนวนที่คลิกบนแผนผัง</span>
         </div>
         <div class="admin-field">
-          <label for="price-light" data-i18n="admin.light">ราคาเสาไฟโซลาร์เซลล์ / ต้น (บาท · ก่อน VAT)</label>
+          <label for="price-light" data-i18n="admin.light">ราคาเสาไฟโซลาร์ (สูง &lt; 1.6 ม.) / ต้น (บาท · ก่อน VAT)</label>
           <input type="number" id="price-light" min="0" step="0.01" />
-          <span class="hint" data-i18n="admin.lightHint">ค่าเริ่มต้น: 4,205.61 บาท — ตามจำนวนที่คลิกบนแผนผัง</span>
+          <span class="hint" data-i18n="admin.lightHint">ค่าเริ่มต้น: 5,140.19 บาท/ต้น — ตามจำนวนที่คลิกบนแผนผัง</span>
         </div>
 
         <div class="admin-field">
-          <label for="price-mooring" data-i18n="admin.mooring">ราคาระบบสมอยึดโยง / ชุด (บาท · ก่อน VAT)</label>
-          <input type="number" id="price-mooring" min="0" step="0.01" />
-          <span class="hint" data-i18n="admin.mooringHint">ค่าเริ่มต้น: 7,009.35 บาท/ชุด — ตามจำนวนที่ลูกค้ากรอก</span>
+          <label for="price-mooring-concrete" data-i18n="admin.mooringConcrete">ราคาสมอปูน (&lt; 150 กก.) / ลูก (บาท · ก่อน VAT)</label>
+          <input type="number" id="price-mooring-concrete" min="0" step="0.01" />
+          <span class="hint" data-i18n="admin.mooringConcreteHint">ค่าเริ่มต้น: 5,140.19 บาท/ลูก — ตามจำนวนที่ลูกค้ากรอก</span>
+        </div>
+        <div class="admin-field">
+          <label for="price-mooring-screw" data-i18n="admin.mooringScrew">ราคาสมอเหล็ก Ground Screw Pile (89 × 3,000 mm.) / ชิ้น (บาท · ก่อน VAT)</label>
+          <input type="number" id="price-mooring-screw" min="0" step="0.01" />
+          <span class="hint" data-i18n="admin.mooringScrewHint">ค่าเริ่มต้น: 5,981.31 บาท/ชิ้น — ตามจำนวนที่ลูกค้ากรอก</span>
         </div>
         <button type="button" class="btn btn-secondary" id="btn-reset-prices" style="max-width:220px" data-i18n="admin.reset">
           รีเซ็ตราคาเริ่มต้น
@@ -604,6 +628,6 @@
   <!-- Print-only quote -->
   <div id="print-quote" class="print-only" aria-hidden="true"></div>
 
-  <script src="app.js?v=t24"></script>
+  <script src="app.js?v=t27"></script>
 </body>
 </html>

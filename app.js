@@ -18,10 +18,11 @@
     floatPrice: 16822.43, // pre-VAT (18,000 incl. VAT)
     hdpePrice: 7009.35, // pre-VAT (7,500 incl. VAT)
     railingPrice: 4205.61, // pre-VAT (4,500 incl. VAT)
-    fenderPrice: 2616.82, // pre-VAT (2,800 incl. VAT); // กันชน / เฟนเดอร์
-    cleatPrice: 1168.22, // pre-VAT (1,250 incl. VAT); // คลีตสแตนเลส
-    lightPrice: 4205.61, // pre-VAT (4,500 incl. VAT); // เสาไฟโซลาร์เซลล์ — single hook for unit price
-    mooringPrice: 7009.35, // pre-VAT (7,500 incl. VAT); // ระบบสมอยึดโยง — THB per set
+    fenderPrice: 6355.14, // pre-VAT (6,800 incl. VAT); // Fender EPDM — THB per piece
+    cleatPrice: 14953.27, // pre-VAT (16,000 incl. VAT); // พุกผูกเรือสเตนเลส (Cleat Stainless steel) — THB per piece
+    lightPrice: 5140.19, // pre-VAT (5,500 incl. VAT); // เสาไฟโซลาร์สูง < 1.6 ม. (เสา HDPE) — THB per pole
+    mooringConcretePrice: 5140.19, // pre-VAT (5,500 incl. VAT); // สมอปูน น้ำหนัก < 150 กก. — THB per ลูก
+    mooringScrewPrice: 5981.31, // pre-VAT (6,400 incl. VAT); // สมอเหล็ก Ground Screw Pile 89 × 3,000 mm — THB per ชิ้น
   };
 
   var HEADER_LOGO_DATA = "data:image/jpeg;base64,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NfLKrUFlbSOK+7bVxj+ac7SGK+7rVxj+afcYy2uF7FMmvllVoCzNpDFXd9p4x/NG0firvhafXfzRjGW1wvYpszqFVmCzdo/FPfG0+vJzRtHYp75Wn15OaMYy2uF6FNmdQqsgWbtHYp75Wn15Oac7R2KO+dp9eTmjGUtrhfcWzOoVWILO2jsUd87T68nNG0bifvnafWk5oxlLa4TFszqFViCz9o3E/fS0+tJzRtG4m762n1pOaMZSuuExbM6hVYAs/aNxN31tPrSc052jMS99rV6ZOafMZSuuExbNahVXgtDaMxL32tXpk5oXI3EvYutpXzyc0YyldcJi2a1CqvHiTXwFobRuJe+tp9MnNO7aMk7vS36jqbjcrdLSxTNkljj2eyc1F10TVNN3Q+OqcsBfhhfW0yZJuwFZ+C7P8xYDtltVqJIyFHSeW7pne1T3gClxHl7i85yrpDYGNDBmCAA8L2gACKG5oWf54y1rkYzZTUulVH42b/8AarjM5seaKOenfDK1HMe1WuavZRU0UoybIy/fKJOgXa2JFsl2CO6JrsddzXc39CwUeehwmOhxXXZbwq/WJGJFe2JCbf1qqzUGXN6+fMubfUPfspoWfJpfKZue1NF85WG0ZiTvvav8nNJ/lxg294NhrqW411HU01Q5skbYFdqx6Jou+ib6aegy1WYl5iD+B4JBWKlS8xLxvxsIBCnQAK0rKgACIAAiAAIgACIAAiAAIgACIAAiAAIgACIAAiAAL4gACBAAF9QABEAARAAEQABEAARAAEQABEAARAAEQABEAARAAEQABEAARAAEQABEAARAAEQABEAARAAEQABEAARAAEQABEAARAAEQABEAARAAEX/2Q==";
@@ -114,12 +115,12 @@
       "accessory.clearFenders": "ล้างกันชน",
       "accessory.clearCleats": "ล้างคลีต",
       "accessory.clearLights": "ล้างเสาไฟโซลาร์เซลล์",
-      "stats.fenders": "กันชน (ชุด)",
-      "stats.cleats": "คลีต (ชุด)",
+      "stats.fenders": "กันชน (ชิ้น)",
+      "stats.cleats": "คลีต (ชิ้น)",
       "stats.lights": "เสาไฟโซลาร์เซลล์",
-      "quote.fenderItem": "เฟนเดอร์ / กันชน",
-      "quote.cleatItem": "คลีตสแตนเลส",
-      "quote.lightItem": "เสาไฟโซลาร์เซลล์",
+      "quote.fenderItem": "เฟนเดอร์ / กันชน EPDM (Fender EPDM)",
+      "quote.cleatItem": "พุกผูกเรือสเตนเลส (Cleat Stainless steel)",
+      "quote.lightItem": "เสาไฟโซลาร์สูง < 1.6 ม. (เสา HDPE)",
       "cap.label": "ความสามารถรับน้ำหนักโดยประมาณ",
       "cap.total": "รวม",
       "cap.perM2": "{0} กก./ตร.ม.  ({1} ÷ {2} ตร.ม. · {3} ชั้น)",
@@ -135,17 +136,23 @@
       "rail.perM": "ราวจับ ≈ {0}/ม. (คิดเป็นชุดละ 1.2 ม. · {1} ช่วง)",
       "gangway.heading": "แกงเวย์ (ตัวเลือกเสริม)",
       "mooring.heading": "ระบบสมอยึดโยง (ตัวเลือกเสริม)",
-      "mooring.enable": "เพิ่มระบบสมอยึดโยงในใบเสนอราคา",
-      "mooring.enableHint": "ลูกค้ากรอกจำนวนชุดเอง — ราคา 7,009.35 บาท/ชุด (ก่อน VAT) (ปรับได้ในแอดมิน)",
-      "mooring.qty": "จำนวนชุด",
+      "mooring.intro": "เลือกได้ 1 หรือ 2 แบบ — ติ๊กแบบที่ต้องการแล้วกรอกจำนวน (แต่ละแบบเป็นรายการแยกในใบเสนอราคา)",
+      "mooring.concrete": "สมอปูน น้ำหนัก < 150 กิโลกรัม",
+      "mooring.concreteHint": "ราคา {0} บาท/ลูก (ก่อน VAT) (ปรับได้ในแอดมิน)",
+      "mooring.concreteQty": "จำนวน (ลูก)",
+      "mooring.screw": "สมอเหล็ก Ground Screw Pile (ขนาด 89 × 3,000 mm.)",
+      "mooring.screwHint": "ราคา {0} บาท/ชิ้น (ก่อน VAT) (ปรับได้ในแอดมิน)",
+      "mooring.screwQty": "จำนวน (ชิ้น)",
       "mooring.qtyHint": "พิมพ์จำนวนที่ต้องการ (ไม่มีเพดานสูงสุด)",
-      "mooring.priceOn": "ราคาโดยประมาณ: {0} ({1} บาท/ชุด × {2} ชุด)",
-      "mooring.priceOff": "ราคาโดยประมาณ: — (ติ๊กเพื่อเพิ่มในใบเสนอราคา)",
-      "quote.mooringItem": "ระบบสมอยึดโยง (ตัวเลือกเสริม)",
-      "admin.mooring": "ราคาระบบสมอยึดโยง / ชุด (บาท · ก่อน VAT)",
-      "admin.mooringHint": "ค่าเริ่มต้น: 7,009.35 บาท/ชุด — ตามจำนวนที่ลูกค้ากรอก",
-      "print.mooringTitle": "ระบบสมอยึดโยง",
-      "print.mooringDesc": "ระบบสมอยึดโยง (ตัวเลือกเสริม) · ตามจำนวนชุดที่เลือกในระบบ",
+      "mooring.linePrice": "ราคาโดยประมาณ: {0} ({1} บาท/{3} × {2} {3})",
+      "mooring.priceOn": "ราคาโดยประมาณ (รวมสมอ): {0}",
+      "mooring.priceOff": "ราคาโดยประมาณ: — (ติ๊กเลือกแบบสมอและกรอกจำนวนเพื่อเพิ่มในใบเสนอราคา)",
+      "quote.mooringConcreteItem": "สมอปูน น้ำหนัก < 150 กิโลกรัม",
+      "quote.mooringScrewItem": "สมอเหล็ก Ground Screw Pile (ขนาด 89 × 3,000 mm.)",
+      "admin.mooringConcrete": "ราคาสมอปูน (< 150 กก.) / ลูก (บาท · ก่อน VAT)",
+      "admin.mooringConcreteHint": "ค่าเริ่มต้น: 5,140.19 บาท/ลูก — ตามจำนวนที่ลูกค้ากรอก",
+      "admin.mooringScrew": "ราคาสมอเหล็ก Ground Screw Pile (89 × 3,000 mm.) / ชิ้น (บาท · ก่อน VAT)",
+      "admin.mooringScrewHint": "ค่าเริ่มต้น: 5,981.31 บาท/ชิ้น — ตามจำนวนที่ลูกค้ากรอก",
 
       "gangway.enable": "เพิ่มแกงเวย์ในใบเสนอราคา",
       "gangway.enableHint": "ไม่แสดงบนแผนผังมุมสูง — คิดราคาเป็นรายการแยกในใบเสนอราคาเท่านั้น",
@@ -190,12 +197,12 @@
       "admin.hdpeHint": "ค่าเริ่มต้น: 7,009.35 บาท — 1 ชุดต่อ 1 ทุ่นชั้นบน",
       "admin.rail": "ราคาราวจับกันตก / ชุด 1.2 ม. (บาท · ก่อน VAT)",
       "admin.railHint": "ค่าเริ่มต้น: 4,205.61 บาท/ชุด — แสดงเทียบต่อเมตรในหน้าหลัก",
-            "admin.fender": "ราคาเฟนเดอร์กันชน / ชิ้น (บาท · ก่อน VAT)",
-      "admin.fenderHint": "ค่าเริ่มต้น: 2,616.82 บาท — ตามจำนวนที่คลิกบนแผนผัง",
-      "admin.cleat": "ราคาคลีต / ชิ้น (บาท · ก่อน VAT)",
-      "admin.cleatHint": "ค่าเริ่มต้น: 1,168.22 บาท — ตามจำนวนที่คลิกบนแผนผัง",
-      "admin.light": "ราคาเสาไฟโซลาร์เซลล์ / ต้น (บาท · ก่อน VAT)",
-      "admin.lightHint": "ค่าเริ่มต้น: 4,205.61 บาท — ตามจำนวนที่คลิกบนแผนผัง",
+            "admin.fender": "ราคาเฟนเดอร์ EPDM / ชิ้น (บาท · ก่อน VAT)",
+      "admin.fenderHint": "ค่าเริ่มต้น: 6,355.14 บาท/ชิ้น — ตามจำนวนที่คลิกบนแผนผัง",
+      "admin.cleat": "ราคาพุกผูกเรือสเตนเลส (คลีต) / ชิ้น (บาท · ก่อน VAT)",
+      "admin.cleatHint": "ค่าเริ่มต้น: 14,953.27 บาท/ชิ้น — ตามจำนวนที่คลิกบนแผนผัง",
+      "admin.light": "ราคาเสาไฟโซลาร์ (สูง < 1.6 ม.) / ต้น (บาท · ก่อน VAT)",
+      "admin.lightHint": "ค่าเริ่มต้น: 5,140.19 บาท/ต้น — ตามจำนวนที่คลิกบนแผนผัง",
       "admin.reset": "รีเซ็ตราคาเริ่มต้น",
       "admin.saved": "ราคาถูกบันทึกในเบราว์เซอร์ (localStorage) อัตโนมัติ",
       "footer": "บริษัท โฟลทิลลา เทคโนโลยี จำกัด · Floating Pier Configurator",
@@ -237,6 +244,9 @@
       "print.col.total": "รวม",
       "print.unit.sets": "ชุด",
       "print.unit.meters": "เมตร",
+      "print.unit.pole": "ต้น",
+      "print.unit.piece": "ชิ้น",
+      "print.unit.anchorBall": "ลูก",
       "print.tbd": "TBD",
       "print.anchorTitle": "สมอ (Anchor) — ระบุภายหลัง",
       "print.ropeTitle": "เชือกยักษ์ (Giant Rope) — ตามที่ลูกค้าเลือก",
@@ -281,14 +291,42 @@
       "quote.sub": "รวมก่อน VAT",
       "quote.vat": "VAT 7%",
       "quote.discount": "ส่วนลดก่อน VAT {0}%",
-      "quote.manualNote": "⚠ รายการในใบเสนอราคาถูกแก้ไขเอง (ไม่ตามแผนผัง) — ตั้งค่าได้ที่แอดมิน “รายการในใบเสนอราคา”",
+      "quote.manualNote": "⚠ รายการในใบเสนอราคาถูกแก้ไขเอง — รายการจากแผนผัง (ทุ่น ราวจับ แกงเวย์ สมอ ฯลฯ) ยังอัปเดตจำนวนตามแผนผังอัตโนมัติ ส่วนรายการที่เพิ่มเองไม่เปลี่ยน — ตั้งค่าได้ที่แอดมิน “รายการในใบเสนอราคา”",
       "admin.qr.title": "รายการในใบเสนอราคา (แก้ไขเอง)",
       "admin.qr.intro": "ค่าเริ่มต้นเป็นรายการอัตโนมัติ (คำนวณจากแผนผังและราคาด้านบน) กด “แก้ไขรายการเอง” เพื่อคัดลอกรายการปัจจุบันมาแก้ชื่อรายการ จำนวน หน่วย และราคา ด้วยการพิมพ์เอง",
       "admin.qr.autoBadge": "โหมดอัตโนมัติ — รายการเปลี่ยนตามแผนผังและราคาด้านบน",
-      "admin.qr.manualBadge": "⚠ โหมดแก้ไขเอง — รายการจะไม่เปลี่ยนตามแผนผังอีกต่อไป จนกว่าจะกด “รีเซ็ตกลับเป็นรายการอัตโนมัติ”",
+      "admin.qr.manualBadge": "⚠ โหมดแก้ไขเอง — รายการจากแผนผัง (ทุ่น ราวจับ แกงเวย์ สมอ ฯลฯ) ยังตามแผนผังอยู่: จำนวนอัปเดตอัตโนมัติ ติ๊ก/ยกเลิกแล้วรายการเพิ่ม/หายเอง (ชื่อ หน่วย ราคา ที่แก้เองจะคงไว้) · รายการที่เพิ่มเอง (+ เพิ่มแถว / รายการสำเร็จรูป) ไม่เปลี่ยนตามแผนผัง · กด “รีเซ็ตกลับเป็นรายการอัตโนมัติ” เพื่อล้างการแก้ไขทั้งหมด",
       "admin.qr.btnEdit": "แก้ไขรายการเอง",
       "admin.qr.btnReset": "รีเซ็ตกลับเป็นรายการอัตโนมัติ",
       "admin.qr.btnAdd": "+ เพิ่มแถว",
+      "admin.qr.keyedTip": "รายการจากแผนผัง — จำนวนอัปเดตตามแผนผังอัตโนมัติ",
+      "admin.qr.presetLabel": "เพิ่มรายการสำเร็จรูป",
+      "admin.qr.presetPick": "— เลือกรายการสำเร็จรูป —",
+      "admin.qr.btnPreset": "+ เพิ่มรายการที่เลือก",
+      "admin.qr.presetOpt": "{0} · {1} บาท/{2} (ก่อน VAT)",
+      "preset.guidePole.name": "เสาไกด์ 2 นิ้ว",
+      "preset.guidePole.desc": "เสาไกด์ ขนาด 2 นิ้ว ยาว X เมตร",
+      "preset.guidePole.unit": "เสา",
+      "preset.rope.name": "เชือกใยยักษ์ (OD < 12 mm)",
+      "preset.rope.desc": "เชือกใยยักษ์ (OD < 12 mm)",
+      "preset.rope.unit": "เมตร",
+      "preset.lifebuoy.name": "พวงชูชีพ",
+      "preset.lifebuoy.desc": "พวงชูชีพ",
+      "preset.lifebuoy.unit": "พวง",
+      "preset.spudPile.name": "เสาสปัด Pipe Steel 6 นิ้ว",
+      "preset.spudPile.desc": "เสาสปัด Pipe Steel ขนาด 6 นิ้ว ยาว X เมตร",
+      "preset.spudPile.unit": "เสา",
+      "preset.guideConnector.name": "ข้อต่อเสาไกด์",
+      "preset.guideConnector.desc": "ข้อต่อเสาไกด์",
+      "preset.guideConnector.unit": "ชุด",
+      "preset.rollerSet.name": "ชุดล้อเหล็กพร้อมรางและแผ่นรอง",
+      "preset.rollerSet.desc": "ชุดล้อเหล็กพร้อมรางและแผ่นรอง",
+      "preset.rollerSet.unit": "ชุด",
+      "preset.spudDriving.name": "ค่าตอกเสาสปัด*",
+      "preset.spudDriving.desc": "ค่าตอกเสาสปัด*",
+      "preset.spudDriving.unit": "เสา",
+      "print.noteLabel": "หมายเหตุ:",
+      "print.noteText": "งานติดตั้งทุกรายการต้องสำรวจและประเมินสภาพหน้างานก่อนเสนอราคาและยืนยันเงื่อนไขการติดตั้ง",
       "admin.qr.confirmReset": "รีเซ็ตกลับเป็นรายการอัตโนมัติ? รายการที่แก้ไขเองจะหายไป",
       "admin.qr.col.no": "ลำดับ",
       "admin.qr.col.desc": "รายการ",
@@ -413,12 +451,12 @@
       "accessory.clearFenders": "Clear fenders",
       "accessory.clearCleats": "Clear cleats",
       "accessory.clearLights": "Clear solar lights",
-      "stats.fenders": "Fenders (sets)",
-      "stats.cleats": "Cleats (sets)",
+      "stats.fenders": "Fenders (pcs)",
+      "stats.cleats": "Cleats (pcs)",
       "stats.lights": "Solar light poles",
-      "quote.fenderItem": "Fender / bumper",
-      "quote.cleatItem": "Stainless cleat",
-      "quote.lightItem": "Solar cell light pole",
+      "quote.fenderItem": "EPDM fender",
+      "quote.cleatItem": "Stainless steel mooring cleat",
+      "quote.lightItem": "Solar light pole, height < 1.6 m (HDPE pole)",
       "cap.label": "Estimated load capacity",
       "cap.total": "total",
       "cap.perM2": "{0} kg/m²  ({1} ÷ {2} m² · {3} layer(s))",
@@ -434,17 +472,23 @@
       "rail.perM": "Railing ≈ {0}/m (priced per 1.2 m set · {1} spans)",
       "gangway.heading": "Gangway (optional add-on)",
       "mooring.heading": "Anchor mooring system (optional add-on)",
-      "mooring.enable": "Add anchor mooring system to quote",
-      "mooring.enableHint": "Customer enters quantity — 7,009.35 THB per set (excl. VAT) (editable in admin)",
-      "mooring.qty": "Quantity (sets)",
-      "mooring.qtyHint": "Type how many sets you need (no maximum)",
-      "mooring.priceOn": "Est. price: {0} ({1} THB/set × {2} set(s))",
-      "mooring.priceOff": "Est. price: — (check to add to quote)",
-      "quote.mooringItem": "Anchor mooring system (optional)",
-      "admin.mooring": "Anchor mooring system price / set (THB, excl. VAT)",
-      "admin.mooringHint": "Default: 7,009.35 THB/set — from customer quantity",
-      "print.mooringTitle": "Anchor mooring system",
-      "print.mooringDesc": "Optional anchor mooring system · per quantity selected in the configurator",
+      "mooring.intro": "Choose one or both types — tick a type and enter the quantity (each type is a separate quote line)",
+      "mooring.concrete": "Concrete anchor, weight < 150 kg",
+      "mooring.concreteHint": "{0} THB per pc (excl. VAT) (editable in admin)",
+      "mooring.concreteQty": "Quantity (pcs)",
+      "mooring.screw": "Steel Ground Screw Pile anchor (89 × 3,000 mm)",
+      "mooring.screwHint": "{0} THB per pc (excl. VAT) (editable in admin)",
+      "mooring.screwQty": "Quantity (pcs)",
+      "mooring.qtyHint": "Type how many you need (no maximum)",
+      "mooring.linePrice": "Est. price: {0} ({1} THB/{3} × {2} {3})",
+      "mooring.priceOn": "Est. price (anchors total): {0}",
+      "mooring.priceOff": "Est. price: — (tick an anchor type and enter a quantity to add it to the quote)",
+      "quote.mooringConcreteItem": "Concrete anchor, weight < 150 kg",
+      "quote.mooringScrewItem": "Steel Ground Screw Pile anchor (89 × 3,000 mm)",
+      "admin.mooringConcrete": "Concrete anchor (< 150 kg) price / pc (THB, excl. VAT)",
+      "admin.mooringConcreteHint": "Default: 5,140.19 THB/pc — from customer quantity",
+      "admin.mooringScrew": "Ground Screw Pile anchor (89 × 3,000 mm) price / pc (THB, excl. VAT)",
+      "admin.mooringScrewHint": "Default: 5,981.31 THB/pc — from customer quantity",
 
       "gangway.enable": "Add gangway to quote",
       "gangway.enableHint": "Not shown on the plan — priced as a separate quote line only",
@@ -489,12 +533,12 @@
       "admin.hdpeHint": "Default: 7,009.35 THB — 1 set per top float",
       "admin.rail": "Railing price / 1.2 m set (THB, excl. VAT)",
       "admin.railHint": "Default: 4,205.61 THB/set — shown per meter on the main page",
-      "admin.fender": "Fender / bumper price / pc (THB, excl. VAT)",
-      "admin.fenderHint": "Default: 2,616.82 THB — from plan clicks",
-      "admin.cleat": "Cleat price / pc (THB, excl. VAT)",
-      "admin.cleatHint": "Default: 1,168.22 THB — from plan clicks",
-      "admin.light": "Solar light pole price / pc (THB, excl. VAT)",
-      "admin.lightHint": "Default: 4,205.61 THB — from plan clicks",
+      "admin.fender": "EPDM fender price / pc (THB, excl. VAT)",
+      "admin.fenderHint": "Default: 6,355.14 THB/pc — from plan clicks",
+      "admin.cleat": "Stainless steel cleat price / pc (THB, excl. VAT)",
+      "admin.cleatHint": "Default: 14,953.27 THB/pc — from plan clicks",
+      "admin.light": "Solar light pole (< 1.6 m) price / pole (THB, excl. VAT)",
+      "admin.lightHint": "Default: 5,140.19 THB/pole — from plan clicks",
       "admin.reset": "Reset to defaults",
       "admin.saved": "Prices are saved in the browser (localStorage) automatically",
       "footer": "Flotilla Technology Co., Ltd. · Floating Pier Configurator",
@@ -536,6 +580,9 @@
       "print.col.total": "Total",
       "print.unit.sets": "Sets",
       "print.unit.meters": "Meters",
+      "print.unit.pole": "Pole",
+      "print.unit.piece": "Pc",
+      "print.unit.anchorBall": "Pc",
       "print.tbd": "TBD",
       "print.anchorTitle": "Anchor — to be specified later",
       "print.ropeTitle": "Giant Rope — per customer selection",
@@ -580,14 +627,42 @@
       "quote.sub": "Subtotal",
       "quote.vat": "VAT 7%",
       "quote.discount": "Discount before VAT {0}%",
-      "quote.manualNote": "⚠ Quote rows were edited manually (not following the plan) — manage them in Admin “Quote items”",
+      "quote.manualNote": "⚠ Quote rows were edited manually — configurator items (floats, railing, gangway, anchors, …) still follow the plan and their quantities update automatically; custom rows do not — manage them in Admin “Quote items”",
       "admin.qr.title": "Quote items (manual edit)",
       "admin.qr.intro": "Rows are automatic by default (from the plan and the prices above). Press “Edit items manually” to copy the current rows and type your own descriptions, quantities, units and prices.",
       "admin.qr.autoBadge": "Automatic mode — rows follow the plan and the prices above",
-      "admin.qr.manualBadge": "⚠ Manual mode — rows no longer follow the plan until you press “Reset to automatic items”",
+      "admin.qr.manualBadge": "⚠ Manual mode — configurator items (floats, railing, gangway, anchors, …) still follow the plan: quantities update automatically and rows appear/disappear when ticked/unticked (your edited description, unit and price are kept) · custom rows (+ Add row / presets) do not follow the plan · press “Reset to automatic items” to discard all edits",
       "admin.qr.btnEdit": "Edit items manually",
       "admin.qr.btnReset": "Reset to automatic items",
       "admin.qr.btnAdd": "+ Add row",
+      "admin.qr.keyedTip": "Configurator item — quantity follows the plan automatically",
+      "admin.qr.presetLabel": "Add preset item",
+      "admin.qr.presetPick": "— Choose a preset item —",
+      "admin.qr.btnPreset": "+ Add selected item",
+      "admin.qr.presetOpt": "{0} · {1} THB/{2} (excl. VAT)",
+      "preset.guidePole.name": "Guide pole, 2 inch",
+      "preset.guidePole.desc": "Guide pole, 2 inch, length X m",
+      "preset.guidePole.unit": "Pole",
+      "preset.rope.name": "Giant fibre rope (OD < 12 mm)",
+      "preset.rope.desc": "Giant fibre rope (OD < 12 mm)",
+      "preset.rope.unit": "Meters",
+      "preset.lifebuoy.name": "Life buoy ring",
+      "preset.lifebuoy.desc": "Life buoy ring",
+      "preset.lifebuoy.unit": "Pc",
+      "preset.spudPile.name": "Spud pile, steel pipe 6 inch",
+      "preset.spudPile.desc": "Spud pile, steel pipe 6 inch, length X m",
+      "preset.spudPile.unit": "Pole",
+      "preset.guideConnector.name": "Guide pole connector",
+      "preset.guideConnector.desc": "Guide pole connector",
+      "preset.guideConnector.unit": "Sets",
+      "preset.rollerSet.name": "Steel roller set with rail and base plate",
+      "preset.rollerSet.desc": "Steel roller set with rail and base plate",
+      "preset.rollerSet.unit": "Sets",
+      "preset.spudDriving.name": "Spud pile driving*",
+      "preset.spudDriving.desc": "Spud pile driving*",
+      "preset.spudDriving.unit": "Pole",
+      "print.noteLabel": "Note:",
+      "print.noteText": "All installation work requires a site survey and assessment before quoting and confirming installation conditions.",
       "admin.qr.confirmReset": "Reset to automatic items? Your manual rows will be lost.",
       "admin.qr.col.no": "No.",
       "admin.qr.col.desc": "Description",
@@ -715,7 +790,8 @@
     accessoryMode: "fender", // fender | cleat | light
     prices: loadPrices(),
     quoteManual: false, // true = quote rows are typed manually (state.quoteRows)
-    quoteRows: [], // [{desc, qty, unit, price}] strings
+    quoteRows: [], // [{desc, qty, unit, price, key?, edited?, qtyBase?}] — key = configurator item (follows the plan), no key = custom row
+    quoteSuppressed: [], // configurator keys the admin deleted with ✕ in manual mode (stay hidden until reset)
     quoteInfo: {}, // admin-typed customer / staff / terms
     activePreset: "6x2",
     _railCols: 0,
@@ -730,7 +806,11 @@
     u: { aCols: 2, aRows: 4, bCols: 8, bRows: 2, cCols: 2, cRows: 4 },
     // Gangway add-on (quote only — never drawn on plan)
     gangway: { enabled: false, width: 1.2, length: 3, qty: 1, sectionA: true, sectionB: false, sectionC: false },
-    mooring: { enabled: false, qty: 1 },
+    // Mooring anchors (quote only) — two independent types, each its own quote line
+    mooring: {
+      concrete: { enabled: false, qty: 1 }, // สมอปูน < 150 กก. (ลูก)
+      screw: { enabled: false, qty: 1 }, // สมอเหล็ก Ground Screw Pile 89 × 3,000 mm (ชิ้น)
+    },
   };
 
   // ---- Quote rows (auto / manual), totals, baht text ----
@@ -771,32 +851,172 @@
   function getAutoRows(c, includeTbd) {
     var rows = [];
     var sets = t("print.unit.sets");
-    function add(desc, qty, unit, price) {
-      rows.push(vatRow(desc, qty, unit, price));
+    // Every auto row carries a stable key so manual-mode rows can keep following the configurator.
+    function add(key, desc, qty, unit, price) {
+      var r = vatRow(desc, qty, unit, price);
+      r.key = key;
+      rows.push(r);
     }
-    add(t("quote.floatItem", c.layers), c.floats, sets, state.prices.floatPrice);
-    add(t("quote.hdpeItem"), c.topFloats, sets, state.prices.hdpePrice);
-    add(t("quote.railItem"), c.railSegs, sets, state.prices.railingPrice);
+    add("float", t("quote.floatItem", c.layers), c.floats, sets, state.prices.floatPrice);
+    add("hdpe", t("quote.hdpeItem"), c.topFloats, sets, state.prices.hdpePrice);
+    add("rail", t("quote.railItem"), c.railSegs, sets, state.prices.railingPrice);
     if (c.gangwayEnabled) {
       var gwSec = c.gangwaySectionsLabel ? t("gangway.secDot", c.gangwaySectionsLabel) : "";
       add(
+        "gangway",
         t("quote.gangwayItem", Number(c.gangwayWidth).toFixed(1), Number(c.gangwayLength).toFixed(0), gwSec),
         c.gangwayQty * c.gangwaySecCount,
         sets,
         c.gangwayUnitCost
       );
     }
-    add(t("quote.fenderItem"), c.fenderSegs, sets, state.prices.fenderPrice);
-    add(t("quote.cleatItem"), c.cleatCount, sets, state.prices.cleatPrice);
-    add(t("quote.lightItem"), c.lightCount, sets, state.prices.lightPrice);
-    if (c.mooringEnabled) {
-      add(t("quote.mooringItem"), c.mooringQty, sets, state.prices.mooringPrice);
+    var pcs = t("print.unit.piece");
+    add("fender", t("quote.fenderItem"), c.fenderSegs, pcs, state.prices.fenderPrice);
+    add("cleat", t("quote.cleatItem"), c.cleatCount, pcs, state.prices.cleatPrice);
+    add("light", t("quote.lightItem"), c.lightCount, t("print.unit.pole"), state.prices.lightPrice);
+    // Mooring anchors: each chosen type (ticked, qty > 0) is its own line
+    if (c.mooringConcreteQty > 0) {
+      add("mooringConcrete", t("quote.mooringConcreteItem"), c.mooringConcreteQty, t("print.unit.anchorBall"), c.mooringConcreteUnitCost);
+    }
+    if (c.mooringScrewQty > 0) {
+      add("mooringScrew", t("quote.mooringScrewItem"), c.mooringScrewQty, pcs, c.mooringScrewUnitCost);
     }
     if (includeTbd) {
-      rows.push({ desc: t("print.anchorTitle"), qty: null, unit: sets, price: null, tbd: true });
-      rows.push({ desc: t("print.ropeTitle"), qty: null, unit: t("print.unit.meters"), price: null, tbd: true });
+      // Placeholder only while no real anchor line has been chosen
+      if (!(c.mooringConcreteQty > 0) && !(c.mooringScrewQty > 0)) {
+        rows.push({ key: "anchorTBD", desc: t("print.anchorTitle"), qty: null, unit: sets, price: null, tbd: true });
+      }
+      rows.push({ key: "rope", desc: t("print.ropeTitle"), qty: null, unit: t("print.unit.meters"), price: null, tbd: true });
     }
     return rows;
+  }
+
+  // ---- Manual mode: configurator rows keep following the plan ----
+  function strOrEmpty(v) {
+    return v == null ? "" : String(v);
+  }
+
+  // Auto row -> editable manual row (strings), keeping the configurator key
+  function autoToManualRow(r) {
+    var pp = r.postPrice != null ? r.postPrice : r.price;
+    var m = { desc: r.desc, qty: strOrEmpty(r.qty), unit: r.unit, price: strOrEmpty(pp) };
+    if (r.key) m.key = r.key;
+    return m;
+  }
+
+  // Auto descriptions in both languages (to recognise rows saved before keys existed)
+  function autoRowsInLang(c, lang) {
+    var keep = currentLang;
+    currentLang = lang;
+    try {
+      return getAutoRows(c, true);
+    } finally {
+      currentLang = keep;
+    }
+  }
+
+  // Rows saved as v:2 had no keys: a row whose description equals a current auto description
+  // (Thai or English) becomes that configurator row; anything else stays a custom row.
+  function adoptLegacyRows(c) {
+    var legacy = state.quoteRows.filter(function (r) { return r._legacy; });
+    if (!legacy.length) return false;
+    var byDesc = {};
+    var autoByKey = {};
+    ["th", "en"].forEach(function (lang) {
+      autoRowsInLang(c, lang).forEach(function (a) {
+        if (!byDesc.hasOwnProperty(a.desc.trim())) byDesc[a.desc.trim()] = a.key;
+      });
+    });
+    getAutoRows(c, true).forEach(function (a) { autoByKey[a.key] = a; });
+    var used = {};
+    state.quoteRows.forEach(function (r) {
+      if (r.key) used[r.key] = true;
+    });
+    state.quoteRows.forEach(function (r) {
+      if (!r._legacy) return;
+      delete r._legacy;
+      var k = byDesc[String(r.desc || "").trim()];
+      if (!k || used[k]) return; // custom row (or duplicate)
+      used[k] = true;
+      r.key = k;
+      var a = autoByKey[k];
+      // Only values that differ from the current auto row count as admin edits
+      var ed = {};
+      if (a) {
+        if (String(r.unit || "").trim() !== String(a.unit || "").trim()) ed.unit = true;
+        if (strOrEmpty(r.price).trim() !== strOrEmpty(a.postPrice != null ? a.postPrice : a.price)) {
+          if (toNum(r.price) !== toNum(a.price)) ed.price = true;
+        }
+      }
+      if (ed.unit || ed.price) r.edited = ed;
+    });
+    return true;
+  }
+
+  // Bring keyed manual rows in line with the configurator. Returns true if anything changed.
+  //  - qty always follows the plan (an admin-typed qty is kept only until the plan qty changes)
+  //  - description / unit / price follow the plan unless the admin edited that field (row.edited)
+  //  - new configurator items are inserted after the preceding configurator row; unticked ones removed
+  //  - custom rows (no key) are never touched; keys deleted with ✕ stay suppressed until reset
+  function syncManualRows(c) {
+    if (!state.quoteManual) return false;
+    var before = JSON.stringify(state.quoteRows);
+    adoptLegacyRows(c);
+    var auto = getAutoRows(c, true);
+    var suppressed = {};
+    (state.quoteSuppressed || []).forEach(function (k) { suppressed[k] = true; });
+    var autoByKey = {};
+    auto.forEach(function (a) { autoByKey[a.key] = a; });
+
+    // 1) update / remove existing keyed rows
+    var seen = {};
+    state.quoteRows = state.quoteRows.filter(function (r) {
+      if (!r.key) return true;
+      var a = autoByKey[r.key];
+      if (!a || suppressed[r.key] || seen[r.key]) return false;
+      seen[r.key] = true;
+      var m = autoToManualRow(a);
+      var ed = r.edited || {};
+      if (r.qtyBase !== undefined) {
+        if (strOrEmpty(r.qtyBase) !== m.qty) {
+          r.qty = m.qty; // plan changed -> follow it again
+          delete r.qtyBase;
+        }
+      } else {
+        r.qty = m.qty;
+      }
+      if (!ed.desc) r.desc = m.desc;
+      if (!ed.unit) r.unit = m.unit;
+      if (!ed.price) r.price = m.price;
+      return true;
+    });
+
+    // 2) insert configurator rows that are missing
+    auto.forEach(function (a, ai) {
+      if (seen[a.key] || suppressed[a.key]) return;
+      var pos = -1;
+      var j, idx;
+      for (j = ai - 1; j >= 0 && pos < 0; j--) {
+        idx = indexOfKey(auto[j].key);
+        if (idx >= 0) pos = idx + 1;
+      }
+      for (j = ai + 1; j < auto.length && pos < 0; j++) {
+        idx = indexOfKey(auto[j].key);
+        if (idx >= 0) pos = idx;
+      }
+      if (pos < 0) pos = 0;
+      state.quoteRows.splice(pos, 0, autoToManualRow(a));
+      seen[a.key] = true;
+    });
+
+    function indexOfKey(k) {
+      for (var i = 0; i < state.quoteRows.length; i++) if (state.quoteRows[i].key === k) return i;
+      return -1;
+    }
+
+    var changed = JSON.stringify(state.quoteRows) !== before;
+    if (changed) saveQuoteRows();
+    return changed;
   }
 
   function getQuoteRows(c, includeTbd) {
@@ -804,6 +1024,9 @@
       return state.quoteRows.map(function (r) {
         var row = vatRow(r.desc, toNum(r.qty), r.unit, toNum(r.price));
         row.manual = true;
+        row.key = r.key || null;
+        // Configurator placeholder rows (anchor / rope) still print "TBD" until the admin fills them in
+        if ((r.key === "anchorTBD" || r.key === "rope") && row.qty == null && row.price == null) row.tbd = true;
         return row;
       });
     }
@@ -962,20 +1185,56 @@
       "ราวจับกันตก (ช่วงละ 1.2 ม.)": "ชุดเสาราวกันตก HDPE ขนาดไม่น้อยกว่า กว้าง 1.1 เมตร สูง 1.4 เมตร",
       "ชุดเสาราวกันตก HDPE": "ชุดเสาราวกันตก HDPE ขนาดไม่น้อยกว่า กว้าง 1.1 เมตร สูง 1.4 เมตร",
       "Safety railing (1.2 m per set)": "HDPE safety railing post set, not smaller than 1.1 m wide x 1.4 m high",
-      "HDPE safety railing post set": "HDPE safety railing post set, not smaller than 1.1 m wide x 1.4 m high"
+      "HDPE safety railing post set": "HDPE safety railing post set, not smaller than 1.1 m wide x 1.4 m high",
+      "เฟนเดอร์ / กันชน": "เฟนเดอร์ / กันชน EPDM (Fender EPDM)",
+      "Fender / bumper": "EPDM fender",
+      "คลีตสแตนเลส": "พุกผูกเรือสเตนเลส (Cleat Stainless steel)",
+      "Stainless cleat": "Stainless steel mooring cleat",
+      "เสาไฟโซลาร์เซลล์": "เสาไฟโซลาร์สูง < 1.6 ม. (เสา HDPE)",
+      "Solar cell light pole": "Solar light pole, height < 1.6 m (HDPE pole)"
     };
     return map.hasOwnProperty(x) ? map[x] : d;
   }
 
-  // Old VAT-inclusive unit prices saved in manual rows -> pre-VAT
+  // Old VAT-inclusive prices of items whose price did not change (float / HDPE deck / railing).
+  // Fender / cleat / solar light changed price, so they are NOT mapped by bare value here:
+  // 4500 / 4205.61 were used by BOTH railing and the solar light (and 1250 / 1900 / 3500 could be
+  // any hand-typed price), so those rows are migrated by description in migrateLegacyItemPrice().
   function migrateLegacyPrice(p) {
-    var map = { "18000": "16822.43", "7500": "7009.35", "4500": "4205.61", "1900": "2616.82", "1775.7": "2616.82", "1775.70": "2616.82", "1250": "1168.22" };
+    var map = { "18000": "16822.43", "7500": "7009.35", "4500": "4205.61" };
     var k = String(p).replace(/,/g, "").trim();
     return map.hasOwnProperty(k) ? map[k] : p;
   }
 
+  // Fender / cleat / solar light rows (identified by description): old default prices -> new defaults.
+  // Returns null when the row is not one of these items (then the generic map applies).
+  function migrateLegacyItemPrice(desc, p) {
+    var d = String(desc || "");
+    var k = String(p).replace(/,/g, "").trim();
+    var rules = [
+      { re: /^เสาไฟโซลาร์|^Solar (cell )?light pole/i, old: ["4500", "4205.61"], to: "5140.19" },
+      { re: /^เฟนเดอร์|^Fender|^EPDM fender/i, old: ["3500", "1900", "1775.7", "1775.70", "2616.82"], to: "6355.14" },
+      { re: /^คลีต|^พุกผูกเรือ|^Stainless (steel mooring )?cleat/i, old: ["1250", "1168.22"], to: "14953.27" },
+    ];
+    for (var i = 0; i < rules.length; i++) {
+      if (rules[i].re.test(d)) return rules[i].old.indexOf(k) !== -1 ? rules[i].to : p; // keep hand-typed price
+    }
+    return null;
+  }
+
+  // Old unit "ชุด"/"Sets" on fender / cleat / light rows -> ชิ้น / ต้น
+  function migrateLegacyUnit(desc, u) {
+    var d = String(desc || "");
+    var x = String(u || "").trim();
+    if (x !== "ชุด" && x !== "Sets") return u;
+    var th = x === "ชุด";
+    if (/^เสาไฟโซลาร์|^Solar (cell )?light pole/i.test(d)) return th ? "ต้น" : "Pole";
+    if (/^เฟนเดอร์|^พุกผูกเรือ|^EPDM fender|^Stainless steel mooring cleat/i.test(d)) return th ? "ชิ้น" : "Pc";
+    return u;
+  }
+
   function loadQuoteRows() {
-    var out = { manual: false, rows: [] };
+    var out = { manual: false, rows: [], suppressed: [] };
     try {
       var raw = localStorage.getItem("flotilla_pier_quote_rows");
       if (raw) {
@@ -984,13 +1243,36 @@
         if (p && p.manual && Array.isArray(p.rows) && p.v === 2) {
           out.manual = true;
           out.rows = p.rows.map(function (r) {
+            var desc = migrateLegacyDesc(String((r && r.desc) || ""));
+            var rawPrice = r && r.price != null ? String(r.price) : "";
+            var itemP = migrateLegacyItemPrice(desc, rawPrice);
             return {
-              desc: migrateLegacyDesc(String((r && r.desc) || "")),
+              desc: desc,
               qty: r && r.qty != null ? String(r.qty) : "",
-              unit: String((r && r.unit) || ""),
-              price: migrateLegacyPrice(r && r.price != null ? String(r.price) : ""),
+              unit: migrateLegacyUnit(desc, String((r && r.unit) || "")),
+              price: itemP != null ? itemP : migrateLegacyPrice(rawPrice),
+              _legacy: true, // no keys yet: matched to configurator items by description on first sync
             };
           });
+        } else if (p && p.manual && Array.isArray(p.rows) && p.v === 3) {
+          out.manual = true;
+          out.rows = p.rows.map(function (r) {
+            var o = {
+              desc: String((r && r.desc) || ""),
+              qty: r && r.qty != null ? String(r.qty) : "",
+              unit: String((r && r.unit) || ""),
+              price: r && r.price != null ? String(r.price) : "",
+            };
+            if (r && typeof r.key === "string" && r.key) o.key = r.key;
+            if (r && r.edited && typeof r.edited === "object") {
+              var ed = {};
+              ["desc", "unit", "price"].forEach(function (f) { if (r.edited[f]) ed[f] = true; });
+              if (ed.desc || ed.unit || ed.price) o.edited = ed;
+            }
+            if (r && r.qtyBase !== undefined) o.qtyBase = r.qtyBase == null ? "" : String(r.qtyBase);
+            return o;
+          });
+          out.suppressed = Array.isArray(p.suppressed) ? p.suppressed.filter(function (k) { return typeof k === "string"; }) : [];
         }
       }
     } catch (e) { /* ignore */ }
@@ -1001,7 +1283,7 @@
     try {
       localStorage.setItem(
         "flotilla_pier_quote_rows",
-        JSON.stringify({ v: 2, manual: !!state.quoteManual, rows: state.quoteRows })
+        JSON.stringify({ v: 3, manual: !!state.quoteManual, rows: state.quoteRows, suppressed: state.quoteSuppressed || [] })
       );
     } catch (e) { /* ignore */ }
   }
@@ -1026,13 +1308,22 @@
           fenderPrice: num(p.fenderPrice, DEFAULTS.fenderPrice),
           cleatPrice: num(p.cleatPrice, DEFAULTS.cleatPrice),
           lightPrice: num(p.lightPrice, DEFAULTS.lightPrice),
-          mooringPrice: num(p.mooringPrice, DEFAULTS.mooringPrice),
+          // Old single mooringPrice (7009.35 / set) is dropped; the two anchor types use their own keys
+          mooringConcretePrice: num(p.mooringConcretePrice, DEFAULTS.mooringConcretePrice),
+          mooringScrewPrice: num(p.mooringScrewPrice, DEFAULTS.mooringScrewPrice),
         };
         // Migrate old VAT-inclusive defaults to the new pre-VAT defaults
-        var OLD_POST = { floatPrice: 18000, hdpePrice: 7500, railingPrice: 4500, fenderPrice: 1900, cleatPrice: 1250, lightPrice: 4500, mooringPrice: 7500 };
+        var OLD_POST = { floatPrice: 18000, hdpePrice: 7500, railingPrice: 4500 };
         Object.keys(OLD_POST).forEach(function (k) { if (loaded[k] === OLD_POST[k]) loaded[k] = DEFAULTS[k]; });
-        // Migrate stale default: fender was 3500
-        if (loaded.fenderPrice === 3500 || loaded.fenderPrice === 1775.7) loaded.fenderPrice = DEFAULTS.fenderPrice;
+        // Old defaults of the per-key items -> current defaults (railing keeps 4205.61; only lightPrice is migrated)
+        var OLD_DEFAULTS = {
+          fenderPrice: [3500, 1900, 1775.7, 2616.82],
+          cleatPrice: [1250, 1168.22],
+          lightPrice: [4500, 4205.61],
+        };
+        Object.keys(OLD_DEFAULTS).forEach(function (k) {
+          if (OLD_DEFAULTS[k].indexOf(loaded[k]) !== -1) loaded[k] = DEFAULTS[k];
+        });
         if (loaded.lightPrice == null || loaded.lightPrice === 0) loaded.lightPrice = DEFAULTS.lightPrice;
         return loaded;
       }
@@ -1551,11 +1842,16 @@
       : [secA ? "A" : null, secB ? "B" : null, secC ? "C" : null].filter(Boolean).join(", ");
 
     
-    var moEnabled = !!(state.mooring && state.mooring.enabled);
-    var moQty = Math.max(0, Math.floor(num(state.mooring && state.mooring.qty, 0)));
-    if (state.mooring) state.mooring.qty = moQty;
-    var moUnit = state.prices.mooringPrice;
-    var moCost = moEnabled ? moQty * moUnit : 0;
+    var mo = normalizeMooring();
+    var moConcEnabled = mo.concrete.enabled;
+    var moScrewEnabled = mo.screw.enabled;
+    var moConcQty = moConcEnabled ? mo.concrete.qty : 0; // unticked = not on quote
+    var moScrewQty = moScrewEnabled ? mo.screw.qty : 0;
+    var moConcUnit = state.prices.mooringConcretePrice;
+    var moScrewUnit = state.prices.mooringScrewPrice;
+    var moConcCost = moConcQty * moConcUnit;
+    var moScrewCost = moScrewQty * moScrewUnit;
+    var moCost = moConcCost + moScrewCost;
     var total = floatCost + hdpeCost + railCost + gwCost + fenderCost + cleatCost + lightCost + moCost;
     var railPerMeter = state.prices.railingPrice / MODULE;
 
@@ -1598,14 +1894,36 @@
       gangwayUnitCost: gwUnit,
       gangwaySecCount: secCount,
       gangwayCost: gwCost,
-      mooringEnabled: moEnabled,
-      mooringQty: moQty,
-      mooringUnitCost: moUnit,
+      mooringConcreteEnabled: moConcEnabled,
+      mooringConcreteQty: moConcQty,
+      mooringConcreteUnitCost: moConcUnit,
+      mooringConcreteCost: moConcCost,
+      mooringScrewEnabled: moScrewEnabled,
+      mooringScrewQty: moScrewQty,
+      mooringScrewUnitCost: moScrewUnit,
+      mooringScrewCost: moScrewCost,
       mooringCost: moCost,
       total: total,
       railPerMeter: railPerMeter,
       shape: g.shape,
     };
+  }
+
+  // Ensure state.mooring = { concrete: {enabled, qty}, screw: {enabled, qty} } with integer qty >= 0.
+  // An old-shape object ({ enabled, qty } — single mooring set) is moved to the concrete anchor.
+  function normalizeMooring() {
+    var m = state.mooring || {};
+    if (!m.concrete && !m.screw && ("enabled" in m || "qty" in m)) {
+      m = { concrete: { enabled: !!m.enabled, qty: m.qty }, screw: { enabled: false, qty: 1 } };
+    }
+    ["concrete", "screw"].forEach(function (k) {
+      var o = m[k] || { enabled: false, qty: 1 };
+      o.enabled = !!o.enabled;
+      o.qty = Math.max(0, Math.floor(num(o.qty, 0)));
+      m[k] = o;
+    });
+    state.mooring = m;
+    return m;
   }
 
   function localeTag() {
@@ -2622,26 +2940,29 @@
 
 
   function renderMooringUI(c) {
-    var en = $("mooring-enabled");
-    var box = $("mooring-controls");
-    if (en) en.checked = !!(state.mooring && state.mooring.enabled);
-    if (box) setHidden(box, !(state.mooring && state.mooring.enabled));
-    var q = $("mooring-qty");
-    if (q && document.activeElement !== q) {
-      q.value = String((state.mooring && state.mooring.qty) || 0);
-    }
+    var m = normalizeMooring();
+    var types = [
+      { k: "concrete", id: "concrete", unit: t("print.unit.anchorBall"), price: state.prices.mooringConcretePrice,
+        qty: c.mooringConcreteQty, cost: c.mooringConcreteCost },
+      { k: "screw", id: "screw", unit: t("print.unit.piece"), price: state.prices.mooringScrewPrice,
+        qty: c.mooringScrewQty, cost: c.mooringScrewCost },
+    ];
+    types.forEach(function (ty) {
+      var o = m[ty.k];
+      var en = $("mooring-" + ty.id + "-enabled");
+      var box = $("mooring-" + ty.id + "-controls");
+      if (en) en.checked = o.enabled;
+      if (box) setHidden(box, !o.enabled);
+      var q = $("mooring-" + ty.id + "-qty");
+      if (q && document.activeElement !== q) q.value = String(o.qty || 0);
+      var ph = $("mooring-" + ty.id + "-hint");
+      if (ph) ph.textContent = t("mooring." + ty.k + "Hint", fmt2(ty.price));
+      var lh = $("mooring-" + ty.id + "-price");
+      if (lh) lh.textContent = t("mooring.linePrice", formatTHB(ty.cost), fmt2(ty.price), formatNum(ty.qty), ty.unit);
+    });
     var hint = $("mooring-price-hint");
     if (hint) {
-      if (state.mooring && state.mooring.enabled) {
-        hint.textContent = t(
-          "mooring.priceOn",
-          formatTHB(c.mooringCost),
-          formatNum(state.prices.mooringPrice),
-          formatNum(c.mooringQty)
-        );
-      } else {
-        hint.textContent = t("mooring.priceOff");
-      }
+      hint.textContent = c.mooringCost > 0 ? t("mooring.priceOn", formatTHB(c.mooringCost)) : t("mooring.priceOff");
     }
   }
 
@@ -2859,7 +3180,8 @@
     if ($("price-fender")) $("price-fender").value = state.prices.fenderPrice;
     if ($("price-cleat")) $("price-cleat").value = state.prices.cleatPrice;
     if ($("price-light")) $("price-light").value = state.prices.lightPrice;
-    if ($("price-mooring")) $("price-mooring").value = state.prices.mooringPrice;
+    if ($("price-mooring-concrete")) $("price-mooring-concrete").value = state.prices.mooringConcretePrice;
+    if ($("price-mooring-screw")) $("price-mooring-screw").value = state.prices.mooringScrewPrice;
   }
 
   function sizeSummaryText(c) {
@@ -2926,7 +3248,7 @@
       ".pq-line{border-bottom:1px dotted #444;height:1.1em}",
       ".pq-boq{width:100%;border-collapse:collapse;table-layout:fixed}",
       ".pq-boq th{border:1px solid #000;background:#f2f2f2;font-weight:700;text-align:center;padding:1.2mm 1mm}",
-      ".pq-boq td{border-left:1px solid #000;border-right:1px solid #000;padding:.9mm 1.5mm;vertical-align:top;word-wrap:break-word}",
+      ".pq-boq td{border-left:1px solid #000;border-right:1px solid #000;padding:.6mm 1.5mm;vertical-align:top;word-wrap:break-word}",
       ".pq-boq .c{text-align:center}",
       ".pq-boq .r{text-align:right}",
       ".pq-boq tr.pq-sum td{border-top:1px solid #000;border-bottom:1px solid #000}",
@@ -2946,6 +3268,8 @@
       ".pq-pay li{margin:.4mm 0;position:relative;padding-left:2.5mm}",
       ".pq-pay li:before{content:'\\2022';position:absolute;left:0}",
       ".pq-pay li.pq-pay-sub{margin-left:8mm}",
+      ".pq-note{margin:.8mm 0 0;padding:0 0 0 12mm;font-size:8pt;line-height:1.28}",
+      ".pq-note b{font-weight:700}",
       ".pq-closing{margin:1.5mm 0 1mm}",
       ".pq-sig{width:100%;border-collapse:collapse;table-layout:fixed}",
       ".pq-sig td,.pq-sig th{border:1px solid #000;padding:.8mm 1.5mm}",
@@ -3114,6 +3438,7 @@
       "</tbody></table>" +
       '<div class="pq-pay"><div class="pq-pay-head">' + t("print.payHead") + "</div><ul>" +
       "<li>" + t("print.pay1") + "</li><li>" + t("print.pay2") + "</li><li class=\"pq-pay-sub\">" + t("print.pay4") + "</li><li>" + t("print.pay5") + "</li></ul></div>" +
+      '<div class="pq-note"><b>' + t("print.noteLabel") + "</b> " + t("print.noteText") + "</div>" +
       '<div class="pq-closing">' + t("print.closing") + "</div>" +
       '<table class="pq-sig"><colgroup><col style="width:50%"><col style="width:50%"></colgroup><tbody>' +
       "<tr><th>" + t("print.sigPrepared") + "</th><th>" + t("print.sigApproved") + "</th></tr>" +
@@ -3151,13 +3476,37 @@
     host.innerHTML = html;
   }
 
+  // Preset items for the manual quote editor. Prices are PRE-VAT (incl. VAT / 1.07, 2 dp); VAT 7% is added on the totals.
+  var QUOTE_PRESETS = [
+    { id: "guidePole", price: 2336.45 }, // 2,500 incl. VAT
+    { id: "rope", price: 654.21 }, // 700 incl. VAT / m
+    { id: "lifebuoy", price: 3271.03 }, // 3,500 incl. VAT
+    { id: "spudPile", price: 35046.73 }, // 37,500 incl. VAT
+    { id: "guideConnector", price: 700.93 }, // 750 incl. VAT
+    { id: "rollerSet", price: 11214.95 }, // 12,000 incl. VAT
+    { id: "spudDriving", price: 23364.49 }, // 25,000 incl. VAT / pole
+  ];
+
+  function presetPickerHTML() {
+    var opts = '<option value="">' + esc(t("admin.qr.presetPick")) + "</option>";
+    QUOTE_PRESETS.forEach(function (p) {
+      opts +=
+        '<option value="' + p.id + '">' +
+        esc(t("admin.qr.presetOpt", t("preset." + p.id + ".name"), fmt2(p.price), t("preset." + p.id + ".unit"))) +
+        "</option>";
+    });
+    return (
+      '<span class="qr-preset">' +
+      '<select id="qr-preset-select" class="qr-in qr-preset-select" aria-label="' + esc(t("admin.qr.presetLabel")) + '" title="' + esc(t("admin.qr.presetLabel")) + '">' + opts + "</select>" +
+      '<button type="button" class="btn btn-secondary" data-qr-act="preset">' + esc(t("admin.qr.btnPreset")) + "</button>" +
+      "</span>"
+    );
+  }
+
   function currentRowsForEditor() {
     var c = lastComputed || compute();
     if (state.quoteManual) return state.quoteRows;
-    return getAutoRows(c, true).map(function (r) {
-      var pp = r.postPrice != null ? r.postPrice : r.price;
-      return { desc: r.desc, qty: r.qty == null ? "" : String(r.qty), unit: r.unit, price: pp == null ? "" : String(pp) };
-    });
+    return getAutoRows(c, true).map(autoToManualRow);
   }
 
   function updateEditorTotals() {
@@ -3195,6 +3544,7 @@
       html += '<button type="button" class="btn btn-primary" data-qr-act="edit">' + esc(t("admin.qr.btnEdit")) + "</button>";
     } else {
       html += '<button type="button" class="btn btn-secondary" data-qr-act="add">' + esc(t("admin.qr.btnAdd")) + "</button>";
+      html += presetPickerHTML();
       html += '<button type="button" class="btn btn-secondary" data-qr-act="reset">' + esc(t("admin.qr.btnReset")) + "</button>";
     }
     html += "</div>";
@@ -3204,7 +3554,8 @@
       "</th><th></th></tr></thead><tbody>";
     rows.forEach(function (r, i) {
       html +=
-        '<tr data-i="' + i + '"><td class="qr-no">' + (i + 1) + "</td>" +
+        '<tr data-i="' + i + '"' + (manual && r.key ? ' class="qr-keyed" title="' + esc(t("admin.qr.keyedTip")) + '"' : "") +
+        '><td class="qr-no">' + (i + 1) + (manual && r.key ? '<span class="qr-link" aria-hidden="true">⟳</span>' : "") + "</td>" +
         '<td><textarea class="qr-in qr-desc" data-k="desc" rows="2"' + dis + ">" + esc(r.desc) + "</textarea></td>" +
         '<td><input class="qr-in qr-qty" data-k="qty" type="number" step="any" value="' + esc(r.qty) + '"' + dis + " /></td>" +
         '<td><input class="qr-in qr-unit" data-k="unit" type="text" value="' + esc(r.unit) + '"' + dis + " /></td>" +
@@ -3265,8 +3616,19 @@
       var tr = el.closest && el.closest("tr[data-i]");
       if (!k || !tr) return;
       var i = Number(tr.getAttribute("data-i"));
-      if (!state.quoteRows[i]) return;
-      state.quoteRows[i][k] = el.value;
+      var row = state.quoteRows[i];
+      if (!row) return;
+      row[k] = el.value;
+      if (row.key) {
+        if (k === "qty") {
+          // admin-typed qty sticks until the plan quantity for this item changes
+          var a = getAutoRows(lastComputed || compute(), true).filter(function (x) { return x.key === row.key; })[0];
+          row.qtyBase = a ? strOrEmpty(a.qty) : "";
+        } else {
+          row.edited = row.edited || {};
+          row.edited[k] = true; // keep the admin's description / unit / price
+        }
+      }
       saveQuoteRows();
       render(); // updates quote table, totals, print area; editor itself is only touched via updateEditorTotals
     });
@@ -3277,10 +3639,8 @@
       var i = Number(btn.getAttribute("data-i"));
       if (act === "edit") {
         var c = lastComputed || compute();
-        state.quoteRows = getAutoRows(c, true).map(function (r) {
-          var pp = r.postPrice != null ? r.postPrice : r.price;
-      return { desc: r.desc, qty: r.qty == null ? "" : String(r.qty), unit: r.unit, price: pp == null ? "" : String(pp) };
-        });
+        state.quoteRows = getAutoRows(c, true).map(autoToManualRow);
+        state.quoteSuppressed = [];
         state.quoteManual = true;
         saveQuoteRows();
         rebuildQuoteEditor();
@@ -3289,6 +3649,7 @@
         if (!window.confirm(t("admin.qr.confirmReset"))) return;
         state.quoteManual = false;
         state.quoteRows = [];
+        state.quoteSuppressed = [];
         saveQuoteRows();
         rebuildQuoteEditor();
         render();
@@ -3297,8 +3658,30 @@
         saveQuoteRows();
         rebuildQuoteEditor(state.quoteRows.length - 1);
         render();
+      } else if (act === "preset") {
+        // Same as "+ add row", then filled from the chosen preset (row stays fully editable)
+        var sel = $("qr-preset-select");
+        var pid = sel ? sel.value : "";
+        var preset = QUOTE_PRESETS.filter(function (p) { return p.id === pid; })[0];
+        if (!preset) {
+          if (sel) sel.focus();
+          return;
+        }
+        state.quoteRows.push({
+          desc: t("preset." + preset.id + ".desc"),
+          qty: "1",
+          unit: t("preset." + preset.id + ".unit"),
+          price: String(preset.price),
+        });
+        saveQuoteRows();
+        rebuildQuoteEditor(state.quoteRows.length - 1);
+        render();
       } else if (act === "del") {
-        state.quoteRows.splice(i, 1);
+        var gone = state.quoteRows.splice(i, 1)[0];
+        // a configurator row deleted by the admin stays hidden (until reset) instead of coming back
+        if (gone && gone.key && (state.quoteSuppressed || []).indexOf(gone.key) === -1) {
+          state.quoteSuppressed = (state.quoteSuppressed || []).concat([gone.key]);
+        }
         saveQuoteRows();
         rebuildQuoteEditor();
         render();
@@ -3322,6 +3705,7 @@
   function render() {
     var c = compute();
     lastComputed = c;
+    var manualSynced = syncManualRows(c);
     renderShapeSelector();
     renderPresets();
     syncSectionDisplays();
@@ -3332,7 +3716,29 @@
     renderGangwayUI(c);
     renderMooringUI(c);
     updatePrintArea(c);
-    syncQuoteEditor();
+    if (manualSynced) rebuildQuoteEditorKeepFocus();
+    else syncQuoteEditor();
+  }
+
+  // Rebuild the manual editor after the plan changed rows, restoring focus/caret if the admin was typing in it
+  function rebuildQuoteEditorKeepFocus() {
+    var host = $("qr-editor");
+    if (!host) return;
+    var ae = document.activeElement;
+    var tr = ae && host.contains(ae) && ae.closest ? ae.closest("tr[data-i]") : null;
+    var k = ae && ae.getAttribute ? ae.getAttribute("data-k") : null;
+    var row = tr ? state.quoteRows[Number(tr.getAttribute("data-i"))] : null;
+    var sel = null;
+    try { sel = ae && ae.selectionStart != null ? [ae.selectionStart, ae.selectionEnd] : null; } catch (e) { sel = null; }
+    rebuildQuoteEditor();
+    if (row && k) {
+      var ni = state.quoteRows.indexOf(row);
+      var el = ni >= 0 ? host.querySelector('tr[data-i="' + ni + '"] [data-k="' + k + '"]') : null;
+      if (el) {
+        el.focus();
+        try { if (sel) el.setSelectionRange(sel[0], sel[1]); } catch (e) { /* number inputs */ }
+      }
+    }
   }
 
   function applyFieldDelta(field, delta) {
@@ -3564,11 +3970,12 @@
       if ($("price-fender")) state.prices.fenderPrice = num($("price-fender").value, DEFAULTS.fenderPrice);
       if ($("price-cleat")) state.prices.cleatPrice = num($("price-cleat").value, DEFAULTS.cleatPrice);
       if ($("price-light")) state.prices.lightPrice = num($("price-light").value, DEFAULTS.lightPrice);
-      if ($("price-mooring")) state.prices.mooringPrice = num($("price-mooring").value, DEFAULTS.mooringPrice);
+      if ($("price-mooring-concrete")) state.prices.mooringConcretePrice = num($("price-mooring-concrete").value, DEFAULTS.mooringConcretePrice);
+      if ($("price-mooring-screw")) state.prices.mooringScrewPrice = num($("price-mooring-screw").value, DEFAULTS.mooringScrewPrice);
       savePrices();
       render();
     }
-    ["price-float", "price-hdpe", "price-rail", "price-fender", "price-cleat", "price-light", "price-mooring"].forEach(function (id) {
+    ["price-float", "price-hdpe", "price-rail", "price-fender", "price-cleat", "price-light", "price-mooring-concrete", "price-mooring-screw"].forEach(function (id) {
       $(id).addEventListener("change", onPriceChange);
       $(id).addEventListener("input", onPriceChange);
     });
@@ -3583,27 +3990,29 @@
 
     // Mooring system add-on (quote only)
     (function bindMooring() {
-      var en = $("mooring-enabled");
-      if (en) {
-        en.addEventListener("change", function () {
-          if (!state.mooring) state.mooring = { enabled: false, qty: 1 };
-          state.mooring.enabled = !!en.checked;
-          if (state.mooring.enabled && !(state.mooring.qty > 0)) state.mooring.qty = 1;
-          render();
-        });
-      }
-      var q = $("mooring-qty");
-      if (q) {
-        function syncQty() {
-          if (!state.mooring) state.mooring = { enabled: false, qty: 0 };
-          var n = Math.floor(Number(q.value));
-          if (!isFinite(n) || n < 0) n = 0;
-          state.mooring.qty = n;
-          render();
+      ["concrete", "screw"].forEach(function (k) {
+        var en = $("mooring-" + k + "-enabled");
+        if (en) {
+          en.addEventListener("change", function () {
+            var o = normalizeMooring()[k];
+            o.enabled = !!en.checked;
+            if (o.enabled && !(o.qty > 0)) o.qty = 1;
+            render();
+          });
         }
-        q.addEventListener("change", syncQty);
-        q.addEventListener("input", syncQty);
-      }
+        var q = $("mooring-" + k + "-qty");
+        if (q) {
+          var syncQty = function () {
+            var o = normalizeMooring()[k];
+            var n = Math.floor(Number(q.value));
+            if (!isFinite(n) || n < 0) n = 0;
+            o.qty = n;
+            render();
+          };
+          q.addEventListener("change", syncQty);
+          q.addEventListener("input", syncQty);
+        }
+      });
     })();
 
     // Gangway add-on (quote only)
@@ -3723,6 +4132,7 @@
     var qr = loadQuoteRows();
     state.quoteManual = qr.manual;
     state.quoteRows = qr.rows;
+    state.quoteSuppressed = qr.suppressed || [];
     state.quoteInfo = loadQuoteInfo();
     bind();
     bindQuoteAdmin();

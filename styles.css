@@ -882,7 +882,7 @@ footer.app-footer {
 #print-quote .pq-boq td {
   border-left:1px solid #000;
   border-right:1px solid #000;
-  padding:.9mm 1.5mm;
+  padding:.6mm 1.5mm;
   vertical-align:top;
   word-wrap:break-word;
 }
@@ -980,6 +980,17 @@ footer.app-footer {
   content:'\2022';
   position:absolute;
   left:0;
+}
+
+#print-quote .pq-note {
+  margin:.8mm 0 0;
+  padding:0 0 0 12mm;
+  font-size:8pt;
+  line-height:1.28;
+}
+
+#print-quote .pq-note b {
+  font-weight:700;
 }
 
 #print-quote .pq-closing {
@@ -1130,11 +1141,14 @@ footer.app-footer {
 .qr-badge.manual { background: var(--amber-bg); color: var(--amber-text); border: 1px solid var(--amber-border); }
 .qr-buttons { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 0.6rem 0; }
 .qr-buttons .btn { width: auto; padding: 0.6rem 1rem; }
+.qr-preset { display: inline-flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; max-width: 100%; }
+.qr-preset-select { width: auto; min-width: 14rem; max-width: 22rem; padding: 0.55rem 0.6rem; background: #fff; cursor: pointer; }
 .qr-scroll { overflow-x: auto; }
 .qr-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 760px; }
 .qr-table th { text-align: left; padding: 0.4rem; color: var(--gray-500); font-size: 0.75rem; }
 .qr-table td { padding: 0.3rem; border-top: 1px solid var(--gray-200); vertical-align: top; }
 .qr-no { width: 2.5rem; text-align: center; color: var(--gray-500); padding-top: 0.7rem !important; }
+.qr-link { display: block; font-size: 0.75rem; color: var(--teal-500); line-height: 1; margin-top: 0.15rem; }
 .qr-in {
   width: 100%;
   font-family: inherit;
